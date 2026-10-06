@@ -1,0 +1,92 @@
+# In-game screenshots for the results-page backdrop (not key art / box art).
+# Sources, in order: Steam store screenshots (most multi-platform games), then the
+# game's playstation.com page gallery (images whose names say "screenshot").
+# Output: heroes/screens/<sha>.webp (1600x900) and heroes/screens.json {key: {file, src, from}}.
+name: In-game screenshots
+on:
+  push:
+    paths: ['.github/workflows/screens.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  screens:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install requests pillow
+      - name: Fetch screenshots
+        run: |
+          python - <<'PY'
+          import json, re, os, io, time, hashlib, requests
+          from PIL import Image
+          os.makedirs('heroes/screens', exist_ok=True)
+          titles = {t['key']: t['title'] for t in json.load(open('ratings/titles.json'))}
+          scores = json.load(open('ratings/scores.json'))
+          try: out = json.load(open('heroes/screens.json'))
+          except Exception: out = {}
+          s = requests.Session(); s.headers.update({'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36', 'Accept-Language': 'en-IN,en;q=0.9'})
+          ED = r'\b(standard|deluxe|ultimate|gold|premium|launch|day one|complete|definitive|special|limited|collector\'?s|anniversary|goty|game of the year|edition|bundle|ps5|ps4)\b'
+          def clean(t):
+              t = re.sub(r'\(.*?\)', ' ', t)
+              t = re.sub(ED, ' ', t, flags=re.I)
+              return re.sub(r'\s+', ' ', t).strip()
+          def toks(t): return [w for w in re.sub(r"[’']", '', t.lower()).replace('&', 'and').split() if w] and re.findall(r'[a-z0-9]+', re.sub(r"[’']", '', t.lower()))
+          STOP = {'the', 'of', 'a', 'and', 'marvels', 'tom', 'clancys', 'sid', 'meiers'}
+          def match(ours, theirs):
+              a = [w for w in toks(ours) if w not in STOP]; b = set(w for w in toks(theirs) if w not in STOP)
+              return a and all(w in b for w in a) and len(b) - len(a) <= 3
+          def save(key, url, src):
+              r = s.get(url, timeout=30); r.raise_for_status()
+              im = Image.open(io.BytesIO(r.content)).convert('RGB')
+              if im.width / im.height < 1.5: return False
+              im = im.resize((1600, round(1600 * im.height / im.width)), Image.LANCZOS) if im.width > 1600 else im
+              f = hashlib.sha1(key.encode()).hexdigest()[:12] + '.webp'
+              im.save('heroes/screens/' + f, 'WEBP', quality=62, method=6)
+              out[key] = {'file': f, 'src': url, 'from': src}; return True
+          def steam(key, title):
+              r = s.get('https://store.steampowered.com/api/storesearch/', params={'term': title, 'cc': 'in', 'l': 'english'}, timeout=20)
+              for it in (r.json().get('items') or [])[:5]:
+                  if not match(title, it['name']): continue
+                  d = s.get('https://store.steampowered.com/api/appdetails', params={'appids': it['id'], 'cc': 'in', 'l': 'english'}, timeout=20).json()
+                  shots = (d.get(str(it['id']), {}).get('data') or {}).get('screenshots') or []
+                  if shots:
+                      pick = shots[1] if len(shots) > 1 else shots[0]   # [0] is often a menu/title shot
+                      return save(key, pick['path_full'].split('?')[0], 'steam')
+                  return False
+              return False
+          def psn(key, title):
+              slug = re.sub(r'[^a-z0-9]+', '-', re.sub(r"[’']", '', title.lower()).replace('&', 'and')).strip('-')
+              r = s.get(f'https://www.playstation.com/en-in/games/{slug}/', timeout=20)
+              if r.status_code != 200: return False
+              urls = re.findall(r'https://(?:gmedia|image\.api)\.playstation\.com/[^"\'\s)]+', r.text)
+              shots = [u for u in dict.fromkeys(urls) if re.search(r'screenshot', u, re.I)]
+              for u in shots[:3]:
+                  u = re.sub(r'\?.*$', '', u) + ('?$1600px$' if 'gmedia' in u else '')
+                  try:
+                      if save(key, u, 'playstation.com'): return True
+                  except Exception: pass
+              return False
+          done = 0
+          for key, v in sorted(scores.items()):
+              if not v or key not in titles: continue
+              if key in out and os.path.exists('heroes/screens/' + out[key]['file']): done += 1; continue
+              title = clean(titles[key])
+              try:
+                  if steam(key, title) or psn(key, title): done += 1
+              except Exception as e: print('FAIL', key, e)
+              time.sleep(1.2)
+          json.dump(out, open('heroes/screens.json', 'w'), indent=1, sort_keys=True)
+          from collections import Counter
+          print('screens', done, Counter(v['from'] for v in out.values()))
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add heroes
+          git diff --cached --quiet || git commit -m "In-game screenshots: $(ls heroes/screens | wc -l)"
+          git pull --rebase -q && git push
