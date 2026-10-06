@@ -71,14 +71,20 @@ jobs:
           for key, urls in need.items():
               if out.get(key): continue
               out[key] = None
+
               for u in urls:
                   try: r = s.get(u, timeout=20)
                   except Exception: continue
                   if r.status_code != 200: time.sleep(0.6); continue
-                  for tag in re.findall(r'<meta[^>]+>', r.text):
-                      if re.search(r'(property|name)="og:image"', tag):
-                          m = re.search(r'content="([^"]+)"', tag)
-                          if m: out[key] = m.group(1).replace('&amp;', '&'); break
+                  for m in re.finditer(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', r.text, re.S):
+                      try: d = json.loads(m.group(1))
+                      except Exception: continue
+                      for x in (d if isinstance(d, list) else [d]):
+                          img = isinstance(x, dict) and x.get('image')
+                          if isinstance(img, list): img = img[0] if img else None
+                          if isinstance(img, dict): img = img.get('url') or img.get('contentUrl')
+                          if img: out[key] = img; break
+                      if out[key]: break
                   break
               time.sleep(1.0)
           json.dump(out, open('ratings/images.json', 'w'), indent=1, sort_keys=True)

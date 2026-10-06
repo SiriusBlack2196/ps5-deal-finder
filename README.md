@@ -45,7 +45,7 @@ never confused. It deliberately uses no Sony logos or PlayStation symbols. Token
 
 | Store | Platform | Endpoint | Notes |
 |---|---|---|---|
-| Gameloot | WooCommerce | `/wp-json/wc/store/v1/products?search=` | Prices in rupees (`currency_minor_unit: 0`). New and pre-owned are separate products; condition comes from the `PRE-OWNED` category. |
+| Gameloot | WooCommerce | `/wp-json/wc/store/v1/products?search=` | Prices in rupees (`currency_minor_unit: 0`). New and pre-owned are separate products; condition comes from the `PRE-OWNED` category, pre-orders from `PRE-ORDER`. **Only answers requests from Indian IP addresses**, so the live server must run in India (e.g. Fly.io `bom`, Mumbai) for Gameloot results; the snapshot was captured through an Indian network location. |
 | E2Z | WooCommerce | same | Prices in **paise** (`currency_minor_unit: 2`). robots.txt blocks `/search/`, not the Store API. |
 | Console Garage | Shopify | `/search/suggest.json` then `/products/<handle>.js` | One product per game with variants **Pre-Owned / NEW / BUYBACK (SELL)**. The suggest price is the *buyback* price (what they pay you), so the adapter always expands variants and drops buyback ones. |
 | Game Nation | Custom Next.js + JSON API | **working** | The site renders client-side from a public JSON API at `gamenation.in/Api` (found in its JS bundle). The adapter calls `/Products/Games/Index?term=…&PS5=1&TypeGames=1`, which returns name, price, MRP, new/used and availability; trade-in (buyback) values in the same response are ignored. Product links follow the site's own `<slug>-<ProductId>` rule. |
