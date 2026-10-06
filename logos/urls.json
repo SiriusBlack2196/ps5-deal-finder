@@ -62,5 +62,25 @@
   {
     "file": "gameloot-gstatic.png",
     "url": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gameloot.in&size=256"
+  },
+  {
+    "file": "gameloot-wsrv.png",
+    "url": "https://wsrv.nl/?url=gameloot.in/wp-content/themes/virtue-child/assets/images/LogoGameLoot.jpg&output=png"
+  },
+  {
+    "file": "gameloot-wayback.jpg",
+    "url": "https://web.archive.org/web/2026id_/https://gameloot.in/wp-content/themes/virtue-child/assets/images/LogoGameLoot.jpg"
+  },
+  {
+    "file": "gameloot-touch-wayback.png",
+    "url": "https://web.archive.org/web/2026id_/https://gameloot.in/apple-touch-icon.png"
+  },
+  {
+    "file": "e2z-wsrv.png",
+    "url": "https://wsrv.nl/?url=e2zstore.com/wp-content/uploads/2025/05/e2z_logo_2025.png&output=png"
+  },
+  {
+    "file": "e2z-wayback.png",
+    "url": "https://web.archive.org/web/2026id_/https://e2zstore.com/wp-content/uploads/2025/05/e2z_logo_2025.png"
   }
 ]
