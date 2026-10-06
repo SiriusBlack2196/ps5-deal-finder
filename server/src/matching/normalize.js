@@ -93,6 +93,7 @@ export function displayTitle(rawTitle) {
   let t = String(rawTitle || '')
     .replace(/\((pre[\s-]?owned|used|new|standard edition)\)/gi, '')
     .replace(/\b(ps\s?5|playstation\s?5)\b/gi, '')
+    .replace(/\(\s*\)|\[\s*\]/g, '')
     .replace(/\s*[-–|]\s*$/g, '')
     .replace(/\s{2,}/g, ' ')
     .trim();
@@ -103,6 +104,9 @@ export function displayTitle(rawTitle) {
       if (i > 0 && SMALL.has(lw)) return lw;
       return lw.charAt(0).toUpperCase() + lw.slice(1);
     }).join(' ');
+  } else {
+    // Mixed-case store titles: just lowercase small joining words ("God Of War" -> "God of War").
+    t = t.split(' ').map((w, i) => (i > 0 && SMALL.has(w.toLowerCase()) && /^[A-Z][a-z]*$/.test(w) ? w.toLowerCase() : w)).join(' ');
   }
-  return t;
+  return t.trim();
 }

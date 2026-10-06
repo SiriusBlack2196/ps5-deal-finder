@@ -53,7 +53,9 @@ export function suggest(q) {
     const tt = key.split(' ');
     if (!full.every((w) => tt.includes(w)) || !tt.some((w) => w.startsWith(last))) continue;
     seen.add(key);
-    scored.push({ display, score: (key.startsWith(qt.join(' ')) ? 10 : 0) - tt.length });
+    const typed = q.trim().toLowerCase();
+    const score = (display.toLowerCase().startsWith(typed) ? 40 : 0) + (key.startsWith(qt.join(' ')) ? 10 : 0) + (tt.includes(last) ? 5 : 0) - tt.length;
+    scored.push({ display, score });
   }
   return scored.sort((a, b) => b.score - a.score).slice(0, 8).map((s) => s.display);
 }

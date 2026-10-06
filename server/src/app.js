@@ -104,8 +104,9 @@ function suggest(q, db) {
     if (!full.every((w) => tt.includes(w))) continue;
     const prefixHit = tt.some((w) => w.startsWith(last));
     if (!prefixHit) continue;
-    const startsWith = key.startsWith(qt.join(' ')) ? 1 : 0;
-    scored.push({ display, score: startsWith * 10 - tt.length });
+    const typed = q.trim().toLowerCase();
+    const score = (display.toLowerCase().startsWith(typed) ? 40 : 0) + (key.startsWith(qt.join(' ')) ? 10 : 0) + (tt.includes(last) ? 5 : 0) - tt.length;
+    scored.push({ display, score });
   }
   return scored.sort((a, b) => b.score - a.score).slice(0, 8).map((s) => s.display);
 }
