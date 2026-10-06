@@ -1,0 +1,66 @@
+# Collects critic scores (Metacritic Metascore + critic review count) for the
+# titles in ratings/titles.json into ratings/scores.json. One request at a
+# time with a pause. Titles without a published score are recorded as null.
+name: Critic scores
+on:
+  push:
+    paths: ['ratings/titles.json', '.github/workflows/ratings.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  scores:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install requests
+      - name: Fetch scores
+        run: |
+          python - <<'PY'
+          import json, re, time, requests, datetime
+          titles = json.load(open('ratings/titles.json'))
+          try: out = json.load(open('ratings/scores.json'))
+          except Exception: out = {}
+          s = requests.Session()
+          s.headers.update({'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36',
+                            'Accept-Language': 'en-US,en;q=0.9'})
+          def parse(html):
+              for m in re.finditer(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', html, re.S):
+                  try: d = json.loads(m.group(1))
+                  except Exception: continue
+                  for x in (d if isinstance(d, list) else [d]):
+                      ar = isinstance(x, dict) and x.get('aggregateRating')
+                      if ar and ar.get('ratingValue') is not None:
+                          return {'score': int(round(float(ar['ratingValue']))), 'count': int(ar.get('reviewCount') or ar.get('ratingCount') or 0)}
+              return None
+          debug = []
+          for i, t in enumerate(titles):
+              if t['key'] in out: continue
+              res = None
+              for sl in t['slugs']:
+                  url = f'https://www.metacritic.com/game/{sl}/'
+                  try:
+                      r = s.get(url, timeout=20)
+                  except Exception as e:
+                      debug.append(f'{sl} ERR {e}'); continue
+                  if i < 3: debug.append(f'{sl} {r.status_code} ldjson={"ld+json" in r.text} len={len(r.text)}')
+                  if r.status_code == 200:
+                      res = parse(r.text)
+                      if res: res['url'] = url
+                      break
+                  time.sleep(0.8)
+              out[t['key']] = res
+              time.sleep(1.0)
+          json.dump(out, open('ratings/scores.json', 'w'), indent=1, sort_keys=True)
+          open('ratings/debug.txt', 'w').write('\n'.join(debug) + f"\nscored={sum(1 for v in out.values() if v)} of {len(out)} at {datetime.datetime.utcnow().isoformat()}Z\n")
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ratings
+          git diff --cached --quiet || git commit -m "Critic scores: $(python -c "import json;d=json.load(open('ratings/scores.json'));print(sum(1 for v in d.values() if v),'of',len(d))")"
+          git pull --rebase -q && git push
