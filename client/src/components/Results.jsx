@@ -173,7 +173,7 @@ function DealCard({ kind, l, storeName }) {
       <span className="mt-2 text-[0.95rem] font-semibold leading-snug">{storeName}</span>
       <span className="text-sm text-muted">
         {l.edition === 'Standard' ? (isNew ? 'New copy' : 'Pre-owned copy') : `${l.edition} edition, ${isNew ? 'new' : 'pre-owned'}`}
-        {l.shipping == null ? ', excl. shipping' : ''}
+        {l.storeOnly ? ', buy in a CeX store' : l.shipping == null ? ', excl. shipping' : ''}
       </span>
       <span className={`btn-label mt-4 inline-flex h-10 items-center justify-center rounded-full text-sm sm:mt-5 sm:h-11 bg-blue text-white transition-colors duration-200 group-hover:bg-blue-hover`}>
         View deal

@@ -81,3 +81,10 @@ test('Empty steelbooks are merch; steelbook editions with the game are games', (
   assert.equal(detectKind('Onimusha Way of The Sword PS5 Steelbook (No Game Included) (Pre-owned)'), 'merch');
   assert.equal(detectKind('NIOH 3 STEELBOOK EDITION PS5'), 'game');
 });
+
+test('CeX box notes: "(No DLC)" is still a game; "** USE <id>**" duplicates are dropped', () => {
+  assert.equal(detectKind('Spider-Man 2 (No DLC)', 'PS5 | Games | Playstation5 Software'), 'game');
+  assert.equal(detectKind('Legend of Heroes: Trails Beyond the Horizon Deluxe Ed. w/Artbook (No DLC)', 'PS5 | Games'), 'game');
+  assert.equal(detectKind('Black Myth: Wukong ** USE 8904171334143**', 'PS5 | Games'), 'other');
+  assert.equal(detectKind('Spider-Man 2 DLC Pack'), 'dlc');
+});

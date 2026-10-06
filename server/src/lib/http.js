@@ -64,7 +64,7 @@ function limiterFor(host) {
 }
 
 // ---------- network client ----------
-async function networkFetch(url, { signal, accept = 'application/json' } = {}) {
+async function networkFetch(url, { signal, accept = 'application/json', method = 'GET', body, headers = {} } = {}) {
   const u = new URL(url);
   if (config.respectRobotsTxt && !(await isAllowedByRobots(u, config.userAgent, networkTextNoRobots))) {
     throw new HttpError(`robots.txt disallows ${u.pathname}`, { url, status: 0 });
@@ -73,7 +73,9 @@ async function networkFetch(url, { signal, accept = 'application/json' } = {}) {
     const res = await fetch(url, {
       signal,
       redirect: 'follow',
-      headers: { 'User-Agent': config.userAgent, Accept: accept, 'Accept-Language': 'en-IN,en;q=0.9' },
+      method,
+      body,
+      headers: { 'User-Agent': config.userAgent, Accept: accept, 'Accept-Language': 'en-IN,en;q=0.9', ...headers },
     });
     if (!res.ok) throw new HttpError(`HTTP ${res.status} from ${u.host}`, { status: res.status, url });
     return res.text();
@@ -92,10 +94,11 @@ async function networkTextNoRobots(url, signal) {
 function fixtureFetchFactory(dir) {
   const manifest = JSON.parse(fs.readFileSync(path.join(dir, 'manifest.json'), 'utf8'));
   const rules = manifest.map((r) => ({ re: new RegExp(r.match, 'i'), file: r.file, status: r.status }));
-  return async (url, { signal } = {}) => {
+  return async (url, { signal, body } = {}) => {
     await new Promise((r) => setTimeout(r, 30 + Math.random() * 120)); // feel like a network
     if (signal?.aborted) throw signal.reason;
-    const rule = rules.find((r) => r.re.test(url));
+    const key = body ? `${url} ${body}` : url; // POST fixtures can match on the request body too
+    const rule = rules.find((r) => r.re.test(key));
     if (!rule) throw new HttpError(`No fixture for ${url}`, { url, status: 404 });
     if (rule.status) throw new HttpError(`HTTP ${rule.status} (fixture)`, { url, status: rule.status });
     return fs.readFileSync(path.join(dir, rule.file), 'utf8');
@@ -109,6 +112,16 @@ export function createHttpClient({ fixturesDir = config.fixturesDir } = {}) {
     getText,
     async getJSON(url, opts) {
       const text = await getText(url, opts);
+      try {
+        return JSON.parse(text);
+      } catch {
+        throw new HttpError(`Expected JSON from ${new URL(url).host}, got something else (blocked or HTML?)`, { url });
+      }
+    },
+    /** POST a JSON body and parse a JSON reply (same robots/rate-limit rules as GET). */
+    async postJSON(url, data, { signal, headers = {} } = {}) {
+      const body = JSON.stringify(data);
+      const text = await getText(url, { signal, method: 'POST', body, headers: { 'Content-Type': 'application/json', ...headers } });
       try {
         return JSON.parse(text);
       } catch {

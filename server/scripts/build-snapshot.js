@@ -12,6 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { wooPrice } from '../src/adapters/woocommerce.js';
 import { mapGameNationProduct } from '../src/adapters/gamenation.js';
+import { mapCexHit, CEX_PS5_CATEGORY } from '../src/adapters/cex.js';
 import { detectKind, detectPlatform, isBuyback } from '../src/matching/classify.js';
 import { displayTitle } from '../src/matching/normalize.js';
 
@@ -78,6 +79,13 @@ for (const page of read('gn')) {
   }
 }
 
+// CeX India (Algolia search hits; pre-owned, bought in store)
+for (const page of read('cex')) {
+  for (const h of page) {
+    if (h.categoryName === CEX_PS5_CATEGORY && h.sellPrice > 0) listings.push(mapCexHit(h, process.env.CEX_AT || fetchedAt));
+  }
+}
+
 // Query-independent pre-filter to keep the page small; matching happens in the browser.
 const kept = listings.filter((l) => {
   const hint = (l.hints || []).join(' | ');
@@ -95,6 +103,7 @@ const snapshot = {
     { id: 'consolegarage', name: 'Console Garage', status: 'ok', count: kept.filter((l) => l.store === 'consolegarage').length },
     { id: 'gamenation', name: 'Game Nation', status: 'ok', count: kept.filter((l) => l.store === 'gamenation').length },
     { id: 'e2z', name: 'E2Z', status: 'ok', count: kept.filter((l) => l.store === 'e2z').length },
+    { id: 'cex', name: 'CeX', status: 'ok', count: kept.filter((l) => l.store === 'cex').length },
   ],
   titles,
   listings: kept,

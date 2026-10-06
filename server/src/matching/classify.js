@@ -40,7 +40,15 @@ const RE_DLC = /\b(dlc|season\s*pass|add-?on|expansion\s*pass|currency|points|co
 const NON_GAME_HINTS = /\b(consoles?|accessor(y|ies)|controllers?|collectibles?|merch|psn|wallet|digital|gift|headsets?|rare and collectible|pc components)\b/i;
 const GAME_HINTS = /\bgames?\b/i;
 
-export function detectKind(title, hintText = '') {
+// Notes about what is NOT in the box ("(No DLC)", "(No OST/Artbook)", "w/Artbook")
+// describe a game disc, so they must not make it look like DLC or merch.
+const RE_BOX_NOTES = /\(\s*no\s+(?!game)[^)]*\)|\bw\/\s*art\s?book\b/gi;
+// Store-internal notes like "** USE 8904171334143**" mark duplicate/retired listings.
+const RE_INTERNAL_NOTE = /\*\*\s*use\b/i;
+
+export function detectKind(rawTitle, hintText = '') {
+  if (RE_INTERNAL_NOTE.test(rawTitle)) return 'other';
+  const title = String(rawTitle || '').replace(RE_BOX_NOTES, ' ');
   if (RE_CONSOLE.test(title)) return 'console';
   if (RE_DIGITAL.test(title)) return 'digital';
   if (RE_MERCH.test(title)) return 'merch';

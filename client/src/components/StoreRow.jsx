@@ -41,6 +41,7 @@ export function ListingRow({ l, storeName, highlight }) {
               {l.edition !== 'Standard' && <Chip>{l.edition} edition</Chip>}
               {l.platform === 'ps4-ps5-upgrade' && <Chip tone="info">PS4 disc, free PS5 upgrade</Chip>}
               {l.preorder && <Chip tone="info">Pre-order</Chip>}
+              {l.storeOnly && l.inStock && <Chip tone="info">Buy in store</Chip>}
               {!l.inStock && <Chip tone="warn">Out of stock</Chip>}
             </div>
           </div>

@@ -50,6 +50,7 @@ export function classifyListing(r) {
       edition,
       platform,               // 'ps5' | 'ps4-ps5-upgrade' (shown as its own tag)
       preorder: Boolean(r.preorder) || /\bpre-?order\b/i.test(fullTitle),
+      storeOnly: Boolean(r.storeOnly), // CeX India: buy in a CeX store, no online ordering
       inStock: Boolean(r.inStock),
       url: r.url,
       imageUrl: r.imageUrl || null,

@@ -1,7 +1,11 @@
 [
  {
-  "match": "gameloot\\.in/robots\\.txt|e2zstore\\.com/robots\\.txt|consolegarage\\.com/robots\\.txt|gamenation\\.in/robots\\.txt",
+  "match": "gameloot\\.in/robots\\.txt|e2zstore\\.com/robots\\.txt|consolegarage\\.com/robots\\.txt|gamenation\\.in/robots\\.txt|search\\.webuy\\.io/robots\\.txt",
   "file": "robots-allow.txt"
+ },
+ {
+  "match": "search\\.webuy\\.io/1/indexes/prod_cex_in/query .*query=spider-man\\+2",
+  "file": "cex/spider-man-2.json"
  },
  {
   "match": "gamenation\\.in/Api/Products/Games/Index\\?term=spider-man%202",

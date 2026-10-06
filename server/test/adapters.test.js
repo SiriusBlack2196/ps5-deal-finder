@@ -113,3 +113,15 @@ test('robots.txt: E2Z disallows /search/ but not the Store API', () => {
   assert.equal(isPathAllowed(rules, '/wp-json/wc/store/v1/products?search=x'), true);
   assert.equal(isPathAllowed(rules, '/wp-admin/admin-ajax.php'), true);
 });
+
+test('CeX: pre-owned, bought in store, no MRP, product link by box id', async () => {
+  const { svc } = service();
+  const cx = byStore(await svc.search('Spider-Man 2'), 'cex');
+  assert.equal(cx.status, 'ok');
+  assert.equal(cx.listings.length, 1);
+  const [l] = cx.listings;
+  assert.equal(l.condition, 'preowned');
+  assert.equal(l.mrp, null);
+  assert.equal(l.storeOnly, true);
+  assert.match(l.url, /^https:\/\/in\.webuy\.com\/product-detail\?id=\d+$/);
+});

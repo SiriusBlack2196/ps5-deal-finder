@@ -50,6 +50,8 @@ export function cleanText(s) {
   let t = String(s || '')
     .normalize('NFKD').replace(/[̀-ͯ]/g, '') // ragnarök -> ragnarok
     .toLowerCase()
+    .replace(/\(\s*no\s+(?!game)[^)]*\)/g, ' ') // CeX box notes: "(No DLC)", "(No OST/Artbook)"
+    .replace(/\*\*.*?\*\*/g, ' ')            // store-internal notes
     .replace(/[’'`´]/g, '')        // marvel’s -> marvels
     .replace(/&/g, ' and ')
     .replace(/(\p{L})-(\p{L})/gu, '$1$2'); // spider-man -> spiderman, x-men -> xmen
@@ -92,6 +94,7 @@ const SMALL = new Set(['a', 'an', 'of', 'the', 'and', 'in', 'on', 'to', 'for']);
 export function displayTitle(rawTitle) {
   let t = String(rawTitle || '')
     .replace(/\((pre[\s-]?owned|used|new|standard edition)\)/gi, '')
+    .replace(/\(\s*no\s+(?!game)[^)]*\)/gi, '')
     .replace(/\b(ps\s?5|playstation\s?5)\b/gi, '')
     .replace(/\(\s*\)|\[\s*\]/g, '')
     .replace(/\s*[-–|]\s*$/g, '')
