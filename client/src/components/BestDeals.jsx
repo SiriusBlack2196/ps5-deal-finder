@@ -62,6 +62,8 @@ export default function BestDeals({ onSearch }) {
               <span className="relative block">
                 {/* Same box for every cover: 5:7 is the common PS5 case-art shape; anchored to the top so the PS5 banner always shows. */}
                 <Thumb title={d.title} size="lg" className="block aspect-[5/7] w-full object-top" />
+                {/* soft scrim so the badge reads on white PS5 banners */}
+                <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-[linear-gradient(to_bottom,rgb(0_0_0/0.32),rgb(0_0_0/0.12)_45%,transparent)]" />
                 <span className="absolute left-2.5 top-2.5 inline-flex h-7 items-center rounded-full bg-green px-2.5 text-sm font-bold text-white">
                   {d.discountPct}% off
                 </span>
