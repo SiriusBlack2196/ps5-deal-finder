@@ -14,6 +14,12 @@
   "score": 78,
   "url": "https://www.metacritic.com/game/the-adventures-of-elliot-the-millennium-tales/"
  },
+ "aew fight forever": null,
+ "alan wake": {
+  "count": 100,
+  "score": 83,
+  "url": "https://www.metacritic.com/game/alan-wake/"
+ },
  "alan wake 2": null,
  "alan wake 2 incl alan wake remastered": null,
  "alan wake remastered": {
@@ -26,11 +32,21 @@
   "score": 75,
   "url": "https://www.metacritic.com/game/aliens-dark-descent/"
  },
+ "alone dark": {
+  "count": 77,
+  "score": 63,
+  "url": "https://www.metacritic.com/game/alone-in-the-dark/"
+ },
  "among crewmate": null,
  "anno 117 pax romana": {
   "count": 65,
   "score": 84,
   "url": "https://www.metacritic.com/game/anno-117-pax-romana/"
+ },
+ "aragami 2": {
+  "count": 22,
+  "score": 64,
+  "url": "https://www.metacritic.com/game/aragami-2/"
  },
  "ark survival ascended": null,
  "armored core 6 fires rubicon": {
@@ -75,6 +91,7 @@
   "url": "https://www.metacritic.com/game/astro-bot/"
  },
  "atari 50 anniversary celebration expanded": null,
+ "atelier ryza 3": null,
  "atlas fallen": {
   "count": 58,
   "score": 64,
@@ -85,6 +102,11 @@
   "score": 74,
   "url": "https://www.metacritic.com/game/atomfall/"
  },
+ "atomic heart": {
+  "count": 46,
+  "score": 70,
+  "url": "https://www.metacritic.com/game/atomic-heart/"
+ },
  "avatar frontiers pandora": {
   "count": 86,
   "score": 72,
@@ -92,6 +114,11 @@
  },
  "avatar frontiers pandora from ashes": null,
  "avengers": null,
+ "babylons fall": {
+  "count": 45,
+  "score": 41,
+  "url": "https://www.metacritic.com/game/babylons-fall/"
+ },
  "back 4 blood": {
   "count": 48,
   "score": 77,
@@ -101,6 +128,16 @@
   "count": 30,
   "score": 51,
   "url": "https://www.metacritic.com/game/balan-wonderworld/"
+ },
+ "baldurs gate 3": {
+  "count": 119,
+  "score": 96,
+  "url": "https://www.metacritic.com/game/baldurs-gate-3/"
+ },
+ "baldurs gate 3 japanese": {
+  "count": 119,
+  "score": 96,
+  "url": "https://www.metacritic.com/game/baldurs-gate-3/"
  },
  "banishers ghosts eden": {
   "count": 69,
@@ -123,6 +160,11 @@
   "score": 71,
   "url": "https://www.metacritic.com/game/beast-of-reincarnation/"
  },
+ "biomutant": {
+  "count": 65,
+  "score": 66,
+  "url": "https://www.metacritic.com/game/biomutant/"
+ },
  "black myth wukong": {
   "count": 94,
   "score": 81,
@@ -130,6 +172,11 @@
  },
  "black myth wukong hong kong": null,
  "black myth wukong usa": null,
+ "bleach rebirth souls": {
+  "count": 40,
+  "score": 71,
+  "url": "https://www.metacritic.com/game/bleach-rebirth-of-souls/"
+ },
  "blood dawnwalker": {
   "count": 77,
   "score": 83,
@@ -141,6 +188,12 @@
   "url": "https://www.metacritic.com/game/the-blood-of-dawnwalker/"
  },
  "blood dawnwalker day one": null,
+ "blood dawnwalker no included": null,
+ "borderlands 3": {
+  "count": 58,
+  "score": 81,
+  "url": "https://www.metacritic.com/game/borderlands-3/"
+ },
  "borderlands 4": {
   "count": 93,
   "score": 81,
@@ -151,7 +204,17 @@
   "score": 82,
   "url": "https://www.metacritic.com/game/call-of-duty-black-ops-6/"
  },
+ "call duty black ops 6 esrb": {
+  "count": 65,
+  "score": 82,
+  "url": "https://www.metacritic.com/game/call-of-duty-black-ops-6/"
+ },
  "call duty black ops 7": {
+  "count": 67,
+  "score": 65,
+  "url": "https://www.metacritic.com/game/call-of-duty-black-ops-7/"
+ },
+ "call duty black ops 7 esrb": {
   "count": 67,
   "score": 65,
   "url": "https://www.metacritic.com/game/call-of-duty-black-ops-7/"
@@ -173,6 +236,11 @@
   "score": 94,
   "url": "https://www.metacritic.com/game/call-of-duty-modern-warfare-2/"
  },
+ "call duty modern warfare 2 esrb": {
+  "count": 61,
+  "score": 75,
+  "url": "https://www.metacritic.com/game/call-of-duty-modern-warfare-ii/"
+ },
  "call duty modern warfare 2 ppsa08018": null,
  "call duty modern warfare 3": {
   "count": 71,
@@ -180,6 +248,21 @@
   "url": "https://www.metacritic.com/game/call-of-duty-modern-warfare-iii/"
  },
  "call duty modern warfare 3 all": {
+  "count": 71,
+  "score": 56,
+  "url": "https://www.metacritic.com/game/call-of-duty-modern-warfare-iii/"
+ },
+ "call duty modern warfare 3 elas 10570 singapore": {
+  "count": 71,
+  "score": 56,
+  "url": "https://www.metacritic.com/game/call-of-duty-modern-warfare-iii/"
+ },
+ "call duty modern warfare 3 esrb": {
+  "count": 71,
+  "score": 56,
+  "url": "https://www.metacritic.com/game/call-of-duty-modern-warfare-iii/"
+ },
+ "call duty modern warfare 3 hong kong": {
   "count": 71,
   "score": 56,
   "url": "https://www.metacritic.com/game/call-of-duty-modern-warfare-iii/"
@@ -228,6 +311,11 @@
   "count": 70,
   "score": 81,
   "url": "https://www.metacritic.com/game/company-of-heroes-3/"
+ },
+ "concord": {
+  "count": 46,
+  "score": 62,
+  "url": "https://www.metacritic.com/game/concord/"
  },
  "control": {
   "count": 70,
@@ -278,10 +366,25 @@
   "url": "https://www.metacritic.com/game/crimson-desert/"
  },
  "crimson desert day": null,
+ "crimson desert day one": {
+  "count": 119,
+  "score": 77,
+  "url": "https://www.metacritic.com/game/crimson-desert/"
+ },
  "crisis core final fantasy 7 reunion": {
   "count": 84,
   "score": 78,
   "url": "https://www.metacritic.com/game/crisis-core-final-fantasy-vii-reunion/"
+ },
+ "cronos dawn": {
+  "count": 80,
+  "score": 77,
+  "url": "https://www.metacritic.com/game/cronos-the-new-dawn/"
+ },
+ "cult lamb": {
+  "count": 93,
+  "score": 82,
+  "url": "https://www.metacritic.com/game/cult-of-the-lamb/"
  },
  "cyberpunk 2077": {
   "count": 106,
@@ -298,10 +401,21 @@
   "score": 72,
   "url": "https://www.metacritic.com/game/the-dark-pictures-anthology-house-of-ashes/"
  },
+ "dark pictures anthology volume 2": null,
+ "dead island 2": {
+  "count": 91,
+  "score": 73,
+  "url": "https://www.metacritic.com/game/dead-island-2/"
+ },
  "dead island 2 day one": {
   "count": 91,
   "score": 73,
   "url": "https://www.metacritic.com/game/dead-island-2/"
+ },
+ "dead rising remaster": {
+  "count": 58,
+  "score": 83,
+  "url": "https://www.metacritic.com/game/dead-rising-deluxe-remaster/"
  },
  "dead rising remastered": null,
  "dead space": {
@@ -328,12 +442,19 @@
  },
  "demon slayer hinokami chronicles": null,
  "demon slayer kimetsu hinokami chronicles 2": null,
+ "demon slayer kimetsu no yaiba hinokami chronicles": null,
  "demon slayer kimetsu no yaiba hinokami chronicles 2": null,
  "demons souls": {
   "count": 106,
   "score": 92,
   "url": "https://www.metacritic.com/game/demons-souls/"
  },
+ "destroy all humans 2 reprobed": {
+  "count": 39,
+  "score": 67,
+  "url": "https://www.metacritic.com/game/destroy-all-humans-2-reprobed/"
+ },
+ "destruction all stars": null,
  "destruction allstars": {
   "count": 59,
   "score": 62,
@@ -344,10 +465,25 @@
   "score": 87,
   "url": "https://www.metacritic.com/game/devil-may-cry-5/"
  },
+ "diablo 4": {
+  "count": 96,
+  "score": 86,
+  "url": "https://www.metacritic.com/game/diablo-iv/"
+ },
+ "digimon story time stranger": {
+  "count": 65,
+  "score": 79,
+  "url": "https://www.metacritic.com/game/digimon-story-time-stranger/"
+ },
  "diofield chronicle": {
   "count": 26,
   "score": 71,
   "url": "https://www.metacritic.com/game/the-diofield-chronicle/"
+ },
+ "directive 8020": {
+  "count": 63,
+  "score": 72,
+  "url": "https://www.metacritic.com/game/directive-8020/"
  },
  "dirt 5": {
   "count": 38,
@@ -387,6 +523,11 @@
   "url": "https://www.metacritic.com/game/dragons-dogma-2/"
  },
  "dragons dogma 2 dark arisen": null,
+ "dredge": {
+  "count": 43,
+  "score": 80,
+  "url": "https://www.metacritic.com/game/dredge/"
+ },
  "dying light 2": {
   "count": 65,
   "score": 76,
@@ -396,6 +537,11 @@
   "count": 65,
   "score": 76,
   "url": "https://www.metacritic.com/game/dying-light-2-stay-human/"
+ },
+ "earth defense force 6": {
+  "count": 21,
+  "score": 73,
+  "url": "https://www.metacritic.com/game/earth-defense-force-6/"
  },
  "el paso elsewhere": {
   "count": 23,
@@ -412,10 +558,22 @@
   "score": 77,
   "url": "https://www.metacritic.com/game/elden-ring-nightreign/"
  },
+ "elden ring nightreign retail": null,
+ "elden ring retail": null,
  "elden ring shadow erdtree": {
   "count": 70,
   "score": 94,
   "url": "https://www.metacritic.com/game/elden-ring-shadow-of-the-erdtree/"
+ },
+ "elder scrolls 4 oblivion remastered": {
+  "count": 42,
+  "score": 80,
+  "url": "https://www.metacritic.com/game/the-elder-scrolls-iv-oblivion-remastered/"
+ },
+ "everspace 2": {
+  "count": 41,
+  "score": 81,
+  "url": "https://www.metacritic.com/game/everspace-2/"
  },
  "evil dead": {
   "count": 42,
@@ -433,6 +591,7 @@
   "url": "https://www.metacritic.com/game/f1-2021/"
  },
  "f1 2022": null,
+ "f1 2023": null,
  "f1 22": {
   "count": 40,
   "score": 79,
@@ -454,12 +613,27 @@
   "score": 80,
   "url": "https://www.metacritic.com/game/fantasian-neo-dimension/"
  },
+ "fantasy life i girl who steals time": {
+  "count": 24,
+  "score": 80,
+  "url": "https://www.metacritic.com/game/fantasy-life-i-the-girl-who-steals-time/"
+ },
  "far cry 6": {
   "count": 64,
   "score": 73,
   "url": "https://www.metacritic.com/game/far-cry-6/"
  },
  "far cry 6 yara": null,
+ "farming simulator 22": {
+  "count": 14,
+  "score": 75,
+  "url": "https://www.metacritic.com/game/farming-simulator-22/"
+ },
+ "farming simulator 25": {
+  "count": 13,
+  "score": 75,
+  "url": "https://www.metacritic.com/game/farming-simulator-25/"
+ },
  "fc 24": {
   "count": 76,
   "score": 75,
@@ -505,6 +679,8 @@
   "score": 89,
   "url": "https://www.metacritic.com/game/final-fantasy-vii-remake-intergrade/"
  },
+ "final fantasy 7 remake intergrade rebirth twin pack": null,
+ "final fantasy 7 remake intergrade without episode intermission yuffie": null,
  "final fantasy resonance": null,
  "final fantasy tactics ivalice chronicles": {
   "count": 87,
@@ -521,6 +697,11 @@
   "score": 78,
   "url": "https://www.metacritic.com/game/the-first-berserker-khazan/"
  },
+ "five nights at freddys security breach": {
+  "count": 5,
+  "score": 64,
+  "url": "https://www.metacritic.com/game/five-nights-at-freddys-security-breach/"
+ },
  "forspoken": {
   "count": 131,
   "score": 64,
@@ -528,6 +709,7 @@
  },
  "fortnite anime legends": null,
  "fortnite minty legends pack": null,
+ "fortnite transformers pack": null,
  "gangs sherwood": {
   "count": 14,
   "score": 49,
@@ -553,6 +735,11 @@
   "count": 139,
   "score": 86,
   "url": "https://www.metacritic.com/game/ghost-of-yotei/"
+ },
+ "ghostbusters spirits unleashed": {
+  "count": 26,
+  "score": 68,
+  "url": "https://www.metacritic.com/game/ghostbusters-spirits-unleashed/"
  },
  "ghostrunner": {
   "count": 68,
@@ -590,8 +777,24 @@
   "score": 87,
   "url": "https://www.metacritic.com/game/gran-turismo-7/"
  },
+ "gran turismo 7 25th anniversary": {
+  "count": 126,
+  "score": 87,
+  "url": "https://www.metacritic.com/game/gran-turismo-7/"
+ },
  "grand theft auto 5": null,
  "grand theft auto 6": null,
+ "grand theft auto 6 code box": null,
+ "greedfall": {
+  "count": 43,
+  "score": 72,
+  "url": "https://www.metacritic.com/game/greedfall/"
+ },
+ "green hell": {
+  "count": 14,
+  "score": 78,
+  "url": "https://www.metacritic.com/game/green-hell/"
+ },
  "grid legends": {
   "count": 36,
   "score": 76,
@@ -614,15 +817,26 @@
   "url": "https://www.metacritic.com/game/hades/"
  },
  "halloween ash vs evil dead retrorealms double feature": null,
+ "halo campaign evolved": {
+  "count": 59,
+  "score": 80,
+  "url": "https://www.metacritic.com/game/halo-campaign-evolved/"
+ },
  "harry potter quidditch champions": {
   "count": 31,
   "score": 66,
   "url": "https://www.metacritic.com/game/harry-potter-quidditch-champions/"
  },
+ "hd camera": null,
  "hell is": {
   "count": 62,
   "score": 77,
   "url": "https://www.metacritic.com/game/hell-is-us/"
+ },
+ "hell let loose": {
+  "count": 15,
+  "score": 79,
+  "url": "https://www.metacritic.com/game/hell-let-loose/"
  },
  "hell let loose vietnam": {
   "count": 23,
@@ -638,6 +852,11 @@
   "count": 7,
   "score": 59,
   "url": "https://www.metacritic.com/game/hello-neighbor-2/"
+ },
+ "high life 2": {
+  "count": 32,
+  "score": 72,
+  "url": "https://www.metacritic.com/game/high-on-life-2/"
  },
  "hitman 3": {
   "count": 66,
@@ -701,6 +920,11 @@
   "score": 80,
   "url": "https://www.metacritic.com/game/judgment/"
  },
+ "jurassic world evolution 2": {
+  "count": 26,
+  "score": 78,
+  "url": "https://www.metacritic.com/game/jurassic-world-evolution-2/"
+ },
  "jurassic world evolution 3": {
   "count": 26,
   "score": 81,
@@ -717,6 +941,7 @@
   "url": "https://www.metacritic.com/game/just-dance-2022/"
  },
  "just dance 2023": null,
+ "just dance 2023 code box": null,
  "just dance 2024": {
   "count": 11,
   "score": 72,
@@ -731,6 +956,11 @@
   "count": 86,
   "score": 81,
   "url": "https://www.metacritic.com/game/kena-bridge-of-spirits/"
+ },
+ "kingdom come deliverance": {
+  "count": 65,
+  "score": 76,
+  "url": "https://www.metacritic.com/game/kingdom-come-deliverance/"
  },
  "kingdom come deliverance 2": {
   "count": 79,
@@ -758,6 +988,18 @@
   "score": 89,
   "url": "https://www.metacritic.com/game/the-last-of-us-part-i/"
  },
+ "legend heroes trails cold steel 4 legend heroes trails cold steel 3": null,
+ "legend heroes trails into reverie": {
+  "count": 20,
+  "score": 81,
+  "url": "https://www.metacritic.com/game/the-legend-of-heroes-trails-into-reverie/"
+ },
+ "legend heroes trails through daybreak": {
+  "count": 30,
+  "score": 84,
+  "url": "https://www.metacritic.com/game/the-legend-of-heroes-trails-through-daybreak/"
+ },
+ "legend heroes trails through daybreak 2": null,
  "lego 2k drive": {
   "count": 56,
   "score": 73,
@@ -793,10 +1035,20 @@
   "score": 73,
   "url": "https://www.metacritic.com/game/life-is-strange-double-exposure/"
  },
+ "life is strange reunion": {
+  "count": 61,
+  "score": 71,
+  "url": "https://www.metacritic.com/game/life-is-strange-reunion/"
+ },
  "life is strange true colors": {
   "count": 71,
   "score": 81,
   "url": "https://www.metacritic.com/game/life-is-strange-true-colors/"
+ },
+ "like dragon gaiden man who erased his name": {
+  "count": 68,
+  "score": 78,
+  "url": "https://www.metacritic.com/game/like-a-dragon-gaiden-the-man-who-erased-his-name/"
  },
  "like dragon infinite wealth": {
   "count": 98,
@@ -863,16 +1115,32 @@
   "score": 73,
   "url": "https://www.metacritic.com/game/mafia-the-old-country/"
  },
+ "maneater": {
+  "count": 47,
+  "score": 70,
+  "url": "https://www.metacritic.com/game/maneater/"
+ },
  "medium": {
   "count": 84,
   "score": 71,
   "url": "https://www.metacritic.com/game/the-medium/"
  },
  "medium two worlds": null,
+ "messenger": {
+  "count": 43,
+  "score": 86,
+  "url": "https://www.metacritic.com/game/the-messenger/"
+ },
+ "metal gear master collection volume 2": null,
  "metal gear solid delta snake eater": {
   "count": 97,
   "score": 85,
   "url": "https://www.metacritic.com/game/metal-gear-solid-delta-snake-eater/"
+ },
+ "metal gear solid master collection vol 1": {
+  "count": 56,
+  "score": 74,
+  "url": "https://www.metacritic.com/game/metal-gear-solid-master-collection-vol-1/"
  },
  "metal gear solid \u03b4 delta snake eater": {
   "count": 97,
@@ -889,7 +1157,17 @@
   "score": 82,
   "url": "https://www.metacritic.com/game/metro-exodus/"
  },
+ "midnight suns": {
+  "count": 86,
+  "score": 83,
+  "url": "https://www.metacritic.com/game/marvels-midnight-suns/"
+ },
  "midnight suns enhanced": null,
+ "mighty morphin power rangers ritas rewind": {
+  "count": 20,
+  "score": 70,
+  "url": "https://www.metacritic.com/game/mighty-morphin-power-rangers-ritas-rewind/"
+ },
  "mindseye": {
   "count": 18,
   "score": 39,
@@ -905,6 +1183,7 @@
   "score": 71,
   "url": "https://www.metacritic.com/game/minecraft-legends/"
  },
+ "miraculous rise sphinx": null,
  "monopoly": null,
  "monopoly star wars heroes vs villains": {
   "count": 14,
@@ -938,12 +1217,22 @@
   "score": 82,
   "url": "https://www.metacritic.com/game/mortal-kombat-11/"
  },
+ "mortal shell": {
+  "count": 46,
+  "score": 76,
+  "url": "https://www.metacritic.com/game/mortal-shell/"
+ },
  "moto gp 22": null,
  "moto gp 23": null,
  "motogp 21": {
   "count": 29,
   "score": 77,
   "url": "https://www.metacritic.com/game/motogp-21/"
+ },
+ "motogp 22": {
+  "count": 22,
+  "score": 76,
+  "url": "https://www.metacritic.com/game/motogp-22/"
  },
  "motogp 22 day one": {
   "count": 22,
@@ -965,11 +1254,13 @@
   "score": 78,
   "url": "https://www.metacritic.com/game/motogp-25/"
  },
+ "mxgp moto 2020": null,
  "naruto x boruto ninja storm connections": {
   "count": 32,
   "score": 68,
   "url": "https://www.metacritic.com/game/naruto-x-boruto-ultimate-ninja-storm-connections/"
  },
+ "nascar arcade rush": null,
  "nba 2k21": {
   "count": 50,
   "score": 68,
@@ -1027,6 +1318,7 @@
   "score": 71,
   "url": "https://www.metacritic.com/game/nhl-24/"
  },
+ "ninja gaiden 2 black": null,
  "ninja gaiden 4": {
   "count": 69,
   "score": 82,
@@ -1038,6 +1330,16 @@
   "url": "https://www.metacritic.com/game/nioh-3/"
  },
  "nioh collection": null,
+ "no mans sky": {
+  "count": 100,
+  "score": 71,
+  "url": "https://www.metacritic.com/game/no-mans-sky/"
+ },
+ "observer system redux": {
+  "count": 29,
+  "score": 79,
+  "url": "https://www.metacritic.com/game/observer-system-redux/"
+ },
  "octopath traveler 0": {
   "count": 41,
   "score": 84,
@@ -1055,7 +1357,18 @@
   "url": "https://www.metacritic.com/game/onimusha-way-of-the-sword/"
  },
  "onimusha way sword lenticular": null,
+ "onimusha way sword no included": null,
+ "outer worlds 2": {
+  "count": 61,
+  "score": 82,
+  "url": "https://www.metacritic.com/game/the-outer-worlds-2/"
+ },
  "outriders": {
+  "count": 53,
+  "score": 73,
+  "url": "https://www.metacritic.com/game/outriders/"
+ },
+ "outriders day one": {
   "count": 53,
   "score": 73,
   "url": "https://www.metacritic.com/game/outriders/"
@@ -1064,6 +1377,16 @@
   "count": 23,
   "score": 73,
   "url": "https://www.metacritic.com/game/outriders-worldslayer/"
+ },
+ "overcooked all you can eat": {
+  "count": 13,
+  "score": 84,
+  "url": "https://www.metacritic.com/game/overcooked-all-you-can-eat/"
+ },
+ "pacific drive": {
+  "count": 45,
+  "score": 79,
+  "url": "https://www.metacritic.com/game/pacific-drive/"
  },
  "pathless": {
   "count": 50,
@@ -1102,6 +1425,12 @@
   "score": 74,
   "url": "https://www.metacritic.com/game/persona-5-tactica/"
  },
+ "pga tour 2k23": {
+  "count": 34,
+  "score": 76,
+  "url": "https://www.metacritic.com/game/pga-tour-2k23/"
+ },
+ "plague tale collection": null,
  "plague tale innocence": {
   "count": 65,
   "score": 81,
@@ -1132,6 +1461,11 @@
   "score": 85,
   "url": "https://www.metacritic.com/game/pragmata/"
  },
+ "precinct": {
+  "count": 31,
+  "score": 66,
+  "url": "https://www.metacritic.com/game/the-precinct/"
+ },
  "prince persia lost crown": {
   "count": 84,
   "score": 86,
@@ -1142,11 +1476,22 @@
   "score": 84,
   "url": "https://www.metacritic.com/game/prodeus/"
  },
+ "puyo puyo tetris 2": {
+  "count": 27,
+  "score": 80,
+  "url": "https://www.metacritic.com/game/puyo-puyo-tetris-2/"
+ },
  "quarry": {
   "count": 92,
   "score": 79,
   "url": "https://www.metacritic.com/game/the-quarry/"
  },
+ "quiet place road ahead": {
+  "count": 33,
+  "score": 67,
+  "url": "https://www.metacritic.com/game/a-quiet-place-the-road-ahead/"
+ },
+ "rainbow 6 siege x": null,
  "rainbow 6 siege x elite": null,
  "rainbow six extraction": {
   "count": 49,
@@ -1253,6 +1598,11 @@
   "score": 72,
   "url": "https://www.metacritic.com/game/robocop-rogue-city-unfinished-business/"
  },
+ "rogue prince persia": {
+  "count": 32,
+  "score": 80,
+  "url": "https://www.metacritic.com/game/the-rogue-prince-of-persia/"
+ },
  "romancing saga 2 revenge seven": {
   "count": 31,
   "score": 79,
@@ -1308,6 +1658,11 @@
   "count": 19,
   "score": 67,
   "url": "https://www.metacritic.com/game/schim/"
+ },
+ "scorn": {
+  "count": 76,
+  "score": 70,
+  "url": "https://www.metacritic.com/game/scorn/"
  },
  "shadow warrior 3": {
   "count": 61,
@@ -1366,6 +1721,11 @@
   "score": 59,
   "url": "https://www.metacritic.com/game/skull-and-bones/"
  },
+ "skull island rise kong": {
+  "count": 5,
+  "score": 23,
+  "url": "https://www.metacritic.com/game/skull-island-rise-of-kong/"
+ },
  "slitterhead": {
   "count": 38,
   "score": 62,
@@ -1380,6 +1740,11 @@
   "count": 40,
   "score": 75,
   "url": "https://www.metacritic.com/game/sniper-elite-resistance/"
+ },
+ "sniper ghost warrior contracts 2": {
+  "count": 24,
+  "score": 73,
+  "url": "https://www.metacritic.com/game/sniper-ghost-warrior-contracts-2/"
  },
  "sniper ghost warrior contracts 2 elite": null,
  "snowrunner": {
@@ -1408,8 +1773,28 @@
   "score": 73,
   "url": "https://www.metacritic.com/game/sonic-superstars/"
  },
+ "sonic x shadow generations": {
+  "count": 80,
+  "score": 80,
+  "url": "https://www.metacritic.com/game/sonic-x-shadow-generations/"
+ },
  "sonic x shadows generation": null,
  "sonic x shadows generations": null,
+ "soul hackers 2": {
+  "count": 55,
+  "score": 74,
+  "url": "https://www.metacritic.com/game/soul-hackers-2/"
+ },
+ "south park snow day": {
+  "count": 60,
+  "score": 59,
+  "url": "https://www.metacritic.com/game/south-park-snow-day/"
+ },
+ "spider man miles morales": {
+  "count": 95,
+  "score": 85,
+  "url": "https://www.metacritic.com/game/marvels-spider-man-miles-morales/"
+ },
  "spiderman 2": {
   "count": 152,
   "score": 90,
@@ -1422,6 +1807,11 @@
   "url": "https://www.metacritic.com/game/split-fiction/"
  },
  "stalker 2 heart chornobyl": {
+  "count": 79,
+  "score": 73,
+  "url": "https://www.metacritic.com/game/stalker-2-heart-of-chornobyl/"
+ },
+ "stalker 2 heart chornobyl day one": {
   "count": 79,
   "score": 73,
   "url": "https://www.metacritic.com/game/stalker-2-heart-of-chornobyl/"
@@ -1466,15 +1856,26 @@
   "score": 83,
   "url": "https://www.metacritic.com/game/starfield/"
  },
+ "starsand": null,
  "starship troopers extermination": {
   "count": 14,
   "score": 61,
   "url": "https://www.metacritic.com/game/starship-troopers-extermination/"
  },
+ "steelrising": {
+  "count": 60,
+  "score": 72,
+  "url": "https://www.metacritic.com/game/steelrising/"
+ },
  "stellar blade": {
   "count": 138,
   "score": 81,
   "url": "https://www.metacritic.com/game/stellar-blade/"
+ },
+ "stranger paradise final fantasy origin": {
+  "count": 94,
+  "score": 72,
+  "url": "https://www.metacritic.com/game/stranger-of-paradise-final-fantasy-origin/"
  },
  "stranger than heaven": null,
  "stray": {
@@ -1488,6 +1889,11 @@
   "url": "https://www.metacritic.com/game/street-fighter-6/"
  },
  "street fighter 6 lenticular": null,
+ "subnautica below zero": {
+  "count": 30,
+  "score": 82,
+  "url": "https://www.metacritic.com/game/subnautica-below-zero/"
+ },
  "suicide squad kill justice league": {
   "count": 91,
   "score": 60,
@@ -1504,11 +1910,17 @@
   "score": 65,
   "url": "https://www.metacritic.com/game/synduality-echo-of-ada/"
  },
+ "tales arise": {
+  "count": 78,
+  "score": 87,
+  "url": "https://www.metacritic.com/game/tales-of-arise/"
+ },
  "taxi life city driving simulator": {
   "count": 7,
   "score": 51,
   "url": "https://www.metacritic.com/game/taxi-life-a-city-driving-simulator/"
  },
+ "teenage mutant ninja turtles cowabunga collection": null,
  "teenage mutant ninja turtles mutants unleashed": {
   "count": 7,
   "score": 66,
@@ -1529,12 +1941,19 @@
   "score": 56,
   "url": "https://www.metacritic.com/game/tennis-world-tour-2/"
  },
+ "terminator resistance": {
+  "count": 29,
+  "score": 47,
+  "url": "https://www.metacritic.com/game/terminator-resistance/"
+ },
  "test drive unlimited solar crown": {
   "count": 29,
   "score": 53,
   "url": "https://www.metacritic.com/game/test-drive-unlimited-solar-crown/"
  },
+ "tiebreak": null,
  "tiebreak ace": null,
+ "tintin reporter cigars pharaoh": null,
  "tiny tinas wonderlands": {
   "count": 91,
   "score": 78,
@@ -1564,6 +1983,13 @@
   "score": 45,
   "url": "https://www.metacritic.com/game/transformers-galactic-trials/"
  },
+ "trolls remix rescue": null,
+ "two point campus": {
+  "count": 68,
+  "score": 83,
+  "url": "https://www.metacritic.com/game/two-point-campus/"
+ },
+ "two point campus enrolment": null,
  "two point museum explorer": null,
  "ufc 5": {
   "count": 36,
@@ -1595,6 +2021,7 @@
   "score": 59,
   "url": "https://www.metacritic.com/game/unknown-9-awakening/"
  },
+ "unknown9 awakeing": null,
  "until dawn": {
   "count": 58,
   "score": 70,
@@ -1607,6 +2034,11 @@
   "url": "https://www.metacritic.com/game/valkyrie-elysium/"
  },
  "vampire masquerade bloodlines 2": {
+  "count": 46,
+  "score": 62,
+  "url": "https://www.metacritic.com/game/vampire-the-masquerade-bloodlines-2/"
+ },
+ "vampire masquerade bloodlines 2 day one": {
   "count": 46,
   "score": 62,
   "url": "https://www.metacritic.com/game/vampire-the-masquerade-bloodlines-2/"
@@ -1632,6 +2064,11 @@
   "score": 76,
   "url": "https://www.metacritic.com/game/watch-dogs-legion/"
  },
+ "way hunter": {
+  "count": 14,
+  "score": 65,
+  "url": "https://www.metacritic.com/game/way-of-the-hunter/"
+ },
  "werewolf apocalypse earthblood": {
   "count": 34,
   "score": 54,
@@ -1646,6 +2083,11 @@
   "count": 80,
   "score": 92,
   "url": "https://www.metacritic.com/game/the-witcher-3-wild-hunt/"
+ },
+ "wo long fallen dynasty": {
+  "count": 76,
+  "score": 80,
+  "url": "https://www.metacritic.com/game/wo-long-fallen-dynasty/"
  },
  "wolverine": {
   "count": 149,
@@ -1676,6 +2118,11 @@
   "count": 10,
   "score": 74,
   "url": "https://www.metacritic.com/game/wrc-generations/"
+ },
+ "wreckfest": {
+  "count": 33,
+  "score": 81,
+  "url": "https://www.metacritic.com/game/wreckfest/"
  },
  "wuchang fallen feathers": {
   "count": 92,
@@ -1712,6 +2159,7 @@
   "score": 78,
   "url": "https://www.metacritic.com/game/wwe-2k26/"
  },
+ "yakuza kiwami 1 2": null,
  "yakuza kiwami 3 dark ties": {
   "count": 62,
   "score": 74,
@@ -1722,5 +2170,16 @@
   "score": 84,
   "url": "https://www.metacritic.com/game/yakuza-like-a-dragon/"
  },
- "yakuza zero directors cut": null
+ "yakuza series 20th anniversary": null,
+ "yakuza zero directors cut": null,
+ "ys x nordics": {
+  "count": 29,
+  "score": 80,
+  "url": "https://www.metacritic.com/game/ys-x-nordics/"
+ },
+ "ys x proud nordics": {
+  "count": 17,
+  "score": 83,
+  "url": "https://www.metacritic.com/game/ys-x-proud-nordics/"
+ }
 }
