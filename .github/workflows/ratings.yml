@@ -4,7 +4,7 @@
 name: Critic scores
 on:
   push:
-    paths: ['ratings/titles.json', '.github/workflows/ratings.yml']
+    paths: ['ratings/titles.json', 'ratings/need-images.json', '.github/workflows/ratings.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -58,6 +58,31 @@ jobs:
               time.sleep(1.0)
           json.dump(out, open('ratings/scores.json', 'w'), indent=1, sort_keys=True)
           open('ratings/debug.txt', 'w').write('\n'.join(debug) + f"\nscored={sum(1 for v in out.values() if v)} of {len(out)} at {datetime.datetime.utcnow().isoformat()}Z\n")
+          PY
+      - name: Cover images for titles without one
+        run: |
+          python - <<'PY'
+          import json, re, time, requests, os
+          if not os.path.exists('ratings/need-images.json'): raise SystemExit
+          need = json.load(open('ratings/need-images.json'))
+          try: out = json.load(open('ratings/images.json'))
+          except Exception: out = {}
+          s = requests.Session(); s.headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36'
+          for key, urls in need.items():
+              if out.get(key): continue
+              out[key] = None
+              for u in urls:
+                  try: r = s.get(u, timeout=20)
+                  except Exception: continue
+                  if r.status_code != 200: time.sleep(0.6); continue
+                  for tag in re.findall(r'<meta[^>]+>', r.text):
+                      if re.search(r'(property|name)="og:image"', tag):
+                          m = re.search(r'content="([^"]+)"', tag)
+                          if m: out[key] = m.group(1).replace('&amp;', '&'); break
+                  break
+              time.sleep(1.0)
+          json.dump(out, open('ratings/images.json', 'w'), indent=1, sort_keys=True)
+          print('images', sum(1 for v in out.values() if v), 'of', len(out))
           PY
       - name: Commit
         run: |
