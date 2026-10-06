@@ -1,2 +1,0 @@
-
-errors=0 queries=534
