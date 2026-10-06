@@ -54,7 +54,7 @@ export default function BestDeals({ onSearch }) {
         className="mt-6 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:scroll-px-8 sm:gap-4 sm:px-8 [&::-webkit-scrollbar]:hidden"
       >
         {deals.map((d) => (
-          <li key={d.gameKey} className="w-[12.6rem] shrink-0 snap-start sm:w-[13.8rem]">
+          <li key={d.gameKey} className="w-[14.6rem] shrink-0 snap-start sm:w-[15.8rem]">
             <button
               type="button" onClick={() => onSearch(d.title)}
               className="group flex h-full w-full flex-col overflow-hidden rounded-card bg-white text-left shadow-[0_0_0_1px_var(--color-line)]"
