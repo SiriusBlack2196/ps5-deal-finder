@@ -42,10 +42,14 @@ export function openDb(dbPath) {
       last_seen  TEXT NOT NULL
     );
   `);
+  // v2: store-stated MRP, for the "Best deals" list.
+  if (!db.prepare('PRAGMA table_info(price_observations)').all().some((c) => c.name === 'mrp')) {
+    db.exec('ALTER TABLE price_observations ADD COLUMN mrp INTEGER');
+  }
 
   const insertObs = db.prepare(`INSERT INTO price_observations
-    (store, url, title, game_key, condition, edition, platform, price, shipping, in_stock, fetched_at)
-    VALUES (?,?,?,?,?,?,?,?,?,?,?)`);
+    (store, url, title, game_key, condition, edition, platform, price, shipping, in_stock, fetched_at, mrp)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`);
   const upsertTitle = db.prepare(`INSERT INTO known_titles (game_key, display, last_seen) VALUES (?,?,?)
     ON CONFLICT(game_key) DO UPDATE SET last_seen = excluded.last_seen`);
   const insertSearch = db.prepare(`INSERT INTO searches (query, game_key, searched_at) VALUES (?,?,?)`);
@@ -56,7 +60,7 @@ export function openDb(dbPath) {
       try {
         for (const l of listings) {
           insertObs.run(l.store, l.url, l.title, l.gameKey, l.condition, l.edition, l.platform,
-            l.price, l.shipping ?? null, l.inStock ? 1 : 0, l.fetchedAt);
+            l.price, l.shipping ?? null, l.inStock ? 1 : 0, l.fetchedAt, l.mrp ?? null);
           if (l.displayTitle) upsertTitle.run(l.gameKey, l.displayTitle, l.fetchedAt);
         }
         db.exec('COMMIT');
@@ -76,6 +80,16 @@ export function openDb(dbPath) {
       return db.prepare(`SELECT store, url, condition, edition, price, shipping, in_stock AS inStock, fetched_at AS fetchedAt
         FROM price_observations WHERE game_key = ? AND fetched_at >= ? ORDER BY fetched_at`)
         .all(gameKey, sinceIso || '1970-01-01');
+    },
+    // Latest observation per listing URL since `sinceIso`, with an MRP (input to topDeals).
+    latestDiscounted(sinceIso) {
+      return db.prepare(`SELECT o.store, o.url, o.title, o.game_key AS gameKey, k.display AS displayTitle, o.condition, o.edition,
+          o.price, o.mrp, o.in_stock AS inStock, o.fetched_at AS fetchedAt
+        FROM price_observations o
+        JOIN (SELECT url, MAX(id) AS id FROM price_observations WHERE fetched_at >= ? GROUP BY url) last ON last.id = o.id
+        LEFT JOIN known_titles k ON k.game_key = o.game_key
+        WHERE o.mrp > o.price`).all(sinceIso)
+        .map((r) => ({ ...r, inStock: Boolean(r.inStock), discountPct: Math.round((1 - r.price / r.mrp) * 100) }));
     },
     close() { db.close(); },
   };

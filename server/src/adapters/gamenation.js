@@ -1,82 +1,76 @@
 // Game Nation (gamenation.in)
 //
-// STATUS: needs one config value before it can return results.
+// The site is a client-rendered Next.js app backed by a public JSON API at
+// https://gamenation.in/Api (found in its JS bundle). The games listing endpoint
+// takes the same filters as the site's own search page:
+//   GET /Api/Products/Games/Index?term=<q>&PS5=1&TypeGames=1&Page=<n>
+//   -> { Count, Products: [{ FullName, ProductId, Price, MRP, Discount,
+//        UsageType: 'New'|'Used'|'PreOrder', IsAvailable, ListingImage, ... }] }
+// 20 products per page, prices in whole rupees. TradeInCash/TradeInCredit are
+// what Game Nation pays YOU for the game; we never use them.
 //
-// What we know (probed Oct 2026):
-//  - Custom Next.js site; search (/searchresults?q=), listings and product pages
-//    are all rendered client-side from a private API, behind Cloudflare.
-//  - No Shopify/WooCommerce endpoints, no sitemap.xml; server HTML contains no
-//    product data, so Cheerio parsing has nothing to parse.
-//  - Product URLs: /Products/Games/<slug>-<base64("[productId,condition]")>
-//    where condition 1 = New, 2 = Pre-owned.
-//    e.g. god-of-war-laufey-ps5-WzU0NTIsMV0  ->  [5452,1]  (new)
-//
-// To enable: open https://www.gamenation.in/searchresults?q=god%20of%20war in
-// Chrome (from India), DevTools > Network > Fetch/XHR, copy the request that
-// returns the product list, and set in .env:
-//   GAMENATION_SEARCH_URL=https://<host>/<path>?<param>={q}
-// The mapper below tries common field names; adjust `mapItem` if needed.
+// Product page URL (same rule as the site's createProductSlug):
+//   /Products/Games/<slug(FullName)>-<ProductId>
+// where ProductId is base64url(JSON [id, 1=new | 2=pre-owned]).
 
 import { storeSearchTerm } from '../matching/normalize.js';
-import { config } from '../config.js';
 
-const BASE = 'https://www.gamenation.in';
+const SITE = 'https://www.gamenation.in';
+const API = 'https://gamenation.in/Api';
+const MAX_PAGES = 2;
+
+export const gameNationSlug = (title) => String(title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
 export function gameNationProductUrl(slug, productId, conditionCode) {
-  const token = Buffer.from(JSON.stringify([Number(productId), Number(conditionCode)])).toString('base64').replace(/=+$/, '');
-  return `${BASE}/Products/Games/${slug}-${token}`;
+  const token = /^\d+$/.test(String(productId))
+    ? Buffer.from(JSON.stringify([Number(productId), Number(conditionCode)])).toString('base64url')
+    : productId;
+  return `${SITE}/Products/Games/${slug}-${token}`;
 }
 
 export function decodeGameNationUrl(url) {
-  const m = url.match(/-([A-Za-z0-9+/]+)\/?$/);
+  const m = url.match(/-([A-Za-z0-9_+/-]+?)\/?$/);
   if (!m) return null;
   try {
-    const [id, cond] = JSON.parse(Buffer.from(m[1], 'base64').toString('utf8'));
+    const [id, cond] = JSON.parse(Buffer.from(m[1].split('-').pop(), 'base64url').toString('utf8'));
     return { id, condition: cond === 2 ? 'preowned' : 'new' };
   } catch { return null; }
 }
 
-const pick = (o, keys) => keys.map((k) => k.split('.').reduce((v, p) => v?.[p], o)).find((v) => v != null && v !== '');
-
-function mapItem(item, fetchedAt) {
-  const title = pick(item, ['name', 'title', 'productName', 'ProductName']);
-  const price = Number(pick(item, ['sellingPrice', 'salePrice', 'price', 'Price', 'offerPrice', 'finalPrice']));
-  const slug = pick(item, ['slug', 'urlKey', 'seoUrl']);
-  const id = pick(item, ['id', 'productId', 'ProductId']);
-  const condCode = pick(item, ['condition', 'age', 'Age', 'conditionId']);
-  const isPreowned = /pre|used|2/i.test(String(condCode ?? '')) || /pre-?owned/i.test(title || '');
-  const directUrl = pick(item, ['url', 'productUrl', 'link']);
-  const url = directUrl
-    ? new URL(directUrl, BASE).toString()
-    : slug && id ? gameNationProductUrl(slug, id, isPreowned ? 2 : 1) : `${BASE}/searchresults?q=${encodeURIComponent(title || '')}`;
-  const stockVal = pick(item, ['inStock', 'isInStock', 'available', 'stock', 'quantity', 'qty']);
+/** Maps one API product to a raw listing (also used by the snapshot build). */
+export function mapGameNationProduct(p, fetchedAt) {
+  const usage = String(p.UsageType || '').toLowerCase();
   return {
     store: 'gamenation',
-    title,
-    price,
+    title: p.FullName,
+    price: Number(p.Price),
+    mrp: Number(p.MRP) || null,
     shipping: null,
-    inStock: typeof stockVal === 'number' ? stockVal > 0 : stockVal !== false,
-    url,
-    imageUrl: pick(item, ['image', 'imageUrl', 'thumbnail', 'images.0']) || null,
+    inStock: p.IsAvailable !== false,
+    url: gameNationProductUrl(gameNationSlug(p.FullName), p.ProductId),
+    imageUrl: p.ListingImage || null,
     fetchedAt,
-    hints: [pick(item, ['category', 'platform', 'categoryName'])].filter(Boolean),
-    conditionHint: isPreowned ? 'preowned' : 'new',
+    hints: ['PS5', 'Games'],
+    conditionHint: usage === 'used' ? 'preowned' : 'new',
+    preorder: usage === 'preorder',
   };
 }
 
 export const gameNationAdapter = {
   id: 'gamenation',
   name: 'Game Nation',
-  homepage: BASE,
+  homepage: SITE,
   async search(query, { http, signal }) {
-    if (!config.gameNation.searchUrl) {
-      throw new Error('Game Nation search endpoint not configured (see GAMENATION_SEARCH_URL in .env.example)');
-    }
-    const url = config.gameNation.searchUrl.replace('{q}', encodeURIComponent(storeSearchTerm(query) || query));
-    const data = await http.getJSON(url, { signal });
-    const list = Array.isArray(data) ? data : pick(data, ['data.products', 'products', 'data.items', 'items', 'results', 'data']);
-    if (!Array.isArray(list)) throw new Error('Game Nation: unrecognised response shape — update mapItem()');
+    const term = storeSearchTerm(query) || query;
     const fetchedAt = new Date().toISOString();
-    return list.map((i) => mapItem(i, fetchedAt)).filter((l) => l.title);
+    const out = [];
+    for (let page = 1; page <= MAX_PAGES; page++) {
+      const url = `${API}/Products/Games/Index?term=${encodeURIComponent(term)}&PS5=1&TypeGames=1&Page=${page}`;
+      const data = await http.getJSON(url, { signal });
+      if (!data || !Array.isArray(data.Products)) throw new Error('Unexpected response shape');
+      out.push(...data.Products.filter((p) => p.FullName && p.Price > 0).map((p) => mapGameNationProduct(p, fetchedAt)));
+      if (out.length >= (data.Count ?? 0) || data.Products.length === 0) break;
+    }
+    return out;
   },
 };

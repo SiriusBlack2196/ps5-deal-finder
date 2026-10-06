@@ -46,7 +46,7 @@ never confused. It deliberately uses no Sony logos or PlayStation symbols. Token
 | Gameloot | WooCommerce | `/wp-json/wc/store/v1/products?search=` | Prices in rupees (`currency_minor_unit: 0`). New and pre-owned are separate products; condition comes from the `PRE-OWNED` category. |
 | E2Z | WooCommerce | same | Prices in **paise** (`currency_minor_unit: 2`). robots.txt blocks `/search/`, not the Store API. |
 | Console Garage | Shopify | `/search/suggest.json` then `/products/<handle>.js` | One product per game with variants **Pre-Owned / NEW / BUYBACK (SELL)**. The suggest price is the *buyback* price (what they pay you), so the adapter always expands variants and drops buyback ones. |
-| Game Nation | Custom Next.js | **not configured** | Everything renders client-side from a private API behind Cloudflare; no JSON endpoint, no sitemap, and no product data in the HTML for Cheerio to parse. Set `GAMENATION_SEARCH_URL` (see `.env.example`); the adapter already maps common field names and builds product URLs (`<slug>-base64([id, 1=new|2=pre-owned])`). |
+| Game Nation | Custom Next.js + JSON API | **working** | The site renders client-side from a public JSON API at `gamenation.in/Api` (found in its JS bundle). The adapter calls `/Products/Games/Index?term=…&PS5=1&TypeGames=1`, which returns name, price, MRP, new/used and availability; trade-in (buyback) values in the same response are ignored. Product links follow the site's own `<slug>-<ProductId>` rule. |
 
 No adapter needed HTML scraping.
 

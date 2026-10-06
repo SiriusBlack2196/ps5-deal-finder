@@ -6,11 +6,12 @@
 //   node scripts/build-snapshot.js <dir-with-catalogues> <out.json>
 //
 // Expected files in <dir>: cg*.json (Shopify collection products.json pages),
-// e2z*.json (WooCommerce Store API pages).
+// e2z*.json (WooCommerce Store API pages), gn*.json (Game Nation games API pages).
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { wooPrice } from '../src/adapters/woocommerce.js';
+import { mapGameNationProduct } from '../src/adapters/gamenation.js';
 import { detectKind, detectPlatform, isBuyback } from '../src/matching/classify.js';
 import { displayTitle } from '../src/matching/normalize.js';
 
@@ -66,6 +67,13 @@ for (const page of read('e2z')) {
   }
 }
 
+// Game Nation (games API: rupees; UsageType New/Used)
+for (const page of read('gn')) {
+  for (const p of page.Products || []) {
+    if (p.FullName && p.Price > 0) listings.push(mapGameNationProduct(p, process.env.GN_AT || fetchedAt));
+  }
+}
+
 // Query-independent pre-filter to keep the page small; matching happens in the browser.
 const kept = listings.filter((l) => {
   const hint = (l.hints || []).join(' | ');
@@ -81,7 +89,7 @@ const snapshot = {
   stores: [
     { id: 'gameloot', name: 'Gameloot', status: 'unavailable', reason: 'Blocks automated access from outside India, so it isn’t in this snapshot' },
     { id: 'consolegarage', name: 'Console Garage', status: 'ok', count: kept.filter((l) => l.store === 'consolegarage').length },
-    { id: 'gamenation', name: 'Game Nation', status: 'unavailable', reason: 'Integration not set up yet' },
+    { id: 'gamenation', name: 'Game Nation', status: 'ok', count: kept.filter((l) => l.store === 'gamenation').length },
     { id: 'e2z', name: 'E2Z', status: 'ok', count: kept.filter((l) => l.store === 'e2z').length },
   ],
   titles,

@@ -1,3 +1,7 @@
+import cgLogo from '../assets/logos/consolegarage.png';
+import gnLogo from '../assets/logos/gamenation.png';
+import e2zLogo from '../assets/logos/e2z.png';
+
 const inrFmt = new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 });
 
 /** ₹4,999 / ₹1,24,999 (Indian grouping) */
@@ -14,11 +18,13 @@ export function timeAgo(iso, now = Date.now()) {
   return `${Math.round(h / 24)} d ago`;
 }
 
+// Logos are bundled (the artifact build can't load images from store servers).
+// `tile` is the badge background the logo sits on.
 export const STORE_STYLE = {
-  gameloot: { mono: 'GL', bg: '#2F4BCC', fg: '#fff', domain: 'gameloot.in' },
-  consolegarage: { mono: 'CG', bg: '#C2410C', fg: '#fff', domain: 'consolegarage.com' },
-  gamenation: { mono: 'GN', bg: '#0F766E', fg: '#fff', domain: 'gamenation.in' },
-  e2z: { mono: 'E2Z', bg: '#18203A', fg: '#FFD23F', domain: 'e2zstore.com' },
+  gameloot: { mono: 'GL', bg: '#D7261E', fg: '#fff', domain: 'gameloot.in' },
+  consolegarage: { logo: cgLogo, tile: '#fff', mono: 'CG', bg: '#1A80C4', fg: '#fff', domain: 'consolegarage.com' },
+  gamenation: { logo: gnLogo, tile: '#fff', mono: 'GN', bg: '#1F7A33', fg: '#fff', domain: 'gamenation.in' },
+  e2z: { logo: e2zLogo, tile: '#000', mono: 'E2Z', bg: '#000', fg: '#FFC800', domain: 'e2zstore.com' },
   amazon: { mono: 'a', bg: '#232F3E', fg: '#FF9900', domain: 'amazon.in' },
   flipkart: { mono: 'F', bg: '#2874F0', fg: '#FFE11B', domain: 'flipkart.com' },
 };

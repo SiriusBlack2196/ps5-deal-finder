@@ -1,7 +1,11 @@
 [
  {
-  "match": "gameloot\\.in/robots\\.txt|e2zstore\\.com/robots\\.txt|consolegarage\\.com/robots\\.txt",
+  "match": "gameloot\\.in/robots\\.txt|e2zstore\\.com/robots\\.txt|consolegarage\\.com/robots\\.txt|gamenation\\.in/robots\\.txt",
   "file": "robots-allow.txt"
+ },
+ {
+  "match": "gamenation\\.in/Api/Products/Games/Index\\?term=spider-man%202",
+  "file": "gamenation/spider-man-2.json"
  },
  {
   "match": "gameloot\\.in/wp-json/wc/store/v1/products\\?search=spider-man%202",

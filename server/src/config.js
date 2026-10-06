@@ -31,12 +31,6 @@ export const config = {
   // (used by tests and by `npm run samples`).
   fixturesDir: env.USE_FIXTURES ? new URL('../fixtures', import.meta.url).pathname : null,
 
-  gameNation: {
-    // Game Nation renders everything client-side; its search API could not be
-    // discovered from outside India. Paste the request URL you see in the
-    // browser's Network tab, with {q} where the search text goes.
-    searchUrl: env.GAMENATION_SEARCH_URL || '',
-  },
 
   // ---------------------------------------------------------------------------
   // PHASE 2 PLACEHOLDERS — not used yet.

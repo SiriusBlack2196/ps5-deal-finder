@@ -23,6 +23,12 @@ export async function getPopular() {
   return r.json();
 }
 
+export async function getDeals() {
+  if (SNAPSHOT) return (await loadSnapshot()).getDeals();
+  const r = await fetch('/api/deals');
+  return r.ok ? r.json() : [];
+}
+
 export async function suggest(q, signal) {
   if (SNAPSHOT) return (await loadSnapshot()).suggest(q);
   const r = await fetch(`/api/suggest?q=${encodeURIComponent(q)}`, { signal });

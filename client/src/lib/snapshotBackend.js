@@ -3,7 +3,8 @@
 
 import snapshot from '../snapshot/snapshot.json';
 import { prepareQuery } from '@matching/match.js';
-import { processListings } from '@matching/pipeline.js';
+import { processListings, classifyListing } from '@matching/pipeline.js';
+import { topDeals } from '@matching/deals.js';
 import { tokenize } from '@matching/normalize.js';
 import { POPULAR } from '../../../server/src/catalog.js';
 
@@ -58,4 +59,10 @@ export function suggest(q) {
     scored.push({ display, score });
   }
   return scored.sort((a, b) => b.score - a.score).slice(0, 8).map((s) => s.display);
+}
+
+let deals = null;
+export function getDeals() {
+  deals ??= topDeals(snapshot.listings.map(classifyListing).filter((c) => c.listing).map((c) => c.listing));
+  return deals;
 }

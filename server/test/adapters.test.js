@@ -5,7 +5,7 @@ import { createHttpClient } from '../src/lib/http.js';
 import { createSearchService } from '../src/search.js';
 import { adapters } from '../src/adapters/index.js';
 import { openDb } from '../src/lib/db.js';
-import { decodeGameNationUrl, gameNationProductUrl } from '../src/adapters/gamenation.js';
+import { decodeGameNationUrl, gameNationProductUrl, gameNationSlug } from '../src/adapters/gamenation.js';
 import { wooPrice } from '../src/adapters/woocommerce.js';
 import { parseRobots, isPathAllowed } from '../src/lib/robots.js';
 
@@ -92,10 +92,19 @@ test('Results are cached and every price is recorded with a timestamp', async ()
   assert.ok(hist.every((h) => h.fetchedAt && h.price > 0));
 });
 
+test('Game Nation: API products mapped, buyback values ignored, links rebuilt', async () => {
+  const { svc } = service();
+  const gn = byStore(await svc.search('Spider-Man 2'), 'gamenation');
+  assert.equal(gn.status, 'ok');
+  assert.deepEqual(gn.listings.map((l) => [l.condition, l.price, l.mrp, l.inStock]), [['preowned', 3299, 4899, true], ['new', 3899, 4999, false]]);
+  assert.equal(gn.listings[1].url, 'https://www.gamenation.in/Products/Games/marvel-s-spider-man-2-ps5-WzQwMTIsMV0');
+});
+
 test('Game Nation URL scheme round-trips', () => {
   assert.deepEqual(decodeGameNationUrl('https://www.gamenation.in/Products/Games/god-of-war-laufey-ps5-WzU0NTIsMV0'), { id: 5452, condition: 'new' });
   assert.deepEqual(decodeGameNationUrl('https://www.gamenation.in/Products/Games/crimson-desert-ps5-pre-owned-WzUwODgsMl0'), { id: 5088, condition: 'preowned' });
   assert.equal(gameNationProductUrl('god-of-war-laufey-ps5', 5452, 1), 'https://www.gamenation.in/Products/Games/god-of-war-laufey-ps5-WzU0NTIsMV0');
+  assert.equal(gameNationSlug("Marvel's Spider-Man 2 - PS5 (Pre-owned)"), 'marvel-s-spider-man-2-ps5-pre-owned');
 });
 
 test('robots.txt: E2Z disallows /search/ but not the Store API', () => {

@@ -62,3 +62,17 @@ test('store search term keeps literal spelling', () => {
   assert.equal(storeSearchTerm('EA FC 25'), 'FC 25');
   assert.equal(storeSearchTerm("Marvel's Spider-Man 2"), 'Spider-Man 2');
 });
+
+test('Best deals: new + in stock only, one card per game, biggest % first', async () => {
+  const { topDeals } = await import('../src/matching/deals.js');
+  const base = { condition: 'new', inStock: true, edition: 'Standard', fetchedAt: 't' };
+  const d = topDeals([
+    { ...base, store: 'a', title: 'Astro Bot', url: '1', price: 3000, mrp: 4000, discountPct: 25 },
+    { ...base, store: 'b', title: 'Astro Bot PS5', url: '2', price: 2000, mrp: 4000, discountPct: 50 },
+    { ...base, store: 'a', title: 'Gran Turismo 7', url: '3', price: 1000, mrp: 4000, discountPct: 75, condition: 'preowned' },
+    { ...base, store: 'a', title: 'Returnal', url: '4', price: 1000, mrp: 3000, discountPct: 67, inStock: false },
+    { ...base, store: 'a', title: 'Ghost of Yotei', url: '5', price: 4000, mrp: 4999, discountPct: 20 },
+    { ...base, store: 'a', title: 'Odd listing', url: '6', price: 10, mrp: 4999, discountPct: 100 },
+  ]);
+  assert.deepEqual(d.map((x) => [x.title, x.store, x.discountPct]), [['Astro Bot', 'b', 50], ['Ghost of Yotei', 'a', 20]]);
+});

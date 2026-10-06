@@ -1,24 +1,19 @@
-import { useState } from 'react';
 import { inr, timeAgo, STORE_STYLE } from '../lib/format.js';
 import { Button, Chip, Price } from './ui.jsx';
-import { SNAPSHOT } from '../lib/api.js';
 
-export function StoreBadge({ id, name }) {
+export function StoreBadge({ id, name, size = 'md' }) {
   const s = STORE_STYLE[id] || { mono: name?.slice(0, 2) || '?' };
-  const [imgOk, setImgOk] = useState(Boolean(s.domain) && !SNAPSHOT);
+  const box = size === 'sm' ? 'size-6 rounded-full' : 'size-11 rounded-box';
+  if (s.logo) {
+    return (
+      <span aria-hidden="true" style={{ background: s.tile }} className={`inline-flex shrink-0 items-center justify-center overflow-hidden shadow-[inset_0_0_0_1px_rgb(0_0_0/0.08)] ${box}`}>
+        <img src={s.logo} alt="" className={size === 'sm' ? 'size-5' : 'size-9'} />
+      </span>
+    );
+  }
   return (
-    <span className="relative inline-flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-box bg-ink text-white" aria-hidden="true">
-      <span className="text-[0.8rem] font-bold tracking-wide">{s.mono}</span>
-      {imgOk && (
-        <img
-          src={`https://www.google.com/s2/favicons?domain=${s.domain}&sz=64`}
-          alt=""
-          loading="lazy"
-          onError={() => setImgOk(false)}
-          onLoad={(e) => { if (e.currentTarget.naturalWidth <= 16) setImgOk(false); }}
-          className="absolute inset-0 m-auto size-7 rounded-[6px] bg-white"
-        />
-      )}
+    <span aria-hidden="true" style={{ background: s.bg, color: s.fg }} className={`inline-flex shrink-0 items-center justify-center font-bold tracking-wide ${box} ${size === 'sm' ? 'text-[0.55rem]' : 'text-[0.8rem]'}`}>
+      {s.mono}
     </span>
   );
 }

@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import { publicStoreInfo } from './adapters/index.js';
 import { POPULAR, SEED_TITLES } from './catalog.js';
 import { tokenize } from './matching/normalize.js';
+import { topDeals } from './matching/deals.js';
 
 export function createApp({ adapters, searchService, db }) {
   const app = express();
@@ -28,6 +29,12 @@ export function createApp({ adapters, searchService, db }) {
   app.get('/api/stores', (_req, res) => res.json(adapters.map(publicStoreInfo)));
 
   app.get('/api/popular', (_req, res) => res.json(POPULAR));
+
+  // Biggest discounts off store MRP among prices seen in the last 48 hours.
+  app.get('/api/deals', (_req, res) => {
+    const since = new Date(Date.now() - 48 * 3600_000).toISOString();
+    res.json(db ? topDeals(db.latestDiscounted(since)) : []);
+  });
 
   app.get('/api/suggest', (req, res) => {
     const q = String(req.query.q || '').trim();

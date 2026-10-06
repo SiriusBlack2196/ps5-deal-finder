@@ -86,7 +86,7 @@ export function gameKey(tokens) {
   return tokens.join(' ');
 }
 
-const ACRONYMS = new Set(['fc', 'gta', 'nba', 'nfl', 'nhl', 'mlb', 'wwe', 'ufc', 'pga', 'ea', 'dlc', 'goty', 'vr', 'ii', 'iii', 'iv', 'vi', 'vii', 'viii', 'ix', 'xi', 'xii', 'xv', 'xvi', 'hd', 'mgs']);
+const ACRONYMS = new Set(['fc', 'fifa', 'gta', 'nba', 'nfl', 'nhl', 'mlb', 'wwe', 'ufc', 'pga', 'ea', 'dlc', 'goty', 'vr', 'ii', 'iii', 'iv', 'vi', 'vii', 'viii', 'ix', 'xi', 'xii', 'xv', 'xvi', 'hd', 'mgs']);
 const SMALL = new Set(['a', 'an', 'of', 'the', 'and', 'in', 'on', 'to', 'for']);
 /** Pretty title for display / autocomplete, derived from the cleanest store title. */
 export function displayTitle(rawTitle) {
@@ -106,7 +106,11 @@ export function displayTitle(rawTitle) {
     }).join(' ');
   } else {
     // Mixed-case store titles: just lowercase small joining words ("God Of War" -> "God of War").
-    t = t.split(' ').map((w, i) => (i > 0 && SMALL.has(w.toLowerCase()) && /^[A-Z][a-z]*$/.test(w) ? w.toLowerCase() : w)).join(' ');
+    // Also restore acronyms a store wrote in title case ("Nba 2K22" -> "NBA 2K22", "Fifa" -> "FIFA").
+    t = t.split(' ').map((w, i) => {
+      if (ACRONYMS.has(w.toLowerCase()) && /^[A-Z][a-z]+$/.test(w)) return w.toUpperCase();
+      return i > 0 && SMALL.has(w.toLowerCase()) && /^[A-Z][a-z]*$/.test(w) ? w.toLowerCase() : w;
+    }).join(' ');
   }
   return t.trim();
 }

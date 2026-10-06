@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import SearchBox from './SearchBox.jsx';
-import { Dot, Wordmark } from './ui.jsx';
+import { Wordmark } from './ui.jsx';
+import { StoreBadge } from './StoreRow.jsx';
 import { getPopular, getStores, getSnapshotInfo } from '../lib/api.js';
 import { Thumb } from '../lib/thumbs.jsx';
+import BestDeals from './BestDeals.jsx';
 
 export default function Home({ onSearch }) {
   const [popular, setPopular] = useState([]);
@@ -37,8 +39,8 @@ export default function Home({ onSearch }) {
           {checked.length > 0 && (
             <ul className="mt-6 flex flex-wrap justify-center gap-2" aria-label="Stores checked">
               {checked.map((s) => (
-                <li key={s.id} className="inline-flex h-8 items-center gap-2 rounded-full bg-white/10 px-3.5 text-sm text-white">
-                  <Dot tone="light" />{s.name}
+                <li key={s.id} className="inline-flex h-8 items-center gap-2 rounded-full bg-white/10 pl-1 pr-3.5 text-sm text-white">
+                  <StoreBadge id={s.id} name={s.name} size="sm" />{s.name}
                 </li>
               ))}
               <li className="inline-flex h-8 items-center rounded-full px-3.5 text-sm text-white/60">Amazon and Flipkart coming next</li>
@@ -68,6 +70,8 @@ export default function Home({ onSearch }) {
           </ul>
         </section>
       )}
+
+      <BestDeals onSearch={onSearch} />
 
       <footer className="bg-white shadow-[0_-1px_0_var(--color-line)]">
         <p className="mx-auto max-w-6xl px-4 py-8 text-sm text-muted sm:px-8">

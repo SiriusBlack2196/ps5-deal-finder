@@ -14,30 +14,29 @@ import { displayTitle } from './normalize.js';
  *
  * Returns { kept: Listing[], dropped: {title, reason}[] }
  */
-export function processListings(rawListings, preparedQuery) {
-  const kept = [];
-  const dropped = [];
-  for (const r of rawListings) {
-    const hintText = (r.hints || []).join(' | ');
-    const fullTitle = r.variantTitle ? `${r.title} - ${r.variantTitle}` : r.title;
+/**
+ * Classifies one raw listing without any query: returns { listing } or { dropped }.
+ * `listing` has everything except the match fields.
+ */
+export function classifyListing(r) {
+  const hintText = (r.hints || []).join(' | ');
+  const fullTitle = r.variantTitle ? `${r.title} - ${r.variantTitle}` : r.title;
+  const drop = (reason) => ({ dropped: { title: fullTitle, reason } });
 
-    if (r.variantTitle && isBuyback(r.variantTitle)) { dropped.push({ title: fullTitle, reason: 'buyback/sell-to-store variant' }); continue; }
-    if (r.variantTitle && detectKind(r.variantTitle) === 'digital') { dropped.push({ title: fullTitle, reason: 'not a game (digital code variant)' }); continue; }
-    if (!(r.price > 0)) { dropped.push({ title: fullTitle, reason: 'no price' }); continue; }
+  if (r.variantTitle && isBuyback(r.variantTitle)) return drop('buyback/sell-to-store variant');
+  if (r.variantTitle && detectKind(r.variantTitle) === 'digital') return drop('not a game (digital code variant)');
+  if (!(r.price > 0)) return drop('no price');
 
-    const kind = detectKind(r.title, hintText);
-    if (kind !== 'game') { dropped.push({ title: fullTitle, reason: `not a game (${kind})` }); continue; }
+  const kind = detectKind(r.title, hintText);
+  if (kind !== 'game') return drop(`not a game (${kind})`);
 
-    const platform = detectPlatform(r.title, hintText);
-    if (platform !== 'ps5' && platform !== 'ps4-ps5-upgrade') { dropped.push({ title: fullTitle, reason: `platform: ${platform}` }); continue; }
+  const platform = detectPlatform(r.title, hintText);
+  if (platform !== 'ps5' && platform !== 'ps4-ps5-upgrade') return drop(`platform: ${platform}`);
 
-    const m = matchTitle(preparedQuery, r.title);
-    if (!m) { dropped.push({ title: fullTitle, reason: 'different game' }); continue; }
-
-    const condition = r.conditionHint || detectCondition(r.variantTitle, r.title, hintText.match(/pre-?owned/i)?.[0]);
-    const edition = detectEdition(r.title, r.variantTitle);
-
-    kept.push({
+  const condition = r.conditionHint || detectCondition(r.variantTitle, r.title, hintText.match(/pre-?owned/i)?.[0]);
+  const edition = detectEdition(r.title, r.variantTitle);
+  return {
+    listing: {
       store: r.store,
       title: fullTitle,
       displayTitle: displayTitle(r.title),
@@ -50,11 +49,25 @@ export function processListings(rawListings, preparedQuery) {
       condition,
       edition,
       platform,               // 'ps5' | 'ps4-ps5-upgrade' (shown as its own tag)
-      preorder: /\bpre-?order\b/i.test(fullTitle),
+      preorder: Boolean(r.preorder) || /\bpre-?order\b/i.test(fullTitle),
       inStock: Boolean(r.inStock),
       url: r.url,
       imageUrl: r.imageUrl || null,
       fetchedAt: r.fetchedAt,
+    },
+  };
+}
+
+export function processListings(rawListings, preparedQuery) {
+  const kept = [];
+  const dropped = [];
+  for (const r of rawListings) {
+    const c = classifyListing(r);
+    if (c.dropped) { dropped.push(c.dropped); continue; }
+    const m = matchTitle(preparedQuery, r.title);
+    if (!m) { dropped.push({ title: c.listing.title, reason: 'different game' }); continue; }
+    kept.push({
+      ...c.listing,
       matchType: m.matchType, // 'exact' | 'related'
       matchScore: m.score,
       gameKey: m.gameKey,

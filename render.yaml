@@ -9,5 +9,3 @@ services:
     envVars:
       - key: BOT_CONTACT
         sync: false          # you'll be asked for it on first deploy
-      - key: GAMENATION_SEARCH_URL
-        sync: false
