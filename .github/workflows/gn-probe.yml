@@ -22,7 +22,7 @@ jobs:
           while read -r c; do curl -sL -A "$UA" "https://www.gamenation.in$c" -o "$(basename $c)"; done < chunks.txt
           # chunks referenced from other chunks
           grep -ohE 'static/chunks/[A-Za-z0-9_.~-]+\.js' *.js | sort -u | while read -r c; do f=$(basename $c); [ -f "$f" ] || curl -sL -A "$UA" "https://www.gamenation.in/_next/$c" -o "$f"; done
-          OUT=$GITHUB_WORKSPACE/probe/gamenation.txt
+          mkdir -p $GITHUB_WORKSPACE/probe; OUT=$GITHUB_WORKSPACE/probe/gamenation.txt
           { echo "chunks: $(ls *.js | wc -l)"
             echo "== baseURL"; grep -ohE '.{0,200}baseURL.{0,300}' *.js | head -20
             echo "== API_ENDPOINTS def"; grep -ohE '.{0,50}(71862|47621),[^\[]{0,40}e=>\{.{0,3000}' *.js | head -5
