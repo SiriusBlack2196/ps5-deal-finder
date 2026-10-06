@@ -60,8 +60,9 @@ export default function BestDeals({ onSearch }) {
               type="button" onClick={() => onSearch(d.title)}
               className="group flex h-full w-full flex-col overflow-hidden rounded-card bg-white text-left shadow-[0_0_0_1px_var(--color-line)] transition-shadow duration-200 hover:shadow-[0_0_0_1px_var(--color-line),0_14px_30px_-12px_rgb(0_0_0/0.35)]"
             >
-              {/* Same box for every cover: 5:7 is the common PS5 case-art shape; anchored to the top so the PS5 banner always shows. */}
-              <Thumb title={d.title} size="lg" className="block aspect-[5/7] w-full object-top" />
+              {/* Same fixed-height box for every cover, positioned 75% down: drops the repetitive PS5 banner at the top
+                  and a little of the ratings strip at the bottom, keeping the key art. */}
+              <Thumb title={d.title} size="lg" className="block h-[283px] w-full object-[center_75%] sm:h-[310px]" />
               <span className="flex flex-1 flex-col p-3.5 sm:p-4">
                 <span title={d.title} className="truncate font-semibold leading-snug group-hover:text-blue">{d.title}</span>
                 <span className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
