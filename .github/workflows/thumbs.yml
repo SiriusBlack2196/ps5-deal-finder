@@ -1,5 +1,5 @@
-# Downloads game covers listed in thumbs/urls.json, shrinks them to small WebP
-# thumbnails and commits them to thumbs/out/. Used to embed covers in the
+# Downloads game covers listed in thumbs/urls.json, shrinks them to WebP
+# (thumbs/out: 180px, thumbs/lg: up to 520px) and commits them. Used to embed covers in the
 # claude.ai artifact build, which cannot load images from store servers.
 name: Build thumbnails
 on:
@@ -21,20 +21,24 @@ jobs:
           python - <<'PY'
           import json, io, os, time, requests
           from PIL import Image
-          os.makedirs('thumbs/out', exist_ok=True)
+          os.makedirs('thumbs/out', exist_ok=True); os.makedirs('thumbs/lg', exist_ok=True)
           items = json.load(open('thumbs/urls.json'))
           ok = fail = 0
           s = requests.Session()
           s.headers['User-Agent'] = 'PS5DealFinder/0.1 (thumbnail cache; https://github.com/SiriusBlack2196/ps5-deal-finder)'
           for it in items:
-              out = f"thumbs/out/{it['file']}"
-              if os.path.exists(out):
+              out = f"thumbs/out/{it['file']}"   # small: lists, autocomplete
+              lg = f"thumbs/lg/{it['file']}"     # large: deal cards, results header (2x screens)
+              if os.path.exists(out) and os.path.exists(lg):
                   ok += 1; continue
               try:
                   r = s.get(it['url'], timeout=20); r.raise_for_status()
-                  im = Image.open(io.BytesIO(r.content)).convert('RGB')
-                  im.thumbnail((180, 240))
-                  im.save(out, 'WEBP', quality=72, method=6)
+                  src = Image.open(io.BytesIO(r.content)).convert('RGB')
+                  big = src.copy(); big.thumbnail((520, 700), Image.LANCZOS)
+                  big.save(lg, 'WEBP', quality=76, method=6)
+                  if not os.path.exists(out):
+                      im = src.copy(); im.thumbnail((180, 240), Image.LANCZOS)
+                      im.save(out, 'WEBP', quality=72, method=6)
                   ok += 1
               except Exception as e:
                   fail += 1; print('FAIL', it['key'], it['url'], e)
@@ -45,6 +49,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add thumbs/out
+          git add thumbs/out thumbs/lg
           git diff --cached --quiet || git commit -m "Thumbnails: $(ls thumbs/out | wc -l) covers"
           git push
