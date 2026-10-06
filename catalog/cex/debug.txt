@@ -1,0 +1,5 @@
+filters categoryName: nbHits=0 []
+facetFilters categoryName: nbHits=0 []
+facetFilters categoryFriendlyName: nbHits=0 []
+no filter: nbHits=34 [('Spider-Man 2 (No DLC)', 'Playstation5 Software'), ('Amazing Spider-Man 2', 'Playstation4 Software'), ('PS5 Official DualSense Controller Spider-Man 2, C', 'Playstation5 Controllers')]
+using None
