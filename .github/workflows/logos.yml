@@ -1,0 +1,29 @@
+# Downloads store logos listed in logos/urls.json into logos/raw/ (unchanged
+# bytes). The sandbox that builds the app cannot reach store servers, so this
+# relays them through GitHub. Processing into badge icons happens locally.
+name: Fetch store logos
+on:
+  push:
+    paths: ['logos/urls.json', '.github/workflows/logos.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  logos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download
+        run: |
+          mkdir -p logos/raw
+          UA='Mozilla/5.0 (PS5DealFinder logo cache; https://github.com/SiriusBlack2196/ps5-deal-finder)'
+          jq -r '.[] | "\(.file) \(.url)"' logos/urls.json | while read -r f u; do
+            if curl -fsSL --max-time 20 -A "$UA" -o "logos/raw/$f" "$u"; then echo "ok $f $(stat -c%s logos/raw/$f)"; else echo "FAIL $f"; rm -f "logos/raw/$f"; fi
+          done
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add logos/raw
+          git diff --cached --quiet || git commit -m "Store logos: $(ls logos/raw | wc -l) files"
+          git push
