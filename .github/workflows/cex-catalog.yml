@@ -27,11 +27,22 @@ jobs:
               body = json.dumps({'params': urllib.parse.urlencode(params)}).encode()
               req = urllib.request.Request('https://search.webuy.io/1/indexes/prod_cex_in/query', data=body, headers=H, method='POST')
               return json.load(urllib.request.urlopen(req, timeout=30))
-          t = q({'query': 'spider-man 2', 'hitsPerPage': 3, 'filters': 'categoryName:"Playstation5 Software"'})
-          print('test', t.get('nbHits'), [h['boxName'] for h in t['hits']])
+          dbg = []
+          FILTER = None
+          for name, extra in [('filters categoryName', {'filters': 'categoryName:"Playstation5 Software"'}),
+                              ('facetFilters categoryName', {'facetFilters': json.dumps([['categoryName:Playstation5 Software']])}),
+                              ('facetFilters categoryFriendlyName', {'facetFilters': json.dumps([['categoryFriendlyName:Playstation5 Software']])}),
+                              ('no filter', {})]:
+              try:
+                  t = q({'query': 'spider-man 2', 'hitsPerPage': 3, **extra})
+                  dbg.append(f"{name}: nbHits={t.get('nbHits')} {[(h.get('boxName'), h.get('categoryName')) for h in t.get('hits', [])]}")
+                  if FILTER is None and extra and t.get('nbHits'): FILTER = extra
+              except Exception as e:
+                  dbg.append(f'{name}: ERROR {e}')
+          open('catalog/cex/debug.txt', 'w').write('\n'.join(dbg) + f'\nusing {FILTER}\n')
           page, total = 0, 0
-          while True:
-              r = q({'query': '', 'hitsPerPage': 500, 'page': page, 'filters': 'categoryName:"Playstation5 Software"'})
+          while FILTER:
+              r = q({'query': '', 'hitsPerPage': 500, 'page': page, **FILTER})
               hits = [{k: h.get(k) for k in KEEP} for h in r.get('hits', [])]
               if not hits: break
               json.dump(hits, open(f'catalog/cex/cex-{page+1:02d}.json', 'w'))
