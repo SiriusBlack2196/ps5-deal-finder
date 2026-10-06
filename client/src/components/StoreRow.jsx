@@ -25,7 +25,8 @@ export function StoreBadge({ id, name }) {
 
 export function ListingRow({ l, storeName, highlight }) {
   const shippingText = l.shipping == null ? 'Shipping not listed' : l.shipping === 0 ? 'Free shipping' : `+ ${inr(l.shipping)} shipping`;
-  const ring = highlight ? 'shadow-[0_0_0_2px_var(--color-green)]' : 'shadow-[0_0_0_1px_var(--color-line)]';
+  // Same hairline for every row; the green badge and price mark the best deals (a coloured outline read as 'selected').
+  const ring = 'shadow-[0_0_0_1px_var(--color-line)]';
   return (
     <li className={`rounded-card bg-white p-4 sm:p-5 ${ring} ${l.inStock ? '' : 'opacity-75'}`}>
       {highlight && (
