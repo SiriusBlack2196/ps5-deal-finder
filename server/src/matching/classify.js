@@ -34,7 +34,7 @@ export function detectPlatform(title, hintText = '') {
 const RE_CONSOLE = /^\s*sony\s+play\s?station\s?5\b|\bconsole\b|\b(ps5|playstation\s?5)\s*(slim|pro|digital|disc)(\s*edition)?\b(?!.*\bgame\b)|\bplaystation\s?portal\b/i;
 const RE_ACCESSORY = /\b(controller|dual\s?sense|dual\s?shock|joystick|headset|headphone|earbuds?|charg(er|ing)|dock|stand|cover|skin|case|pouch|cable|adapter|hdmi|ssd|nvme|hard\s?drive|camera|remote|keyboard|mouse|mouse\s?pad|grip|thumb\s?grips?|faceplate|cooling|fan|vertical)\b/i;
 const RE_MERCH = /\b(funko|figure|figurine|statue|mug|poster|t-?shirt|hoodie|cap|keychain|key\s?chain|art\s?book|plush|lamp|collectible|amiibo|steelbook\s*only)\b/i;
-const RE_DIGITAL = /\b(digital\s*(code|download|voucher|key)|voucher|psn|wallet|gift\s*card|top-?up|redeem|membership|plus\s*(essential|extra|premium))\b/i;
+const RE_DIGITAL = /\b(code\s*only|no\s*disc|digital\s*(code|download|voucher|key)|voucher|psn|wallet|gift\s*card|top-?up|redeem|membership|plus\s*(essential|extra|premium))\b/i;
 const RE_DLC = /\b(dlc|season\s*pass|add-?on|expansion\s*pass|currency|points|coins)\b/i;
 
 const NON_GAME_HINTS = /\b(consoles?|accessor(y|ies)|controllers?|collectibles?|merch|psn|wallet|digital|gift|headsets?|rare and collectible|pc components)\b/i;

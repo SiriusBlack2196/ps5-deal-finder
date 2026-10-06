@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
 import SearchBox from './SearchBox.jsx';
 import { Arrow, Marker } from './ui.jsx';
+import { getPopular, getStores, getSnapshotInfo } from '../lib/api.js';
+import SnapshotNote from './SnapshotNote.jsx';
 
 export default function Home({ onSearch }) {
   const [popular, setPopular] = useState([]);
   const [stores, setStores] = useState([]);
+  const [snap, setSnap] = useState(null);
 
   useEffect(() => {
-    fetch('/api/popular').then((r) => r.json()).then(setPopular).catch(() => {});
-    fetch('/api/stores').then((r) => r.json()).then(setStores).catch(() => {});
+    getPopular().then(setPopular).catch(() => {});
+    getStores().then(setStores).catch(() => {});
+    getSnapshotInfo().then(setSnap).catch(() => {});
   }, []);
 
   return (
@@ -34,12 +38,13 @@ export default function Home({ onSearch }) {
 
           {stores.length > 0 && (
             <ul className="meta mt-6 flex flex-wrap gap-x-5 gap-y-2 text-grey-400" aria-label="Stores checked">
-              {stores.map((s) => (
+              {stores.filter((s) => !snap || snap.stores.find((x) => x.id === s.id)?.status === 'ok').map((s) => (
                 <li key={s.id} className="flex items-center gap-2"><span className="size-1.5 bg-blue" aria-hidden="true" />{s.name}</li>
               ))}
               <li className="flex items-center gap-2 text-grey-600"><span className="size-1.5 bg-grey-700" aria-hidden="true" />Amazon and Flipkart next</li>
             </ul>
           )}
+          {snap && <SnapshotNote info={snap} className="mt-8" />}
         </div>
       </section>
 

@@ -1,7 +1,8 @@
 import { useMemo, useState, useEffect } from 'react';
 import SearchBox from './SearchBox.jsx';
 import { ListingRow, SkeletonRow, StoreNotice } from './StoreRow.jsx';
-import { useSearchStream } from '../lib/useSearchStream.js';
+import { useSearch, getSnapshotInfo } from '../lib/api.js';
+import SnapshotNote from './SnapshotNote.jsx';
 import { pickGame, applyFilters, bestDeals, priceSpread, editionsIn } from '../lib/derive.js';
 import { inr } from '../lib/format.js';
 import { Arrow, ArrowButton, Marker } from './ui.jsx';
@@ -9,8 +10,10 @@ import { Arrow, ArrowButton, Marker } from './ui.jsx';
 const DEFAULT_FILTERS = { condition: 'all', inStockOnly: true, edition: 'all' };
 
 export default function Results({ query, onSearch, onHome }) {
-  const { stores, byStore, finished, error } = useSearchStream(query);
+  const { stores, byStore, finished, error } = useSearch(query);
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
+  const [snap, setSnap] = useState(null);
+  useEffect(() => { getSnapshotInfo().then(setSnap).catch(() => {}); }, []);
   useEffect(() => setFilters(DEFAULT_FILTERS), [query]);
 
   const storeName = (id) => stores.find((s) => s.id === id)?.name || id;
@@ -37,7 +40,7 @@ export default function Results({ query, onSearch, onHome }) {
 
   return (
     <div className="min-h-dvh bg-white">
-      <div className="sticky top-0 z-20 bg-black pb-3 pt-[max(0.75rem,env(safe-area-inset-top))]">
+      <div className="sticky top-[env(safe-area-inset-top,0px)] z-20 bg-black pb-3 pt-[max(0.75rem,env(safe-area-inset-top))]">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-5 sm:px-10">
           <button onClick={onHome} aria-label="Back to home" className="flex h-11 shrink-0 items-center gap-2.5 pr-1">
             <Marker />
@@ -71,6 +74,7 @@ export default function Results({ query, onSearch, onHome }) {
             </div>
             <div className="progress-track mt-2"><div className="progress-fill" style={{ width: `${pct}%` }} /></div>
           </div>
+          {snap && <SnapshotNote info={snap} className="mt-4" compact />}
 
           {(bestNew || bestUsed) && (
             <section aria-label="Best prices" className={`mt-8 grid gap-px bg-grey-700 ${bestNew && bestUsed ? 'grid-cols-2' : 'grid-cols-1 sm:max-w-md'}`}>

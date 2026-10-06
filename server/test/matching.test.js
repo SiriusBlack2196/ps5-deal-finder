@@ -43,6 +43,7 @@ test('non-games are excluded', () => {
   assert.equal(detectKind('Funko Pop Marvels Spider-Man 2'), 'merch');
   assert.equal(detectKind("PS5 Marvel's Spider-Man Remastered DIGITAL CODE"), 'digital');
   assert.equal(detectKind('Marvels Spider-Man 2 PS5', 'BUY GAMES | BUY PS5 GAMES'), 'game');
+  assert.equal(detectKind('Code Only (No disc) (only digital code )'), 'digital');
 });
 
 test('condition, edition, buyback', () => {

@@ -22,6 +22,7 @@ export function processListings(rawListings, preparedQuery) {
     const fullTitle = r.variantTitle ? `${r.title} - ${r.variantTitle}` : r.title;
 
     if (r.variantTitle && isBuyback(r.variantTitle)) { dropped.push({ title: fullTitle, reason: 'buyback/sell-to-store variant' }); continue; }
+    if (r.variantTitle && detectKind(r.variantTitle) === 'digital') { dropped.push({ title: fullTitle, reason: 'not a game (digital code variant)' }); continue; }
     if (!(r.price > 0)) { dropped.push({ title: fullTitle, reason: 'no price' }); continue; }
 
     const kind = detectKind(r.title, hintText);
@@ -46,6 +47,7 @@ export function processListings(rawListings, preparedQuery) {
       condition,
       edition,
       platform,               // 'ps5' | 'ps4-ps5-upgrade' (shown as its own tag)
+      preorder: /\bpre-?order\b/i.test(fullTitle),
       inStock: Boolean(r.inStock),
       url: r.url,
       imageUrl: r.imageUrl || null,

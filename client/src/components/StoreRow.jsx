@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { inr, timeAgo, STORE_STYLE } from '../lib/format.js';
 import { ArrowButton, Chip, Marker } from './ui.jsx';
+import { SNAPSHOT } from '../lib/api.js';
 
 export function StoreBadge({ id, name, dark = false }) {
   const s = STORE_STYLE[id] || { mono: name?.slice(0, 2) || '?' };
-  const [imgOk, setImgOk] = useState(Boolean(s.domain));
+  const [imgOk, setImgOk] = useState(Boolean(s.domain) && !SNAPSHOT);
   return (
     <span className={`relative inline-flex size-10 shrink-0 items-center justify-center overflow-hidden ${dark ? 'bg-surface-2 text-white' : 'bg-black text-white'}`} aria-hidden="true">
       <span className="meta">{s.mono}</span>
@@ -42,6 +43,7 @@ export function ListingRow({ l, storeName, highlight }) {
               {l.condition === 'preowned' ? <Chip tone="used">Pre-owned</Chip> : <Chip>New</Chip>}
               {l.edition !== 'Standard' && <Chip>{l.edition} edition</Chip>}
               {l.platform === 'ps4-ps5-upgrade' && <Chip tone="info">PS4 disc, free PS5 upgrade</Chip>}
+              {l.preorder && <Chip tone="info">Pre-order</Chip>}
               {!l.inStock && <Chip tone="warn">Out of stock</Chip>}
             </div>
           </div>

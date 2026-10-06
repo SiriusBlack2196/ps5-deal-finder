@@ -2,3 +2,4 @@ node_modules/
 client/dist/
 server/data/*.db*
 server/.env
+client/dist-artifact/

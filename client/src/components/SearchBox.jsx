@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Arrow } from './ui.jsx';
+import { suggest } from '../lib/api.js';
 
 export default function SearchBox({ initial = '', onSearch, size = 'lg', autoFocus = false }) {
   const [value, setValue] = useState(initial);
@@ -16,8 +17,7 @@ export default function SearchBox({ initial = '', onSearch, size = 'lg', autoFoc
     if (q.length < 2) { setItems([]); return; }
     const ctrl = new AbortController();
     const t = setTimeout(() => {
-      fetch(`/api/suggest?q=${encodeURIComponent(q)}`, { signal: ctrl.signal })
-        .then((r) => (r.ok ? r.json() : []))
+      suggest(q, ctrl.signal)
         .then((list) => { setItems(list); setActive(-1); })
         .catch(() => {});
     }, 140);
