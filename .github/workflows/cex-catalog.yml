@@ -29,17 +29,20 @@ jobs:
           # "Playstation5 Games" hits: a few generic queries plus every catalogue title.
           titles = [t['title'] for t in json.load(open('ratings/titles.json'))]
           queries = ['ps5', 'playstation 5', 'ps5 game', 'ps5 games'] + titles
-          seen = {}
+          seen = {}; cats = {}
           for i, term in enumerate(queries):
               for page in range(3 if i < 4 else 1):
                   try: r = q({'query': term, 'hitsPerPage': 1000 if i < 4 else 40, 'page': page})
                   except Exception as e: print('ERR', term, e); break
                   for h in r.get('hits', []):
-                      if (h.get('categoryName') or '').lower().replace(' ', '') == 'playstation5games':
+                      cn = (h.get('categoryName') or ''); cats[cn] = cats.get(cn, 0) + 1
+                      c = cn.lower().replace(' ', '')
+                      if ('playstation5' in c or 'ps5' in c) and not any(w in c for w in ('console', 'accessor', 'controller', 'merch', 'digital')):
                           h.pop('_highlightResult', None); h.pop('_snippetResult', None); seen[h['boxId']] = h
                   if page + 1 >= r.get('nbPages', 0): break
               time.sleep(0.15)
           hits = list(seen.values())
+          json.dump(dict(sorted(cats.items(), key=lambda kv: -kv[1])), open('catalog/cex/categories.json', 'w'), indent=1)
           print('PS5 game boxes', len(hits), 'new', sum(1 for h in hits if h.get('new')), 'in store', sum(1 for h in hits if h.get('inStockStore')), 'online', sum(1 for h in hits if h.get('inStockOnline')))
           json.dump(hits, open('catalog/cex/hits.json', 'w'))
           print('total', len(hits))
