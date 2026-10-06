@@ -59,20 +59,14 @@ export default function BestDeals({ onSearch }) {
               type="button" onClick={() => onSearch(d.title)}
               className="group flex h-full w-full flex-col overflow-hidden rounded-card bg-white text-left shadow-[0_0_0_1px_var(--color-line)] transition-shadow duration-200 hover:shadow-[0_0_0_1px_var(--color-line),0_14px_30px_-12px_rgb(0_0_0/0.35)]"
             >
-              <span className="relative block">
-                {/* Same box for every cover: 5:7 is the common PS5 case-art shape; anchored to the top so the PS5 banner always shows. */}
-                <Thumb title={d.title} size="lg" className="block aspect-[5/7] w-full object-top" />
-                {/* soft scrim so the badge reads on white PS5 banners */}
-                <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-[linear-gradient(to_bottom,rgb(0_0_0/0.32),rgb(0_0_0/0.12)_45%,transparent)]" />
-                <span className="absolute left-2.5 top-2.5 inline-flex h-7 items-center rounded-full bg-green px-2.5 text-sm font-bold text-white">
-                  {d.discountPct}% off
-                </span>
-              </span>
+              {/* Same box for every cover: 5:7 is the common PS5 case-art shape; anchored to the top so the PS5 banner always shows. */}
+              <Thumb title={d.title} size="lg" className="block aspect-[5/7] w-full object-top" />
               <span className="flex flex-1 flex-col p-3.5 sm:p-4">
                 <span className="line-clamp-2 min-h-[2.6em] font-semibold leading-snug group-hover:text-blue">{d.title}</span>
-                <span className="mt-2 flex flex-wrap items-baseline gap-x-2">
+                <span className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
                   <s className="text-sm text-muted [font-variant-numeric:tabular-nums]"><span className="sr-only">MRP </span>{inr(d.mrp)}</s>
                   <span className="price text-[1.35rem] leading-none text-green"><span className="sr-only">now </span>{inr(d.price)}</span>
+                  <span className="inline-flex h-6 items-center rounded-full bg-green px-2 text-xs font-bold text-white">{d.discountPct}% off</span>
                 </span>
                 <span className="mt-3 flex items-center gap-2 text-sm text-muted">
                   <StoreBadge id={d.store} name={names[d.store]} size="sm" />
