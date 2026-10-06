@@ -67,7 +67,7 @@ export default function BestDeals({ onSearch }) {
                 <span title={d.title} className="truncate font-semibold leading-snug group-hover:text-blue">{d.title}</span>
                 <span className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
                   <s className="text-sm text-muted [font-variant-numeric:tabular-nums]"><span className="sr-only">MRP </span>{inr(d.mrp)}</s>
-                  <span className="price text-[1.35rem] leading-none text-green"><span className="sr-only">now </span>{inr(d.price)}</span>
+                  <span className="price text-[1.35rem] leading-none text-ink"><span className="sr-only">now </span>{inr(d.price)}</span>
                   <span className="inline-flex h-6 items-center rounded-full bg-green px-2 text-xs font-bold text-white">{d.discountPct}% off</span>
                 </span>
                 <span className="mt-2.5 flex items-center gap-2 text-sm text-muted">

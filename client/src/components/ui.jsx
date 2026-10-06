@@ -4,7 +4,7 @@ import { inr } from '../lib/format.js';
 
 /**
  * Store's MRP struck through, then the current price beside it, and the discount in green.
- * `deal` colours the current price green (best-deal rows and cards).
+ * Prices are always ink (black); only the discount line is green.
  */
 export function Price({ price, mrp, discountPct, deal = false, size = 'md', align = 'start' }) {
   const big = { md: 'text-[1.6rem] sm:text-[1.85rem]', lg: 'text-[2rem] sm:text-[2.75rem]' }[size];
@@ -17,7 +17,7 @@ export function Price({ price, mrp, discountPct, deal = false, size = 'md', alig
             <span className="sr-only">MRP </span>{inr(mrp)}
           </s>
         )}
-        <span className={`price leading-none ${big} ${deal ? 'text-green' : ''}`}><span className="sr-only">{mrp ? 'now ' : ''}</span>{inr(price)}</span>
+        <span className={`price leading-none text-ink ${big}`}><span className="sr-only">{mrp ? 'now ' : ''}</span>{inr(price)}</span>
       </span>
       {mrp && discountPct > 0 && <span className="mt-1 text-sm font-bold text-green">{discountPct}% off MRP</span>}
     </span>
