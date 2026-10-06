@@ -20,7 +20,7 @@ jobs:
           APP, KEY, IDX = 'LNNFEEWZVA', 'bf79f2b6699e60a18ae330a1248b452c', 'prod_cex_in'
           H = {'X-Algolia-Application-Id': APP, 'X-Algolia-API-Key': KEY, 'Content-Type': 'application/json',
                'Origin': 'https://in.webuy.com', 'Referer': 'https://in.webuy.com/', 'User-Agent': 'Mozilla/5.0 (Lowscore price comparison)'}
-          def q(params, host=f'https://{APP}-dsn.algolia.net'):
+          def q(params, host='https://search.webuy.io'):   # CeX's own search proxy (the site has isAlgoliaProxyEnabled)
               body = json.dumps({'params': urllib.parse.urlencode(params)}).encode()
               req = urllib.request.Request(f'{host}/1/indexes/{IDX}/query', data=body, headers=H, method='POST')
               return json.load(urllib.request.urlopen(req, timeout=30))
