@@ -3,6 +3,7 @@ import SearchBox from './SearchBox.jsx';
 import { Arrow, Marker } from './ui.jsx';
 import { getPopular, getStores, getSnapshotInfo } from '../lib/api.js';
 import SnapshotNote from './SnapshotNote.jsx';
+import { Thumb } from '../lib/thumbs.jsx';
 
 export default function Home({ onSearch }) {
   const [popular, setPopular] = useState([]);
@@ -55,8 +56,9 @@ export default function Home({ onSearch }) {
             <ul className="mt-8 grid grid-cols-1 border-t border-grey-300 sm:grid-cols-2 lg:grid-cols-4">
               {popular.map((g) => (
                 <li key={g} className="border-b border-grey-300 sm:[&:nth-child(odd)]:border-r lg:border-r lg:[&:nth-child(4n)]:border-r-0">
-                  <button onClick={() => onSearch(g)} className="group flex w-full items-center justify-between gap-4 py-5 text-left sm:px-5 sm:py-7">
-                    <span className="text-lg leading-snug">{g}</span>
+                  <button onClick={() => onSearch(g)} className="group flex w-full items-center gap-4 py-4 text-left sm:px-5 sm:py-6">
+                    <Thumb title={g} className="h-20 w-[3.75rem] shrink-0 sm:h-24 sm:w-[4.5rem]" />
+                    <span className="min-w-0 flex-1 text-lg leading-snug">{g}</span>
                     <span className="arrow-box flex size-9 shrink-0 items-center justify-center bg-grey-100 text-black transition-colors duration-300 group-hover:bg-blue group-hover:text-white">
                       <Arrow />
                     </span>

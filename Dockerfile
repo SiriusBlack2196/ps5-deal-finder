@@ -13,6 +13,7 @@ WORKDIR /app
 COPY server/package*.json ./server/
 RUN cd server && npm ci --omit=dev
 COPY server/ ./server/
+COPY thumbs/ ./thumbs/
 COPY --from=client /app/client/dist ./client/dist
 ENV PORT=8787 DB_PATH=/data/prices.db
 RUN mkdir -p /data && chown node:node /data

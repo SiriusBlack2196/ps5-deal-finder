@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Arrow } from './ui.jsx';
 import { suggest } from '../lib/api.js';
+import { Thumb } from '../lib/thumbs.jsx';
 
 export default function SearchBox({ initial = '', onSearch, size = 'lg', autoFocus = false }) {
   const [value, setValue] = useState(initial);
@@ -89,9 +90,9 @@ export default function SearchBox({ initial = '', onSearch, size = 'lg', autoFoc
               aria-selected={i === active}
               onMouseDown={(e) => { e.preventDefault(); submit(t); }}
               onMouseEnter={() => setActive(i)}
-              className={`flex cursor-pointer items-center gap-3 px-5 py-3 text-base ${i === active ? 'bg-grey-100' : ''}`}
+              className={`flex cursor-pointer items-center gap-3.5 px-4 py-2 text-base ${i === active ? 'bg-grey-100' : ''}`}
             >
-              <span aria-hidden="true" className={`size-2 shrink-0 ${i === active ? 'bg-blue' : 'bg-grey-300'}`} />
+              <Thumb title={t} className={`h-12 w-9 shrink-0 ${i === active ? 'outline-2 outline-blue' : ''}`} />
               <span><Highlight text={t} query={value} /></span>
             </li>
           ))}

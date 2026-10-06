@@ -3,6 +3,7 @@ import SearchBox from './SearchBox.jsx';
 import { ListingRow, SkeletonRow, StoreNotice } from './StoreRow.jsx';
 import { useSearch, getSnapshotInfo } from '../lib/api.js';
 import SnapshotNote from './SnapshotNote.jsx';
+import { useThumb } from '../lib/thumbs.jsx';
 import { pickGame, applyFilters, bestDeals, priceSpread, editionsIn } from '../lib/derive.js';
 import { inr } from '../lib/format.js';
 import { Arrow, ArrowButton, Marker } from './ui.jsx';
@@ -31,8 +32,9 @@ export default function Results({ query, onSearch, onHome }) {
   const missing = okStores.filter((s) => !storesWithGame.has(s.id));
   const hiddenByFilters = okStores.filter((s) => storesWithGame.has(s.id) && !storesVisible.has(s.id));
 
-  const heroImage = (bestNew || bestUsed || game.listings[0])?.imageUrl;
   const heroTitle = game.fallbackTitle || pickTitle(game.listings, query) || query;
+  const cachedThumb = useThumb(game.listings.length ? heroTitle : null);
+  const heroImage = (bestNew || bestUsed || game.listings[0])?.imageUrl || cachedThumb;
   const nothingAnywhere = finished && game.listings.length === 0;
 
   const doneCount = stores.length - pending.length;
