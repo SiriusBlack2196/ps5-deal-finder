@@ -63,3 +63,22 @@ export function Wordmark({ onDark = false }) {
     </span>
   );
 }
+
+/** Five stars filled to `value` (0–5, halves allowed). */
+export function Stars({ value, className = 'size-5' }) {
+  return (
+    <span aria-hidden="true" className="inline-flex items-center gap-0.5">
+      {[0, 1, 2, 3, 4].map((i) => {
+        const fill = Math.max(0, Math.min(1, value - i));
+        return (
+          <span key={i} className={`relative inline-block ${className}`}>
+            <svg viewBox="0 0 20 20" className="absolute inset-0 size-full text-white/25" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.85L10 14.9l-5.25 2.75 1-5.85L1.5 7.7l5.9-.9z" /></svg>
+            <span className="absolute inset-0 overflow-hidden" style={{ width: `${fill * 100}%` }}>
+              <svg viewBox="0 0 20 20" className={`${className} text-yellow`} fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.85L10 14.9l-5.25 2.75 1-5.85L1.5 7.7l5.9-.9z" /></svg>
+            </span>
+          </span>
+        );
+      })}
+    </span>
+  );
+}

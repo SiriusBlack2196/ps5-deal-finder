@@ -5,7 +5,8 @@ import { useSearch } from '../lib/api.js';
 import { useThumb } from '../lib/thumbs.jsx';
 import { pickGame, applyFilters, bestDeals, priceSpread, editionsIn } from '../lib/derive.js';
 import { inr } from '../lib/format.js';
-import { Button, Price, Wordmark } from './ui.jsx';
+import { Button, Price, Stars, Wordmark } from './ui.jsx';
+import { getRating } from '../lib/ratings.js';
 
 const DEFAULT_FILTERS = { condition: 'all', inStockOnly: true, edition: 'all' };
 
@@ -58,14 +59,14 @@ export default function Results({ query, onSearch, onHome }) {
             <div className="min-w-0 flex-1 pb-1">
               <h1 className="display text-[2.1rem] sm:text-[3.25rem]">{nothingAnywhere ? query : heroTitle}</h1>
               {game.fallbackTitle && <p className="mt-2 text-sm text-white/75">No exact match for “{query}”. Showing the closest game.</p>}
-              <div className="mt-4 max-w-sm" aria-live="polite">
-                <p className="text-sm text-white/80">
-                  {finished
-                    ? `${game.listings.length} ${game.listings.length === 1 ? 'listing' : 'listings'} from ${storesWithGame.size} of ${stores.length} stores`
-                    : `Checking ${doneCount} of ${stores.length || '…'} stores`}
-                </p>
-                <div className="progress-track mt-2"><div className="progress-fill" style={{ width: `${pct}%` }} /></div>
-              </div>
+              {finished ? (
+                <CriticRating title={nothingAnywhere ? null : heroTitle} />
+              ) : (
+                <div className="mt-4 max-w-sm" aria-live="polite">
+                  <p className="text-sm text-white/80">{`Checking ${doneCount} of ${stores.length || '…'} stores`}</p>
+                  <div className="progress-track mt-2"><div className="progress-fill" style={{ width: `${pct}%` }} /></div>
+                </div>
+              )}
             </div>
           </header>
 
@@ -250,6 +251,21 @@ function pickTitle(listings, query = '') {
   const score = (t) => (q && t.toLowerCase().includes(q) ? 4 : 0) + (/[’']/.test(t) ? 2 : 0) + (/[a-z]/.test(t) && /[A-Z]/.test(t) ? 1 : 0);
   const titles = [...new Set(listings.map((l) => l.displayTitle).filter(Boolean))];
   return titles.sort((a, b) => score(b) - score(a) || a.length - b.length)[0];
+}
+
+function CriticRating({ title }) {
+  const r = title ? getRating(title) : null;
+  if (!r) return title ? <p className="mt-4 text-sm text-white/70">No critic score yet</p> : null;
+  return (
+    <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-white" aria-label={`Rated ${r.stars} out of 5 by critics: Metascore ${r.score} from ${r.count} reviews`}>
+      <Stars value={r.stars} />
+      <span className="text-lg font-bold leading-none">{r.stars.toFixed(1)}</span>
+      <span className="text-sm text-white/75">
+        Metascore {r.score}{r.count ? ` · ${r.count} critic reviews` : ''} ·{' '}
+        <a href={r.url} target="_blank" rel="noopener noreferrer" className="underline decoration-white/40 underline-offset-2 hover:decoration-white">Metacritic</a>
+      </span>
+    </p>
+  );
 }
 
 function Cover({ src, loading }) {

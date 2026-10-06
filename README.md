@@ -88,3 +88,7 @@ server/  Node + Express
 - Add `adapters/amazon.js` and `adapters/flipkart.js` with the same `search()` interface and register them in `adapters/index.js`. A failing/blocked adapter already degrades to "Couldn't fetch from <store>".
 - Key placeholders: `AMAZON_PAAPI_*`, `FLIPKART_AFFILIATE_*` in `.env.example`, read in `config.js`.
 - Price history / alerts: query `price_observations` (indexed by game and URL).
+
+## Critic ratings
+
+The results header shows each game's critic rating as stars: the Metacritic Metascore (0–100) as 0–5 stars in half steps, with the critic review count and a link to the Metacritic page. Scores are collected by `.github/workflows/ratings.yml` for the titles in `ratings/titles.json` into `ratings/scores.json`, which is bundled into the client. Games with no published score (unreleased, or no Metacritic page) show "No critic score yet". None of the stores publish their own ratings.
