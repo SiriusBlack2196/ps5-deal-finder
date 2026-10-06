@@ -1,0 +1,32 @@
+# Captures Game Nation's full PS5 games catalogue (its public listing API) into
+# catalog/gamenation/, for the static snapshot build. Polite: one page at a time.
+name: Game Nation catalogue
+on:
+  push:
+    paths: ['.github/workflows/gn-catalog.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch pages
+        run: |
+          mkdir -p catalog/gamenation && rm -f catalog/gamenation/*.json
+          UA='PS5DealFinder/0.1 (price comparison; https://github.com/SiriusBlack2196/ps5-deal-finder)'
+          for p in $(seq 1 60); do
+            f=$(printf 'catalog/gamenation/gn-%02d.json' $p)
+            curl -fsS -m 20 -A "$UA" -H 'Accept: application/json' "https://gamenation.in/Api/Products/Games/Index?PS5=1&TypeGames=1&Page=$p" -o "$f" || { echo "page $p failed"; rm -f "$f"; break; }
+            n=$(jq '.Products | length' "$f"); echo "page $p: $n"
+            [ "$n" -gt 0 ] || { rm -f "$f"; break; }
+            sleep 1
+          done
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add catalog
+          git diff --cached --quiet || git commit -m "Game Nation catalogue: $(ls catalog/gamenation | wc -l) pages"
+          git pull --rebase -q && git push
