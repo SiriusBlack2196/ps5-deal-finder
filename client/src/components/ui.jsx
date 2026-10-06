@@ -5,19 +5,22 @@ import { inr } from '../lib/format.js';
 /**
  * Store's MRP struck through, then the current price beside it, and the discount in green.
  * Prices are always ink (black); only the discount line is green.
+ * `mrpAfter` puts the struck-through MRP to the right of the price (headline deal cards).
  */
-export function Price({ price, mrp, discountPct, deal = false, size = 'md', align = 'start' }) {
+export function Price({ price, mrp, discountPct, deal = false, size = 'md', align = 'start', mrpAfter = false }) {
   const big = { md: 'text-[1.6rem] sm:text-[1.85rem]', lg: 'text-[2rem] sm:text-[2.75rem]' }[size];
   const small = { md: 'text-[0.95rem]', lg: 'text-base sm:text-lg' }[size];
+  const mrpEl = (
+    <s className={`text-muted ${small} [font-variant-numeric:tabular-nums]`}>
+      <span className="sr-only">MRP </span>{inr(mrp)}
+    </s>
+  );
   return (
     <span className={`flex flex-col ${align === 'end' ? 'items-end text-right' : 'items-start'}`}>
       <span className={`flex flex-wrap items-baseline gap-x-2 gap-y-0.5 ${align === 'end' ? 'justify-end' : ''}`}>
-        {mrp && (
-          <s className={`text-muted ${small} [font-variant-numeric:tabular-nums]`}>
-            <span className="sr-only">MRP </span>{inr(mrp)}
-          </s>
-        )}
+        {mrp && !mrpAfter && mrpEl}
         <span className={`price leading-none text-ink ${big}`}><span className="sr-only">{mrp ? 'now ' : ''}</span>{inr(price)}</span>
+        {mrp && mrpAfter && mrpEl}
       </span>
       {mrp && discountPct > 0 && <span className="mt-1 text-sm font-bold text-green">{discountPct}% off MRP</span>}
     </span>

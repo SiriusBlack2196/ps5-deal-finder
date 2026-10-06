@@ -162,7 +162,7 @@ function DealCard({ kind, l, storeName }) {
           {isNew ? 'Best deal (new)' : 'Best pre-owned'}
         </span>
       </span>
-      <span className="mt-3"><Price price={l.effectivePrice} mrp={l.mrp} discountPct={l.discountPct} deal size="lg" /></span>
+      <span className="mt-3"><Price price={l.effectivePrice} mrp={l.mrp} discountPct={l.discountPct} deal size="lg" mrpAfter /></span>
       <span className="mt-2 text-[0.95rem] font-semibold leading-snug">{storeName}</span>
       <span className="text-sm text-muted">
         {l.edition === 'Standard' ? (isNew ? 'New copy' : 'Pre-owned copy') : `${l.edition} edition, ${isNew ? 'new' : 'pre-owned'}`}
