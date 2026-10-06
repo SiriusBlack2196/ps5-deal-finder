@@ -5,7 +5,7 @@
 const CACHE_TTL = 24 * 60 * 60 * 1000;
 const cache = new Map(); // origin -> { at, rules }
 
-export function parseRobots(text, uaToken = 'ps5dealfinder') {
+export function parseRobots(text, uaToken = 'lowscore') {
   const groups = [];
   let current = null;
   let lastWasAgent = false;

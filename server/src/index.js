@@ -12,7 +12,7 @@ const searchService = createSearchService({ adapters, http, db, config });
 const app = createApp({ adapters, searchService, db });
 
 app.listen(config.port, () => {
-  console.log(`PS5 Deal Finder API on http://localhost:${config.port}  (http mode: ${http.mode})`);
+  console.log(`Lowscore API on http://localhost:${config.port}  (http mode: ${http.mode})`);
 });
 
 // Warm-up: search the popular titles one at a time so the cache and the

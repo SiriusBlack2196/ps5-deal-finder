@@ -77,7 +77,7 @@ export default function Home({ onSearch }) {
       <footer className="bg-white shadow-[0_-1px_0_var(--color-line)]">
         <p className="mx-auto max-w-6xl px-4 py-8 text-sm text-muted sm:px-8">
           Prices come from each store's public listings and can change. Check the final price at checkout.
-          PS5 Deal Finder is not affiliated with Sony Interactive Entertainment.
+          Lowscore is not affiliated with Sony Interactive Entertainment.
         </p>
       </footer>
     </div>

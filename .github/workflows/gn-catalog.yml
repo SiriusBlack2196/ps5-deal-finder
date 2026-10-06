@@ -15,7 +15,7 @@ jobs:
       - name: Fetch pages
         run: |
           mkdir -p catalog/gamenation && rm -f catalog/gamenation/*.json
-          UA='PS5DealFinder/0.1 (price comparison; https://github.com/SiriusBlack2196/ps5-deal-finder)'
+          UA='Lowscore/0.1 (price comparison; https://github.com/SiriusBlack2196/ps5-deal-finder)'
           for p in $(seq 1 60); do
             f=$(printf 'catalog/gamenation/gn-%02d.json' $p)
             curl -fsS -m 20 -A "$UA" -H 'Accept: application/json' "https://gamenation.in/Api/Products/Games/Index?PS5=1&TypeGames=1&Page=$p" -o "$f" || { echo "page $p failed"; rm -f "$f"; break; }

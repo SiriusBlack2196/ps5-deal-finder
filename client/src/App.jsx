@@ -16,7 +16,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    document.title = query ? `${query} — PS5 Deal Finder` : 'PS5 Deal Finder';
+    document.title = query ? `${query} — Lowscore` : 'Lowscore — lowest PS5 game prices in India';
   }, [query]);
 
   const search = useCallback((q) => {

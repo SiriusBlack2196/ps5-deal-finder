@@ -59,7 +59,7 @@ export function Wordmark({ onDark = false }) {
   return (
     <span className="inline-flex items-center gap-2.5">
       <span aria-hidden="true" className="flex size-8 items-center justify-center rounded-box bg-blue text-[1rem] font-bold text-white">₹</span>
-      <span className={`text-[1.05rem] font-semibold ${onDark ? 'text-white' : 'text-ink'}`}>PS5 Deal Finder</span>
+      <span className={`text-[1.05rem] font-semibold ${onDark ? 'text-white' : 'text-ink'}`}>Lowscore</span>
     </span>
   );
 }

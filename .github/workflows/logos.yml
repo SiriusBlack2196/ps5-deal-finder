@@ -16,7 +16,7 @@ jobs:
       - name: Download
         run: |
           mkdir -p logos/raw
-          UA='Mozilla/5.0 (PS5DealFinder logo cache; https://github.com/SiriusBlack2196/ps5-deal-finder)'
+          UA='Mozilla/5.0 (Lowscore logo cache; https://github.com/SiriusBlack2196/ps5-deal-finder)'
           jq -r '.[] | "\(.file) \(.url)"' logos/urls.json | while read -r f u; do
             if curl -fsSL --max-time 20 -A "$UA" -o "logos/raw/$f" "$u"; then echo "ok $f $(stat -c%s logos/raw/$f)"; else echo "FAIL $f"; rm -f "logos/raw/$f"; fi
           done

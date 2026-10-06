@@ -1,4 +1,6 @@
-# PS5 Deal Finder
+# Lowscore
+
+*Lowest score wins.* PS5 game price comparison across Indian stores.
 
 Search a PS5 game, see every Indian store's price side by side, cheapest first.
 Phase 1 stores: **Gameloot, Console Garage, Game Nation, E2Z**.

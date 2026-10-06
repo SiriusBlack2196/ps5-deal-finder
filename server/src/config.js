@@ -21,7 +21,7 @@ export const config = {
   },
 
   // Identify ourselves honestly. Set BOT_CONTACT to a URL or email you own.
-  userAgent: `PS5DealFinder/0.1 (price comparison; ${env.BOT_CONTACT || 'contact: set BOT_CONTACT in .env'})`,
+  userAgent: `Lowscore/0.1 (price comparison; ${env.BOT_CONTACT || 'contact: set BOT_CONTACT in .env'})`,
 
   respectRobotsTxt: env.RESPECT_ROBOTS_TXT !== 'false',
 

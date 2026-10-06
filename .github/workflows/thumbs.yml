@@ -26,7 +26,7 @@ jobs:
           items = json.load(open('thumbs/urls.json'))
           ok = fail = 0
           s = requests.Session()
-          s.headers['User-Agent'] = 'PS5DealFinder/0.1 (thumbnail cache; https://github.com/SiriusBlack2196/ps5-deal-finder)'
+          s.headers['User-Agent'] = 'Lowscore/0.1 (thumbnail cache; https://github.com/SiriusBlack2196/ps5-deal-finder)'
           for it in items:
               out = f"thumbs/out/{it['file']}"   # small: lists, autocomplete
               lg = f"thumbs/lg/{it['file']}"     # large: deal cards, results header (2x screens)
