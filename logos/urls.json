@@ -1,12 +1,66 @@
 [
-  {"file": "consolegarage-mark.png", "url": "https://cdn.shopify.com/s/files/1/0572/1869/5227/files/CGLogoOnly512_1.png"},
-  {"file": "consolegarage-wordmark.webp", "url": "https://consolegarage.com/cdn/shop/files/Frame_36_b2e9df8e-d5a9-4e54-9a4e-40b751c4cf78.webp?v=1649703009"},
-  {"file": "e2z-logo.png", "url": "https://e2zstore.com/wp-content/uploads/2025/05/e2z_logo_2025.png"},
-  {"file": "e2z-favicon.jpg", "url": "https://e2zstore.com/wp-content/uploads/2025/05/48-x48.jpg"},
-  {"file": "gameloot-logo.jpg", "url": "https://gameloot.in/wp-content/themes/virtue-child/assets/images/LogoGameLoot.jpg"},
-  {"file": "gameloot-favicon.ico", "url": "https://gameloot.in/favicon.ico"},
-  {"file": "gameloot-touch.png", "url": "https://gameloot.in/apple-touch-icon.png"},
-  {"file": "gamenation-logo.png", "url": "https://www.gamenation.in/images/logo.png"},
-  {"file": "gamenation-icon.png", "url": "https://www.gamenation.in/icon.png"},
-  {"file": "gamenation-apple.png", "url": "https://www.gamenation.in/apple-icon.png"}
+  {
+    "file": "consolegarage-mark.png",
+    "url": "https://cdn.shopify.com/s/files/1/0572/1869/5227/files/CGLogoOnly512_1.png"
+  },
+  {
+    "file": "consolegarage-wordmark.webp",
+    "url": "https://consolegarage.com/cdn/shop/files/Frame_36_b2e9df8e-d5a9-4e54-9a4e-40b751c4cf78.webp?v=1649703009"
+  },
+  {
+    "file": "e2z-logo.png",
+    "url": "https://e2zstore.com/wp-content/uploads/2025/05/e2z_logo_2025.png"
+  },
+  {
+    "file": "e2z-favicon.jpg",
+    "url": "https://e2zstore.com/wp-content/uploads/2025/05/48-x48.jpg"
+  },
+  {
+    "file": "gameloot-logo.jpg",
+    "url": "https://gameloot.in/wp-content/themes/virtue-child/assets/images/LogoGameLoot.jpg"
+  },
+  {
+    "file": "gameloot-favicon.ico",
+    "url": "https://gameloot.in/favicon.ico"
+  },
+  {
+    "file": "gameloot-touch.png",
+    "url": "https://gameloot.in/apple-touch-icon.png"
+  },
+  {
+    "file": "gamenation-logo.png",
+    "url": "https://www.gamenation.in/images/logo.png"
+  },
+  {
+    "file": "gamenation-icon.png",
+    "url": "https://www.gamenation.in/icon.png"
+  },
+  {
+    "file": "gamenation-apple.png",
+    "url": "https://www.gamenation.in/apple-icon.png"
+  },
+  {
+    "file": "e2z-google256.png",
+    "url": "https://www.google.com/s2/favicons?domain=e2zstore.com&sz=256"
+  },
+  {
+    "file": "e2z-ddg.ico",
+    "url": "https://icons.duckduckgo.com/ip3/e2zstore.com.ico"
+  },
+  {
+    "file": "e2z-gstatic.png",
+    "url": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://e2zstore.com&size=256"
+  },
+  {
+    "file": "gameloot-google256.png",
+    "url": "https://www.google.com/s2/favicons?domain=gameloot.in&sz=256"
+  },
+  {
+    "file": "gameloot-ddg.ico",
+    "url": "https://icons.duckduckgo.com/ip3/gameloot.in.ico"
+  },
+  {
+    "file": "gameloot-gstatic.png",
+    "url": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gameloot.in&size=256"
+  }
 ]
