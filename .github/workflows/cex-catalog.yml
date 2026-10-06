@@ -1,6 +1,6 @@
-# Captures CeX India's PS5 games (its public Algolia search index, the same one
-# in.webuy.com queries from the browser) into catalog/cex/. Also writes a small
-# probe file (facets + sample hit) to help keep the adapter mapping honest.
+# Captures CeX India's PS5 games catalogue (Algolia index prod_cex_in via the
+# site's own search proxy, with the public search-only key the site ships to
+# every browser) into catalog/cex/. One page at a time with a pause.
 name: CeX catalogue
 on:
   push:
@@ -13,47 +13,38 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Fetch
+      - name: Fetch pages
         run: |
           python3 - <<'PY'
           import json, os, time, urllib.parse, urllib.request
-          APP, KEY, IDX = 'LNNFEEWZVA', 'bf79f2b6699e60a18ae330a1248b452c', 'prod_cex_in'
-          H = {'X-Algolia-Application-Id': APP, 'X-Algolia-API-Key': KEY, 'Content-Type': 'application/json',
-               'Origin': 'https://in.webuy.com', 'Referer': 'https://in.webuy.com/', 'User-Agent': 'Mozilla/5.0 (Lowscore price comparison)'}
-          def q(params, host='https://search.webuy.io'):   # CeX's own search proxy (the site has isAlgoliaProxyEnabled)
-              body = json.dumps({'params': urllib.parse.urlencode(params)}).encode()
-              req = urllib.request.Request(f'{host}/1/indexes/{IDX}/query', data=body, headers=H, method='POST')
-              return json.load(urllib.request.urlopen(req, timeout=30))
           os.makedirs('catalog/cex', exist_ok=True)
-          # The index doesn't allow category filters, so search broadly and keep the
-          # PS5 game hits. Small pages and a pause: the public key is rate limited.
-          titles = [t['title'] for t in json.load(open('ratings/titles.json'))]
-          queries = ['ps5', 'playstation 5 game', 'ps5 pre-owned'] + titles
-          seen = {}; cats = {}; errors = []
-          for i, term in enumerate(queries):
-              for page in range(10 if i < 3 else 1):
-                  try: r = q({'query': term, 'hitsPerPage': 100 if i < 3 else 20, 'page': page})
-                  except Exception as e:
-                      body = getattr(e, 'read', lambda: b'')()[:300]; errors.append(f'{term} p{page}: {e} {body}'); break
-                  for h in r.get('hits', []):
-                      cn = (h.get('categoryName') or ''); cats[cn] = cats.get(cn, 0) + 1
-                      c = cn.lower().replace(' ', '')
-                      if c == 'playstation5software':
-                          h.pop('_highlightResult', None); h.pop('_snippetResult', None); seen[h['boxId']] = h
-                  if page + 1 >= r.get('nbPages', 0): break
-                  time.sleep(0.4)
-              time.sleep(0.4)
-          open('catalog/cex/errors.txt', 'w').write('\n'.join(errors[:30]) + f'\nerrors={len(errors)} queries={len(queries)}\n')
-          hits = list(seen.values())
-          json.dump(dict(sorted(cats.items(), key=lambda kv: -kv[1])), open('catalog/cex/categories.json', 'w'), indent=1)
-          print('PS5 game boxes', len(hits), 'new', sum(1 for h in hits if h.get('new')), 'in store', sum(1 for h in hits if h.get('inStockStore')), 'online', sum(1 for h in hits if h.get('inStockOnline')))
-          json.dump(hits, open('catalog/cex/hits.json', 'w'))
-          print('total', len(hits))
+          for f in os.listdir('catalog/cex'): os.remove('catalog/cex/' + f)
+          H = {'x-algolia-application-id': 'LNNFEEWZVA', 'x-algolia-api-key': 'bf79f2b6699e60a18ae330a1248b452c',
+               'Content-Type': 'application/json', 'Origin': 'https://in.webuy.com', 'Referer': 'https://in.webuy.com/',
+               'User-Agent': 'Lowscore/0.1 (price comparison; https://github.com/SiriusBlack2196/ps5-deal-finder)'}
+          KEEP = ['boxId', 'boxName', 'sellPrice', 'firstPrice', 'previousPrice', 'categoryName', 'availability', 'new', 'imageUrls', 'boxWebBuyAllowed', 'webBuyAllowed', 'gradeId', 'discontinued']
+          def q(params):
+              body = json.dumps({'params': urllib.parse.urlencode(params)}).encode()
+              req = urllib.request.Request('https://search.webuy.io/1/indexes/prod_cex_in/query', data=body, headers=H, method='POST')
+              return json.load(urllib.request.urlopen(req, timeout=30))
+          t = q({'query': 'spider-man 2', 'hitsPerPage': 3, 'filters': 'categoryName:"Playstation5 Software"'})
+          print('test', t.get('nbHits'), [h['boxName'] for h in t['hits']])
+          page, total = 0, 0
+          while True:
+              r = q({'query': '', 'hitsPerPage': 500, 'page': page, 'filters': 'categoryName:"Playstation5 Software"'})
+              hits = [{k: h.get(k) for k in KEEP} for h in r.get('hits', [])]
+              if not hits: break
+              json.dump(hits, open(f'catalog/cex/cex-{page+1:02d}.json', 'w'))
+              total += len(hits); print('page', page, len(hits), 'of', r.get('nbHits'))
+              page += 1
+              if page >= r.get('nbPages', 0): break
+              time.sleep(1)
+          print('total', total)
           PY
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add catalog/cex
-          git diff --cached --quiet || git commit -m "CeX catalogue: $(python3 -c "import json;print(len(json.load(open('catalog/cex/hits.json'))))" 2>/dev/null) items"
+          git diff --cached --quiet || git commit -m "CeX catalogue: $(ls catalog/cex | wc -l) pages"
           git pull --rebase -q && git push
