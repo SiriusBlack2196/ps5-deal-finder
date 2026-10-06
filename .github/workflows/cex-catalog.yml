@@ -1,6 +1,6 @@
 # Captures CeX India's PS5 games catalogue (Algolia index prod_cex_in via the
 # site's own search proxy, with the public search-only key the site ships to
-# every browser) into catalog/cex/. One page at a time with a pause.
+# every browser) into catalog/cex/ for the snapshot build (mapCexHit). One page at a time.
 name: CeX catalogue
 on:
   push:
@@ -22,29 +22,12 @@ jobs:
           H = {'x-algolia-application-id': 'LNNFEEWZVA', 'x-algolia-api-key': 'bf79f2b6699e60a18ae330a1248b452c',
                'Content-Type': 'application/json', 'Origin': 'https://in.webuy.com', 'Referer': 'https://in.webuy.com/',
                'User-Agent': 'Lowscore/0.1 (price comparison; https://github.com/SiriusBlack2196/ps5-deal-finder)'}
-          KEEP = ['boxId', 'boxName', 'sellPrice', 'firstPrice', 'previousPrice', 'categoryName', 'availability', 'new', 'imageUrls', 'boxWebBuyAllowed', 'webBuyAllowed', 'gradeId', 'discontinued']
+          KEEP = ['boxId', 'boxName', 'sellPrice', 'categoryName', 'categoryId', 'availability', 'new', 'imageUrls', 'inStockStore', 'inStockOnline', 'showOnWeb']
           def q(params):
               body = json.dumps({'params': urllib.parse.urlencode(params)}).encode()
               req = urllib.request.Request('https://search.webuy.io/1/indexes/prod_cex_in/query', data=body, headers=H, method='POST')
               return json.load(urllib.request.urlopen(req, timeout=30))
-          dbg = []
-          FILTER = None
-          t = q({'query': 'spider-man 2', 'hitsPerPage': 5})
-          ps5 = next(h for h in t['hits'] if h.get('categoryName') == 'Playstation5 Software')
-          cid, cfn = ps5.get('categoryId'), ps5.get('categoryFriendlyName')
-          dbg.append(f'categoryId={cid!r} categoryFriendlyName={cfn!r}')
-          for name, extra in [('filters categoryId=', {'filters': f'categoryId={cid}'}),
-                              ('filters categoryId:', {'filters': f'categoryId:{cid}'}),
-                              ('facetFilters categoryId', {'facetFilters': json.dumps([f'categoryId:{cid}'])}),
-                              ('facetFilters categoryFriendlyName', {'facetFilters': json.dumps([f'categoryFriendlyName:{cfn}'])}),
-                              ('numericFilters categoryId', {'numericFilters': f'categoryId={cid}'})]:
-              try:
-                  t = q({'query': '', 'hitsPerPage': 3, **extra})
-                  dbg.append(f"{name}: nbHits={t.get('nbHits')} {[(h.get('boxName'), h.get('categoryName')) for h in t.get('hits', [])]}")
-                  if FILTER is None and t.get('nbHits') and all(h.get('categoryName') == 'Playstation5 Software' for h in t['hits']): FILTER = extra
-              except Exception as e:
-                  dbg.append(f'{name}: ERROR {e}')
-          open('catalog/cex/debug.txt', 'w').write('\n'.join(dbg) + f'\nusing {FILTER}\n')
+          FILTER = {'filters': 'categoryId:1063'}   # 1063 = Playstation5 Games
           page, total = 0, 0
           while FILTER:
               r = q({'query': '', 'hitsPerPage': 500, 'page': page, **FILTER})

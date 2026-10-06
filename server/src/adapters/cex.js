@@ -23,6 +23,7 @@ const HEADERS = {
   Referer: `${SITE}/`,
 };
 export const CEX_PS5_CATEGORY = 'Playstation5 Software';
+export const CEX_PS5_CATEGORY_ID = 1063;
 
 /** Maps one CeX search hit to a raw listing (also used by the snapshot build). */
 export function mapCexHit(h, fetchedAt) {
@@ -49,7 +50,9 @@ export const cexAdapter = {
   homepage: SITE,
   async search(query, { http, signal }) {
     const term = storeSearchTerm(query) || query;
-    const params = new URLSearchParams({ query: term, hitsPerPage: '40' }).toString();
+    // categoryId 1063 = "Playstation5 Games" (Algolia filter on the name itself doesn't work), so all
+    // 40 hits are PS5 games instead of PS4 copies and controllers crowding them out.
+    const params = new URLSearchParams({ query: term, hitsPerPage: '40', filters: `categoryId:${CEX_PS5_CATEGORY_ID}` }).toString();
     const data = await http.postJSON(SEARCH, { params }, { signal, headers: HEADERS });
     if (!data || !Array.isArray(data.hits)) throw new Error('Unexpected response shape');
     const fetchedAt = new Date().toISOString();
