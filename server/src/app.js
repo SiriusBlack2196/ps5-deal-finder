@@ -74,15 +74,15 @@ export function createApp({ adapters, searchService, db }) {
     thumbMap = Object.fromEntries(list.filter((t) => fs.existsSync(path.join(thumbsDir, 'out', t.file))).map((t) => [t.key, t.file]));
   } catch { /* no thumbnails built yet */ }
   app.get('/api/thumbs', (_req, res) => res.set('Cache-Control', 'public, max-age=3600').json(thumbMap));
-  // Wide key art for results backdrops (built by .github/workflows/heroes.yml).
+  // In-game screenshots for results backdrops (built by .github/workflows/screens.yml).
   const heroesDir = path.resolve(new URL('.', import.meta.url).pathname, '../../heroes');
   let heroMap = {};
   try {
-    const list = JSON.parse(fs.readFileSync(path.join(heroesDir, 'urls.json'), 'utf8'));
-    heroMap = Object.fromEntries(Object.entries(list).filter(([, v]) => fs.existsSync(path.join(heroesDir, 'out', v.file))).map(([k, v]) => [k, v.file]));
+    const list = JSON.parse(fs.readFileSync(path.join(heroesDir, 'screens.json'), 'utf8'));
+    heroMap = Object.fromEntries(Object.entries(list).filter(([, v]) => fs.existsSync(path.join(heroesDir, 'screens', v.file))).map(([k, v]) => [k, v.file]));
   } catch { /* none yet */ }
   app.get('/api/heroes', (_req, res) => res.set('Cache-Control', 'public, max-age=3600').json(heroMap));
-  app.use('/heroes', express.static(path.join(heroesDir, 'out'), { maxAge: '7d', immutable: true }));
+  app.use('/heroes', express.static(path.join(heroesDir, 'screens'), { maxAge: '7d', immutable: true }));
   app.use('/thumbs/lg', express.static(path.join(thumbsDir, 'lg'), { maxAge: '7d', immutable: true }));
   app.use('/thumbs', express.static(path.join(thumbsDir, 'out'), { maxAge: '7d', immutable: true }));
 

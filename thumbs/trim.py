@@ -48,3 +48,15 @@ def portraitize(im, ratio=5 / 7):
     bg = ImageEnhance.Brightness(bg.filter(ImageFilter.GaussianBlur(radius=max(8, cw // 24)))).enhance(0.7)
     bg.paste(im, (0, (ch - h) // 2))
     return bg, True
+
+
+def trim_letterbox(im, thresh=14, min_frac=0.03):
+    """Crop black cinematic bars from the top/bottom of a screenshot."""
+    g = im.convert('L')
+    w, h = g.size
+    rows = [sum(g.crop((0, y, w, y + 1)).getdata()) / w for y in range(h)]
+    t = next((y for y in range(h) if rows[y] > thresh), 0)
+    b = next((y for y in range(h - 1, -1, -1) if rows[y] > thresh), h - 1) + 1
+    if t / h < min_frac and (h - b) / h < min_frac:
+        return im, False
+    return im.crop((0, t, w, b)), True

@@ -61,7 +61,7 @@ export default function Results({ query, onSearch, onHome, onBack = onHome }) {
       <section className="ps-band relative isolate overflow-hidden">
         {heroBg && (
           <div aria-hidden="true" className="hero-art absolute inset-0 -z-10">
-            <img src={heroBg} alt="" className="size-full object-cover object-[center_30%]" />
+            <img src={heroBg} alt="" className="size-full object-cover object-center" />
           </div>
         )}
         <div className="mx-auto max-w-6xl px-4 pb-10 pt-8 sm:px-8 sm:pb-14 sm:pt-12">

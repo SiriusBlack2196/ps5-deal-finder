@@ -23,6 +23,7 @@ jobs:
           python - <<'PY'
           import json, re, os, io, time, hashlib, requests
           from PIL import Image
+          import sys; sys.path.insert(0, 'thumbs'); from trim import trim_letterbox
           os.makedirs('heroes/screens', exist_ok=True)
           titles = {t['key']: t['title'] for t in json.load(open('ratings/titles.json'))}
           scores = json.load(open('ratings/scores.json'))
@@ -42,6 +43,7 @@ jobs:
           def save(key, url, src):
               r = s.get(url, timeout=30); r.raise_for_status()
               im = Image.open(io.BytesIO(r.content)).convert('RGB')
+              im, _ = trim_letterbox(im)
               if im.width / im.height < 1.5: return False
               im = im.resize((1600, round(1600 * im.height / im.width)), Image.LANCZOS) if im.width > 1600 else im
               f = hashlib.sha1(key.encode()).hexdigest()[:12] + '.webp'

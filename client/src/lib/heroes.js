@@ -1,4 +1,4 @@
-// Wide key art used as the results-page backdrop, keyed like thumbnails.
+// In-game screenshot used as the results-page backdrop, keyed like thumbnails.
 //  - artifact build: heroes.json (data URIs, popular + deal titles) next to the page
 //  - live app: /api/heroes map + /heroes/<file> served by the API
 import { useEffect, useState } from 'react';
