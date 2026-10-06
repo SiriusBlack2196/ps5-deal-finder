@@ -1,0 +1,133 @@
+{
+ "resources": {
+  "results": {
+   "products": [
+    {
+     "handle": "spiderman-2-ps5",
+     "title": "Spiderman 2  PS5",
+     "type": "PS5 Games",
+     "tags": [
+      "PLAYSTATION",
+      "PLAYSTATION 5",
+      "PS",
+      "PS5",
+      "SPIDERMAN",
+      "SPIDERMAN 2"
+     ],
+     "price": "2000.00",
+     "price_min": "2000.00",
+     "price_max": "3700.00",
+     "available": true,
+     "image": "https://cdn.shopify.com/s/files/1/0572/1869/5227/files/81qBiCSoegL._SX679.jpg",
+     "url": "/products/spiderman-2-ps5",
+     "variants": []
+    },
+    {
+     "handle": "spiderman-marvel-ps4",
+     "title": "Spiderman Marvel 2018 PS4",
+     "type": "PS4 Games",
+     "tags": [
+      "ps4"
+     ],
+     "price": "700.00",
+     "price_min": "700.00",
+     "price_max": "2000.00",
+     "available": true,
+     "image": null,
+     "url": "/products/spiderman-marvel-ps4",
+     "variants": []
+    },
+    {
+     "handle": "spiderman-marvel-goty-ps4",
+     "title": "Spiderman Marvel Goty PS4",
+     "type": "PS4 Games",
+     "tags": [
+      "ps4"
+     ],
+     "price": "750.00",
+     "price_min": "750.00",
+     "price_max": "2500.00",
+     "available": true,
+     "image": null,
+     "url": "/products/spiderman-marvel-goty-ps4",
+     "variants": []
+    },
+    {
+     "handle": "marvel-spiderman-miles-morales-ult-edition-ps5",
+     "title": "Marvel Spiderman Miles Morales Ult Edition PS5",
+     "type": "PS5 Games",
+     "tags": [
+      "PS5"
+     ],
+     "price": "1100.00",
+     "price_min": "1100.00",
+     "price_max": "2999.00",
+     "available": true,
+     "image": null,
+     "url": "/products/marvel-spiderman-miles-morales-ult-edition-ps5",
+     "variants": []
+    },
+    {
+     "handle": "spiderman-miles-morales-ps5",
+     "title": "Marvel Spiderman Miles Morales PS5",
+     "type": "PS5 Games",
+     "tags": [
+      "PS5"
+     ],
+     "price": "1100.00",
+     "price_min": "1100.00",
+     "price_max": "1950.00",
+     "available": true,
+     "image": null,
+     "url": "/products/spiderman-miles-morales-ps5",
+     "variants": []
+    },
+    {
+     "handle": "spiderman-miles-morales-ps4",
+     "title": "Spiderman Miles Morales PS4",
+     "type": "PS4 Games",
+     "tags": [],
+     "price": "1100.00",
+     "price_min": "1100.00",
+     "price_max": "1900.00",
+     "available": true,
+     "image": null,
+     "url": "/products/spiderman-miles-morales-ps4",
+     "variants": []
+    },
+    {
+     "handle": "lego-marvel-super-heroes-nintendo-switch",
+     "title": "LEGO MARVEL SUPER HEROES (Nintendo Switch)",
+     "type": "Nintendo Switch Games",
+     "tags": [
+      "switch"
+     ],
+     "price": "1499.00",
+     "price_min": "1499.00",
+     "price_max": "2499.00",
+     "available": true,
+     "image": null,
+     "url": "/products/lego-marvel-super-heroes-nintendo-switch",
+     "variants": []
+    },
+    {
+     "handle": "ps5-marvels-spider-man-remastered-digital-code",
+     "title": "PS5 Marvel's Spider-Man Remastered DIGITAL CODE",
+     "type": "PSN WALLET / DIGITAL GAME",
+     "tags": [
+      "PS5",
+      "PSN",
+      "DIGITAL DOWNLOAD"
+     ],
+     "price": "1400.00",
+     "price_min": "1400.00",
+     "price_max": "1400.00",
+     "available": false,
+     "image": null,
+     "url": "/products/ps5-marvels-spider-man-remastered-digital-code",
+     "variants": []
+    }
+   ]
+  }
+ }
+}

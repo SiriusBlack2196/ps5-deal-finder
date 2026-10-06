@@ -1,0 +1,51 @@
+[
+ {
+  "match": "gameloot\\.in/robots\\.txt|e2zstore\\.com/robots\\.txt|consolegarage\\.com/robots\\.txt",
+  "file": "robots-allow.txt"
+ },
+ {
+  "match": "gameloot\\.in/wp-json/wc/store/v1/products\\?search=spider-man%202",
+  "file": "gameloot/spider-man-2.json"
+ },
+ {
+  "match": "gameloot\\.in/wp-json/",
+  "status": 403,
+  "file": ""
+ },
+ {
+  "match": "e2zstore\\.com/wp-json/wc/store/v1/products\\?search=spider-man%202",
+  "file": "e2z/spider-man-2.json"
+ },
+ {
+  "match": "e2zstore\\.com/wp-json/wc/store/v1/products\\?search=god%20of%20war%20ragnarok",
+  "file": "e2z/god-of-war-ragnarok.json"
+ },
+ {
+  "match": "e2zstore\\.com/wp-json/wc/store/v1/products\\?search=fc%2025",
+  "file": "e2z/fc-25.json"
+ },
+ {
+  "match": "consolegarage\\.com/search/suggest\\.json\\?q=spider-man%202",
+  "file": "consolegarage/suggest-spider-man-2.json"
+ },
+ {
+  "match": "consolegarage\\.com/search/suggest\\.json\\?q=god%20of%20war%20ragnarok",
+  "file": "consolegarage/suggest-god-of-war-ragnarok.json"
+ },
+ {
+  "match": "consolegarage\\.com/search/suggest\\.json\\?q=fc%2025",
+  "file": "consolegarage/suggest-fc-25.json"
+ },
+ {
+  "match": "consolegarage\\.com/products/spiderman-2-ps5\\.js",
+  "file": "consolegarage/products/spiderman-2-ps5.json"
+ },
+ {
+  "match": "consolegarage\\.com/products/god-of-war-ragnarok-ps5\\.js",
+  "file": "consolegarage/products/god-of-war-ragnarok-ps5.json"
+ },
+ {
+  "match": "consolegarage\\.com/products/fc-25-ps5\\.js",
+  "file": "consolegarage/products/fc-25-ps5.json"
+ }
+]

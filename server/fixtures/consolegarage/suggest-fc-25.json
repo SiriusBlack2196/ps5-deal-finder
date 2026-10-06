@@ -1,0 +1,138 @@
+{
+ "resources": {
+  "results": {
+   "products": [
+    {
+     "handle": "fc-25-ps4",
+     "title": "FC 25 PS4",
+     "type": "PS4 Games",
+     "tags": [],
+     "price": "1300.00",
+     "price_min": "1300.00",
+     "price_max": "2500.00",
+     "available": true,
+     "image": null,
+     "url": "/products/fc-25-ps4",
+     "variants": []
+    },
+    {
+     "handle": "fc-25-ps5",
+     "title": "FC 25 PS5",
+     "type": "PS5 Games",
+     "tags": [],
+     "price": "1000.00",
+     "price_min": "1000.00",
+     "price_max": "2200.00",
+     "available": true,
+     "image": null,
+     "url": "/products/fc-25-ps5",
+     "variants": []
+    },
+    {
+     "handle": "fc-25-ea-sports-nintendo-switch",
+     "title": "FC 25 EA SPORTS Nintendo Switch",
+     "type": "Nintendo Switch Games",
+     "tags": [],
+     "price": "1800.00",
+     "price_min": "1800.00",
+     "price_max": "3100.00",
+     "available": true,
+     "image": null,
+     "url": "/products/fc-25-ea-sports-nintendo-switch",
+     "variants": []
+    },
+    {
+     "handle": "fc-26-ps5",
+     "title": "FC 26 PS5",
+     "type": "PS5 Games",
+     "tags": [],
+     "price": "1600.00",
+     "price_min": "1600.00",
+     "price_max": "2700.00",
+     "available": true,
+     "image": null,
+     "url": "/products/fc-26-ps5",
+     "variants": []
+    },
+    {
+     "handle": "fc-26-ps4",
+     "title": "FC 26 PS4",
+     "type": "PS4 Games",
+     "tags": [],
+     "price": "1800.00",
+     "price_min": "1800.00",
+     "price_max": "2800.00",
+     "available": true,
+     "image": null,
+     "url": "/products/fc-26-ps4",
+     "variants": []
+    },
+    {
+     "handle": "fc-24-ps4",
+     "title": "FC 24 PS4",
+     "type": "PS4 Games",
+     "tags": [],
+     "price": "800.00",
+     "price_min": "800.00",
+     "price_max": "2200.00",
+     "available": true,
+     "image": null,
+     "url": "/products/fc-24-ps4",
+     "variants": []
+    },
+    {
+     "handle": "fc-24-ps5",
+     "title": "FC 24 PS5",
+     "type": "PS5 Games",
+     "tags": [],
+     "price": "800.00",
+     "price_min": "800.00",
+     "price_max": "1800.00",
+     "available": true,
+     "image": null,
+     "url": "/products/fc-24-ps5",
+     "variants": []
+    },
+    {
+     "handle": "fc-27-ps5",
+     "title": "FC 27 PS5",
+     "type": "PS5 Games",
+     "tags": [],
+     "price": "4100.00",
+     "price_min": "4100.00",
+     "price_max": "5699.00",
+     "available": true,
+     "image": null,
+     "url": "/products/fc-27-ps5",
+     "variants": []
+    },
+    {
+     "handle": "fc-26-switch",
+     "title": "FC 26 EA SPORTS Nintendo Switch",
+     "type": "Nintendo Switch Games",
+     "tags": [],
+     "price": "2300.00",
+     "price_min": "2300.00",
+     "price_max": "3500.00",
+     "available": true,
+     "image": null,
+     "url": "/products/fc-26-switch",
+     "variants": []
+    },
+    {
+     "handle": "fc-27-nintendo-switch",
+     "title": "FC 27 Nintendo Switch",
+     "type": "Nintendo Switch Games",
+     "tags": [],
+     "price": "3600.00",
+     "price_min": "3600.00",
+     "price_max": "5500.00",
+     "available": true,
+     "image": null,
+     "url": "/products/fc-27-nintendo-switch",
+     "variants": []
+    }
+   ]
+  }
+ }
+}

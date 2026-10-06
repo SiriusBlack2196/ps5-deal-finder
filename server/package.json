@@ -1,0 +1,16 @@
+{
+  "name": "ps5-deal-finder-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "dev": "node --no-warnings --watch src/index.js",
+    "start": "node --no-warnings src/index.js",
+    "test": "node --no-warnings --test test/*.test.js",
+    "samples": "node --no-warnings scripts/sample-results.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

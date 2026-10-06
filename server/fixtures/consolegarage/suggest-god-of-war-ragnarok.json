@@ -1,0 +1,85 @@
+{
+ "resources": {
+  "results": {
+   "products": [
+    {
+     "handle": "god-of-war-ragnarok-ps5",
+     "title": "God Of War Ragnarok PS5",
+     "type": "PS5 Games",
+     "tags": [
+      "GOD OF WAR",
+      "PS5",
+      "RAGNAROK"
+     ],
+     "price": "1600.00",
+     "price_min": "1600.00",
+     "price_max": "2600.00",
+     "available": true,
+     "image": "https://cdn.shopify.com/s/files/1/0572/1869/5227/products/81Pagnfx1DL._SL1500.jpg",
+     "url": "/products/god-of-war-ragnarok-ps5",
+     "variants": []
+    },
+    {
+     "handle": "god-of-war-ragnarok-ps4",
+     "title": "God Of War Ragnarok PS4",
+     "type": "PS4 Games",
+     "tags": [
+      "ps4"
+     ],
+     "price": "1000.00",
+     "price_min": "1000.00",
+     "price_max": "1900.00",
+     "available": true,
+     "image": null,
+     "url": "/products/god-of-war-ragnarok-ps4",
+     "variants": []
+    },
+    {
+     "handle": "god-of-war-2018-ps4",
+     "title": "GOD OF WAR 2018 ps4",
+     "type": "PS4 Games",
+     "tags": [
+      "ps4"
+     ],
+     "price": "450.00",
+     "price_min": "450.00",
+     "price_max": "1149.00",
+     "available": true,
+     "image": null,
+     "url": "/products/god-of-war-2018-ps4",
+     "variants": []
+    },
+    {
+     "handle": "assassins-creed-valhalla-dawn-of-ragnarok-ps5",
+     "title": "Assassin's Creed Valhalla Dawn of Ragnarok PS5",
+     "type": "PS5 Games",
+     "tags": [
+      "PS5"
+     ],
+     "price": "750.00",
+     "price_min": "750.00",
+     "price_max": "1800.00",
+     "available": true,
+     "image": null,
+     "url": "/products/assassins-creed-valhalla-dawn-of-ragnarok-ps5",
+     "variants": []
+    },
+    {
+     "handle": "god-of-war-3-remastered-ps4",
+     "title": "God Of War 3 Remastered PS4",
+     "type": "PS4 Games",
+     "tags": [
+      "ps4"
+     ],
+     "price": "500.00",
+     "price_min": "500.00",
+     "price_max": "1149.00",
+     "available": true,
+     "image": null,
+     "url": "/products/god-of-war-3-remastered-ps4",
+     "variants": []
+    }
+   ]
+  }
+ }
+}

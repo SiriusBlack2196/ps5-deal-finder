@@ -1,0 +1,40 @@
+{
+ "title": "Spiderman 2  PS5",
+ "handle": "spiderman-2-ps5",
+ "type": "PS5 Games",
+ "tags": [
+  "PS5",
+  "SPIDERMAN 2"
+ ],
+ "featured_image": "//cdn.shopify.com/s/files/1/0572/1869/5227/files/81qBiCSoegL._SX679.jpg",
+ "options": [
+  {
+   "name": "Condition",
+   "values": [
+    "Pre-Owned (USED)",
+    "NEW",
+    "BUYBACK (SELL)"
+   ]
+  }
+ ],
+ "variants": [
+  {
+   "id": 41283039789115,
+   "title": "Pre-Owned (USED)",
+   "price": 330000,
+   "available": true
+  },
+  {
+   "id": 41283039821883,
+   "title": "NEW",
+   "price": 370000,
+   "available": true
+  },
+  {
+   "id": 41283039854651,
+   "title": "BUYBACK (SELL)",
+   "price": 200000,
+   "available": true
+  }
+ ]
+}

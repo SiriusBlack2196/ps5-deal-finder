@@ -1,0 +1,40 @@
+{
+ "title": "God Of War Ragnarok PS5",
+ "handle": "god-of-war-ragnarok-ps5",
+ "type": "PS5 Games",
+ "tags": [
+  "PS5",
+  "RAGNAROK"
+ ],
+ "featured_image": "//cdn.shopify.com/s/files/1/0572/1869/5227/products/81Pagnfx1DL._SL1500.jpg",
+ "options": [
+  {
+   "name": "Condition",
+   "values": [
+    "Pre-Owned (USED)",
+    "New",
+    "BUYBACK (SELL)"
+   ]
+  }
+ ],
+ "variants": [
+  {
+   "id": 40797030219835,
+   "title": "Pre-Owned (USED)",
+   "price": 230000,
+   "available": true
+  },
+  {
+   "id": 40797030285371,
+   "title": "New",
+   "price": 260000,
+   "available": true
+  },
+  {
+   "id": 40797034283067,
+   "title": "BUYBACK (SELL)",
+   "price": 160000,
+   "available": true
+  }
+ ]
+}

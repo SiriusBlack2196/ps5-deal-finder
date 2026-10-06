@@ -1,0 +1,70 @@
+[
+ {
+  "id": 615982,
+  "name": "EA Sports FC 25 PC",
+  "permalink": "https://e2zstore.com/product/ea-sports-fc-25-pc/",
+  "prices": {
+   "price": "399900",
+   "currency_minor_unit": 2,
+   "currency_code": "INR"
+  },
+  "is_in_stock": true,
+  "categories": [
+   {
+    "name": "PC Games"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": 606733,
+  "name": "EA Sports FC 25 XBOX",
+  "permalink": "https://e2zstore.com/product/ea-sports-fc-25-xbox/",
+  "prices": {
+   "price": "409900",
+   "currency_minor_unit": 2,
+   "currency_code": "INR"
+  },
+  "is_in_stock": true,
+  "categories": [
+   {
+    "name": "XBOX Games"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": 606597,
+  "name": "EA Sports FC 25 PS4",
+  "permalink": "https://e2zstore.com/product/ea-sports-fc-25-ps4/",
+  "prices": {
+   "price": "269900",
+   "currency_minor_unit": 2,
+   "currency_code": "INR"
+  },
+  "is_in_stock": true,
+  "categories": [
+   {
+    "name": "PS4 Games"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": 606510,
+  "name": "EA Sports FC 25 PS5",
+  "permalink": "https://e2zstore.com/product/ea-sports-fc-25-ps5/",
+  "prices": {
+   "price": "269900",
+   "currency_minor_unit": 2,
+   "currency_code": "INR"
+  },
+  "is_in_stock": true,
+  "categories": [
+   {
+    "name": "PS5 Games"
+   }
+  ],
+  "images": []
+ }
+]

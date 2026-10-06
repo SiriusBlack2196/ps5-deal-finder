@@ -1,0 +1,108 @@
+@import "@fontsource-variable/geist";
+@import "@fontsource/geist-mono/400.css";
+@import "@fontsource/geist-mono/500.css";
+@import "tailwindcss";
+
+/* Visual language after sui.io: black/white sections, one blue, square geometry,
+   regular-weight display type, mono meta, dotted grid lines. */
+@theme {
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-blue: #298DFF;
+  --color-blue-300: #5CA9FF;
+  --color-blue-200: #8FCBFF;
+  --color-orange: #FF6C3D;     /* pre-owned only */
+  --color-surface: #222529;    /* dark cards */
+  --color-surface-2: #343940;
+  --color-grey-700: #4B515B;
+  --color-grey-600: #67707E;
+  --color-grey-500: #89919F;
+  --color-grey-400: #A1A7B2;
+  --color-grey-300: #C2C6CD;   /* lines */
+  --color-grey-100: #EEF0F3;
+  --color-alert: #E5484D;
+
+  --font-sans: "Geist Variable", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ease-sui: cubic-bezier(0.51, 0, 0.08, 1);
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+* { border-radius: 0; }
+
+/* Display type: big, regular weight, tight. */
+.display {
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+.price {
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+/* Dotted rules — Sui's most-used device. */
+.dots-x {
+  background-image: linear-gradient(to right, var(--line, #C2C6CD) 50%, transparent 0);
+  background-size: 6px 1px;
+  background-repeat: repeat-x;
+  height: 1px;
+}
+.on-dark { --line: #4B515B; }
+
+/* Faint grid behind dark hero sections. */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.glow {
+  background:
+    radial-gradient(120% 60% at 50% 115%, rgba(41,141,255,0.55) 0%, rgba(41,141,255,0.12) 45%, transparent 70%),
+    #000;
+}
+
+/* Square arrow button: text block + blue arrow block; arrow slides on hover. */
+.arrow-box { position: relative; overflow: hidden; }
+.arrow-box svg path { transition: transform 375ms var(--ease-sui); }
+.arrow-box svg path:first-child { transform: translateX(-200%); }
+.group:hover .arrow-box svg path:first-child,
+.group:focus-visible .arrow-box svg path:first-child { transform: translateX(0); }
+.group:hover .arrow-box svg path:nth-child(2),
+.group:focus-visible .arrow-box svg path:nth-child(2) { transform: translateX(200%); }
+
+/* Loading: Sui's thin progress line. */
+.progress-track { height: 2px; background: #343940; }
+.progress-fill { height: 2px; background: var(--color-blue); transition: width 525ms var(--ease-sui); }
+
+.skeleton { background: linear-gradient(90deg, #EEF0F3 25%, #F6F7F9 50%, #EEF0F3 75%); background-size: 200% 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton { animation: shimmer 1.3s linear infinite; }
+  @keyframes shimmer { to { background-position: -200% 0; } }
+  .reveal { animation: reveal 700ms var(--ease-sui) both; }
+  @keyframes reveal { from { clip-path: inset(0 0 100% 0); transform: translateY(12px); } to { clip-path: inset(0 0 0 0); transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arrow-box svg path { transition: none; }
+}
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+:focus-visible { outline: 2px solid var(--color-blue); outline-offset: 2px; }

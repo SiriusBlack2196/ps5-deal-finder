@@ -1,0 +1,13 @@
+# Render Blueprint: New > Blueprint > pick this repo.
+services:
+  - type: web
+    name: ps5-deal-finder
+    runtime: docker
+    region: singapore        # closest Render region to India
+    plan: free               # free sleeps after 15 min idle; 'starter' stays awake
+    healthCheckPath: /api/health
+    envVars:
+      - key: BOT_CONTACT
+        sync: false          # you'll be asked for it on first deploy
+      - key: GAMENATION_SEARCH_URL
+        sync: false

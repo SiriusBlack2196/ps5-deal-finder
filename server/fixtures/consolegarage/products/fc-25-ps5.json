@@ -1,0 +1,39 @@
+{
+ "title": "FC 25 PS5",
+ "handle": "fc-25-ps5",
+ "type": "PS5 Games",
+ "tags": [
+  "PS5"
+ ],
+ "featured_image": null,
+ "options": [
+  {
+   "name": "Condition",
+   "values": [
+    "Pre-Owned (USED)",
+    "New",
+    "BUYBACK (SELL)"
+   ]
+  }
+ ],
+ "variants": [
+  {
+   "id": 41895164313659,
+   "title": "Pre-Owned (USED)",
+   "price": 170000,
+   "available": false
+  },
+  {
+   "id": 41895164346427,
+   "title": "New",
+   "price": 220000,
+   "available": true
+  },
+  {
+   "id": 41895164379195,
+   "title": "BUYBACK (SELL)",
+   "price": 100000,
+   "available": true
+  }
+ ]
+}
