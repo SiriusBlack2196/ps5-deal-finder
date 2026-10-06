@@ -166,7 +166,7 @@ function DealCard({ kind, l, storeName }) {
         {l.shipping == null ? ', excl. shipping' : ''}
       </span>
       <span className={`btn-label mt-4 inline-flex h-10 items-center justify-center rounded-full text-sm sm:mt-5 sm:h-11 ${isNew ? 'bg-blue text-white' : 'bg-ink text-white'}`}>
-        Go to store
+        View deal
       </span>
       <span className="sr-only"> (opens {storeName} in a new tab)</span>
     </a>

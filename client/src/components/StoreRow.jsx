@@ -68,7 +68,7 @@ export function ListingRow({ l, storeName, highlight }) {
               tone={highlight ? 'primary' : 'secondary'}
               className="w-full sm:w-auto"
             >
-              Go to store<span className="sr-only"> (opens {storeName} in a new tab)</span>
+              View deal<span className="sr-only"> at {storeName} (opens in a new tab)</span>
             </Button>
           </div>
         </div>
