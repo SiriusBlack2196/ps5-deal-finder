@@ -60,10 +60,7 @@ export default function Home({ onSearch }) {
               >
                 <button onClick={() => onSearch(g)} className="group flex w-full items-center gap-4 px-4 py-4 text-left transition-colors hover:bg-ground sm:px-5 sm:py-5 lg:gap-3 lg:px-4">
                   <Thumb title={g} className="h-20 w-[3.75rem] shrink-0 rounded-box sm:h-24 sm:w-[4.5rem] lg:h-20 lg:w-[3.75rem]" />
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-[1.05rem] font-semibold leading-snug group-hover:text-blue">{g}</span>
-                    <span className="mt-0.5 block whitespace-nowrap text-sm text-muted">Compare prices</span>
-                  </span>
+                  <span className="min-w-0 flex-1 text-[1.05rem] font-semibold leading-snug group-hover:text-blue">{g}</span>
                   <span aria-hidden="true" className="flex size-9 shrink-0 items-center justify-center rounded-full bg-chip lg:size-8 text-ink transition-colors duration-200 group-hover:bg-blue group-hover:text-white">
                     <svg viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
                   </span>
