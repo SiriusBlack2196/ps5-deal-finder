@@ -29,14 +29,19 @@ jobs:
               return json.load(urllib.request.urlopen(req, timeout=30))
           dbg = []
           FILTER = None
-          for name, extra in [('filters categoryName', {'filters': 'categoryName:"Playstation5 Software"'}),
-                              ('facetFilters categoryName', {'facetFilters': json.dumps([['categoryName:Playstation5 Software']])}),
-                              ('facetFilters categoryFriendlyName', {'facetFilters': json.dumps([['categoryFriendlyName:Playstation5 Software']])}),
-                              ('no filter', {})]:
+          t = q({'query': 'spider-man 2', 'hitsPerPage': 5})
+          ps5 = next(h for h in t['hits'] if h.get('categoryName') == 'Playstation5 Software')
+          cid, cfn = ps5.get('categoryId'), ps5.get('categoryFriendlyName')
+          dbg.append(f'categoryId={cid!r} categoryFriendlyName={cfn!r}')
+          for name, extra in [('filters categoryId=', {'filters': f'categoryId={cid}'}),
+                              ('filters categoryId:', {'filters': f'categoryId:{cid}'}),
+                              ('facetFilters categoryId', {'facetFilters': json.dumps([f'categoryId:{cid}'])}),
+                              ('facetFilters categoryFriendlyName', {'facetFilters': json.dumps([f'categoryFriendlyName:{cfn}'])}),
+                              ('numericFilters categoryId', {'numericFilters': f'categoryId={cid}'})]:
               try:
-                  t = q({'query': 'spider-man 2', 'hitsPerPage': 3, **extra})
+                  t = q({'query': '', 'hitsPerPage': 3, **extra})
                   dbg.append(f"{name}: nbHits={t.get('nbHits')} {[(h.get('boxName'), h.get('categoryName')) for h in t.get('hits', [])]}")
-                  if FILTER is None and extra and t.get('nbHits'): FILTER = extra
+                  if FILTER is None and t.get('nbHits') and all(h.get('categoryName') == 'Playstation5 Software' for h in t['hits']): FILTER = extra
               except Exception as e:
                   dbg.append(f'{name}: ERROR {e}')
           open('catalog/cex/debug.txt', 'w').write('\n'.join(dbg) + f'\nusing {FILTER}\n')
