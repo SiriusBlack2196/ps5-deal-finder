@@ -7,6 +7,7 @@ import { pickGame, applyFilters, bestDeals, priceSpread, editionsIn } from '../l
 import { inr } from '../lib/format.js';
 import { Button, LogoMark, Price, Stars, Wordmark } from './ui.jsx';
 import { getRating } from '../lib/ratings.js';
+import { useHero } from '../lib/heroes.js';
 
 const DEFAULT_FILTERS = { condition: 'all', inStockOnly: true, edition: 'all' };
 
@@ -33,6 +34,7 @@ export default function Results({ query, onSearch, onHome, onBack = onHome }) {
   const heroTitle = game.fallbackTitle || pickTitle(game.listings, query) || query;
   const cachedThumb = useThumb(game.listings.length ? heroTitle : null, 'lg');
   const heroImage = (bestNew || bestUsed || game.listings[0])?.imageUrl || cachedThumb;
+  const heroBg = useHero(game.listings.length ? heroTitle : null);
   const nothingAnywhere = finished && game.listings.length === 0;
 
   const doneCount = stores.length - pending.length;
@@ -56,7 +58,12 @@ export default function Results({ query, onSearch, onHome, onBack = onHome }) {
         </div>
       </div>
 
-      <section className="ps-band">
+      <section className="ps-band relative isolate overflow-hidden">
+        {heroBg && (
+          <div aria-hidden="true" className="hero-art absolute inset-0 -z-10">
+            <img src={heroBg} alt="" className="size-full object-cover object-[center_30%]" />
+          </div>
+        )}
         <div className="mx-auto max-w-6xl px-4 pb-10 pt-8 sm:px-8 sm:pb-14 sm:pt-12">
           {error && <p role="alert" className="mb-6 rounded-card bg-white p-4 text-red">{error}</p>}
 
