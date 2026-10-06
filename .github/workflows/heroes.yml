@@ -1,0 +1,68 @@
+# Wide key art for the results-page backdrop. For every game with a critic score
+# (ratings/scores.json -> Metacritic page), take the page's JSON-LD image, fetch it
+# at 1600x900, and save a 1280x720 WebP to heroes/out/. Map in heroes/urls.json.
+name: Hero backdrops
+on:
+  push:
+    paths: ['ratings/scores.json', '.github/workflows/heroes.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  heroes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install requests pillow
+      - name: Fetch key art
+        run: |
+          python - <<'PY'
+          import json, re, os, io, time, hashlib, requests
+          from PIL import Image
+          os.makedirs('heroes/out', exist_ok=True)
+          scores = json.load(open('ratings/scores.json'))
+          try: out = json.load(open('heroes/urls.json'))
+          except Exception: out = {}
+          s = requests.Session(); s.headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36'
+          def ld_image(html):
+              for m in re.finditer(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', html, re.S):
+                  try: d = json.loads(m.group(1))
+                  except Exception: continue
+                  for x in (d if isinstance(d, list) else [d]):
+                      img = isinstance(x, dict) and x.get('image')
+                      if isinstance(img, list): img = img[0] if img else None
+                      if isinstance(img, dict): img = img.get('url')
+                      if img: return img
+          ok = 0
+          for key, v in sorted(scores.items()):
+              if not v or not v.get('url'): continue
+              f = hashlib.sha1(key.encode()).hexdigest()[:12] + '.webp'
+              if key in out and os.path.exists('heroes/out/' + out[key]['file']): ok += 1; continue
+              try:
+                  r = s.get(v['url'], timeout=20)
+                  img = r.status_code == 200 and ld_image(r.text)
+                  if not img: time.sleep(0.8); continue
+                  big = re.sub(r'width=\d+', 'width=1600', re.sub(r'height=\d+', 'height=900', img))
+                  ir = s.get(big, timeout=30); ir.raise_for_status()
+                  im = Image.open(io.BytesIO(ir.content)).convert('RGB')
+                  w, h = im.size
+                  if w / h < 1.3: time.sleep(0.8); continue   # not wide art; skip
+                  im.thumbnail((1280, 720), Image.LANCZOS)
+                  im.save('heroes/out/' + f, 'WEBP', quality=62, method=6)
+                  out[key] = {'file': f, 'src': big}; ok += 1
+              except Exception as e:
+                  print('FAIL', key, e)
+              time.sleep(1.0)
+          json.dump(out, open('heroes/urls.json', 'w'), indent=1, sort_keys=True)
+          print('heroes', ok)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add heroes
+          git diff --cached --quiet || git commit -m "Hero backdrops: $(ls heroes/out | wc -l)"
+          git pull --rebase -q && git push
