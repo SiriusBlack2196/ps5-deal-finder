@@ -54,12 +54,22 @@ export function Chip({ children, tone = 'plain' }) {
   return <span className={`inline-flex h-6 items-center rounded-full px-2.5 text-xs font-semibold ${tones[tone]}`}>{children}</span>;
 }
 
-/** Simple wordmark: a blue rounded square with a rupee sign (deliberately not Sony's logo). */
+/** Logo mark: a magnifying glass with a rupee sign in the lens ("search for prices"). */
+export function LogoMark({ className = 'size-8' }) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden="true">
+      <circle cx="13.5" cy="13.5" r="9.6" fill="#fff" stroke="var(--color-blue)" strokeWidth="3.2" />
+      <path d="M21 21 L28.2 28.2" stroke="var(--color-blue)" strokeWidth="4.2" strokeLinecap="round" />
+      <path d="M9.6 8.9 H17.4 M9.6 11.9 H17.4 M11.2 8.9 Q15.9 8.9 15.9 11.9 Q15.9 14.9 10.6 14.9 L15.6 19.2" fill="none" stroke="#14213D" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function Wordmark({ onDark = false }) {
   return (
-    <span className="inline-flex items-center gap-2.5">
-      <span aria-hidden="true" className="flex size-8 items-center justify-center rounded-box bg-blue text-[1rem] font-bold text-white">₹</span>
-      <span className={`text-[1.05rem] font-semibold ${onDark ? 'text-white' : 'text-ink'}`}>Lowscore</span>
+    <span className="inline-flex items-center gap-2">
+      <LogoMark />
+      <span className={`text-[1.15rem] font-bold tracking-[-0.01em] ${onDark ? 'text-white' : 'text-ink'}`}>Lowscore</span>
     </span>
   );
 }

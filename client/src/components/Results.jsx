@@ -5,7 +5,7 @@ import { useSearch } from '../lib/api.js';
 import { useThumb } from '../lib/thumbs.jsx';
 import { pickGame, applyFilters, bestDeals, priceSpread, editionsIn } from '../lib/derive.js';
 import { inr } from '../lib/format.js';
-import { Button, Price, Stars, Wordmark } from './ui.jsx';
+import { Button, LogoMark, Price, Stars, Wordmark } from './ui.jsx';
 import { getRating } from '../lib/ratings.js';
 
 const DEFAULT_FILTERS = { condition: 'all', inStockOnly: true, edition: 'all' };
@@ -50,7 +50,7 @@ export default function Results({ query, onSearch, onHome, onBack = onHome }) {
           </button>
           <button onClick={onHome} aria-label="Lowscore home" className="-ml-2 shrink-0 rounded-box">
             <span className="hidden sm:inline"><Wordmark /></span>
-            <span aria-hidden="true" className="flex size-8 items-center justify-center rounded-box bg-blue font-bold text-white sm:hidden">₹</span>
+            <span className="sm:hidden"><LogoMark /></span>
           </button>
           <div className="min-w-0 flex-1 sm:max-w-xl"><SearchBox initial={query} onSearch={onSearch} size="sm" /></div>
         </div>
