@@ -10,7 +10,7 @@ import { getRating } from '../lib/ratings.js';
 
 const DEFAULT_FILTERS = { condition: 'all', inStockOnly: true, edition: 'all' };
 
-export default function Results({ query, onSearch, onHome }) {
+export default function Results({ query, onSearch, onHome, onBack = onHome }) {
   const { stores, byStore, finished, error } = useSearch(query);
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
   useEffect(() => setFilters(DEFAULT_FILTERS), [query]);
@@ -42,7 +42,13 @@ export default function Results({ query, onSearch, onHome }) {
     <div className="min-h-dvh bg-ground">
       <div className="sticky top-[env(safe-area-inset-top,0px)] z-20 bg-white shadow-[0_1px_0_var(--color-line)]">
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4 sm:px-8">
-          <button onClick={onHome} aria-label="Back to home" className="shrink-0 rounded-box">
+          <button
+            type="button" onClick={onBack} aria-label="Back"
+            className="-ml-1 flex size-10 shrink-0 items-center justify-center rounded-full text-ink transition-colors duration-200 hover:bg-chip"
+          >
+            <svg viewBox="0 0 20 20" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12.5 4.5L7 10l5.5 5.5" /></svg>
+          </button>
+          <button onClick={onHome} aria-label="PS5 Deal Finder home" className="-ml-2 shrink-0 rounded-box">
             <span className="hidden sm:inline"><Wordmark /></span>
             <span aria-hidden="true" className="flex size-8 items-center justify-center rounded-box bg-blue font-bold text-white sm:hidden">₹</span>
           </button>
