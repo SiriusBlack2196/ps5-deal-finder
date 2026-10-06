@@ -1,0 +1,4 @@
+007-first-light 200 ldjson=True len=760788
+a-plague-tale-innocence 200 ldjson=True len=743839
+a-plague-tale-requiem 200 ldjson=True len=743689
+scored=321 of 412 at 2026-10-06T15:11:43.116217Z
