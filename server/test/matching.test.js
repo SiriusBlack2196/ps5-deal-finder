@@ -76,3 +76,8 @@ test('Best deals: new + in stock only, one card per game, biggest % first', asyn
   ]);
   assert.deepEqual(d.map((x) => [x.title, x.store, x.discountPct]), [['Astro Bot', 'b', 50], ['Ghost of Yotei', 'a', 20]]);
 });
+
+test('Empty steelbooks are merch; steelbook editions with the game are games', () => {
+  assert.equal(detectKind('Onimusha Way of The Sword PS5 Steelbook (No Game Included) (Pre-owned)'), 'merch');
+  assert.equal(detectKind('NIOH 3 STEELBOOK EDITION PS5'), 'game');
+});
