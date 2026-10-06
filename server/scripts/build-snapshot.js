@@ -6,7 +6,7 @@
 //   node scripts/build-snapshot.js <dir-with-catalogues> <out.json>
 //
 // Expected files in <dir>: cg*.json (Shopify collection products.json pages),
-// e2z*.json (WooCommerce Store API pages), gn*.json (Game Nation games API pages).
+// e2z*.json and gl*.json (WooCommerce Store API pages: E2Z, Gameloot), gn*.json (Game Nation games API pages).
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -47,23 +47,27 @@ for (const page of read('cg')) {
   }
 }
 
-// E2Z (WooCommerce Store API: prices in minor units)
-for (const page of read('e2z')) {
-  for (const p of page) {
-    const cats = (p.categories || []).map((c) => decode(c.name));
-    listings.push({
-      store: 'e2z',
-      title: decode(p.name),
-      price: wooPrice(p.prices),
-      mrp: wooPrice({ ...p.prices, price: p.prices?.regular_price }),
-      shipping: null,
-      inStock: Boolean(p.is_in_stock),
-      url: p.permalink,
-      imageUrl: p.images?.[0]?.thumbnail || null,
-      fetchedAt,
-      hints: cats,
-      conditionHint: cats.some((c) => /pre-?owned/i.test(c)) ? 'preowned' : undefined,
-    });
+// WooCommerce Store API stores: E2Z (prices in paise) and Gameloot (rupees).
+// wooPrice() reads currency_minor_unit, so both map the same way.
+for (const [prefix, store, at] of [['e2z', 'e2z', fetchedAt], ['gl', 'gameloot', process.env.GL_AT || fetchedAt]]) {
+  for (const page of read(prefix)) {
+    for (const p of page) {
+      const cats = (p.categories || []).map((c) => decode(c.name));
+      listings.push({
+        store,
+        title: decode(p.name),
+        price: wooPrice(p.prices),
+        mrp: wooPrice({ ...p.prices, price: p.prices?.regular_price }),
+        shipping: null,
+        inStock: Boolean(p.is_in_stock),
+        url: p.permalink,
+        imageUrl: p.images?.[0]?.thumbnail || null,
+        fetchedAt: at,
+        hints: cats,
+        conditionHint: cats.some((c) => /pre-?owned/i.test(c)) ? 'preowned' : undefined,
+        preorder: cats.some((c) => /pre-?order/i.test(c)),
+      });
+    }
   }
 }
 
@@ -87,7 +91,7 @@ const titles = [...new Set(kept.map((l) => displayTitle(l.title)))].sort();
 const snapshot = {
   fetchedAt,
   stores: [
-    { id: 'gameloot', name: 'Gameloot', status: 'unavailable', reason: 'Blocks automated access from outside India, so it isn’t in this snapshot' },
+    { id: 'gameloot', name: 'Gameloot', status: 'ok', count: kept.filter((l) => l.store === 'gameloot').length },
     { id: 'consolegarage', name: 'Console Garage', status: 'ok', count: kept.filter((l) => l.store === 'consolegarage').length },
     { id: 'gamenation', name: 'Game Nation', status: 'ok', count: kept.filter((l) => l.store === 'gamenation').length },
     { id: 'e2z', name: 'E2Z', status: 'ok', count: kept.filter((l) => l.store === 'e2z').length },
