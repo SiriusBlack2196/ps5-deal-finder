@@ -1,0 +1,132 @@
+{
+ "facets": {},
+ "sampleHit": {
+  "new": 0,
+  "scId": "1",
+  "boxId": "SPS5S1TBWBB003",
+  "origin": "IN",
+  "rating": 0,
+  "stores": [
+   "Hyderabad Punjagutta Next Galleria Mall",
+   "Pune Phoenix Mall",
+   "Bengaluru Phoenix Mall",
+   "Mumbai Kurla Phoenix Mall",
+   "Chennai Phoenix Mall",
+   "Bhopal DB City Mall",
+   "Amritsar Nexus Mall",
+   "Mumbai Ghatkopar R City Mall",
+   "Hyderabad Kukatpally Nexus Mall",
+   "Chennai Vadapalani Nexus Vijaya Mall",
+   "Bengaluru Mantri Square Mall",
+   "Chennai VR Mall",
+   "Coimbatore Brookefields Mall"
+  ],
+  "boxName": "Playstation 5 Slim Console, 1TB, White, Discounted Bundle",
+  "buyPerc": 75,
+  "gradeId": null,
+  "imageUrls": {
+   "large": "https://in.static.webuy.com/product_images/Gaming/Playstation5 Consoles/SPS5S1TBWBB003_l.jpg",
+   "small": "https://in.static.webuy.com/product_images/Gaming/Playstation5 Consoles/SPS5S1TBWBB003_s.jpg",
+   "medium": "https://in.static.webuy.com/product_images/Gaming/Playstation5 Consoles/SPS5S1TBWBB003_m.jpg",
+   "masterBoxLarge": null,
+   "masterBoxSmall": null,
+   "masterBoxMedium": null
+  },
+  "sellPrice": 73000,
+  "showOnWeb": 1,
+  "timestamp": "2026-10-06 10:30:13",
+  "boxDeleted": 0,
+  "categoryId": "1062",
+  "firstPrice": 63000,
+  "imageNames": null,
+  "operatorId": null,
+  "outOfStock": [
+   "Raipur City Centre",
+   "Indore Treasure Island Mall",
+   "Udaipur Celebration Mall",
+   "Bangalore Forum Mall",
+   "Ahmedabad Nexus one - Temporarily Closed",
+   "Mumbai Thane RMall",
+   "Jaipur Triton Mall",
+   "Pune Hadapsar Amanora Mall",
+   "Mangalore Forum Mall",
+   "Bombay Vashi Real Tech Park",
+   "Surat VR Mall",
+   "Nashik City Centre",
+   "Nagpur Empress City",
+   "IN Ecommerce",
+   "Hyderabad Meridian Plaza",
+   "Bareilly Phoenix United",
+   "Kanpur Z Square Mall",
+   "Lucknow Phoenix United"
+  ],
+  "masterBoxId": 0,
+  "availability": [
+   "In Stock In Store"
+  ],
+  "cashBuyPrice": 0,
+  "categoryName": "Playstation5 Consoles",
+  "discontinued": 1,
+  "ecomQuantity": 0,
+  "exchangePerc": 85,
+  "inStockStore": 1,
+  "productImage": 0,
+  "superCatName": "Gaming",
+  "boxBuyAllowed": 0,
+  "exchangePrice": 0,
+  "inStockOnline": 0,
+  "masterBoxname": null,
+  "previousPrice": 68500,
+  "productLineId": [
+   39,
+   93
+  ],
+  "webBuyAllowed": 1,
+  "boxSaleAllowed": 1,
+  "firstStockDate": "2026-04-03 15:29:46",
+  "webSaleAllowed": 1,
+  "popularityScore": 0.01754386,
+  "productLineName": [
+   "Games Consoles",
+   "PlayStation 5"
+  ],
+  "webShowBuyPrice": 0,
+  "boxWebBuyAllowed": 0,
+  "collectionStores": [],
+  "firstStockInDate": "2026-04-03 15:29:46",
+  "priceLastChanged": "2026-07-27 21:30:04",
+  "webShowSellPrice": 0,
+  "boxWebSaleAllowed": 1,
+  "boxVisibilityOnWeb": 1,
+  "collectionQuantity": 0,
+  "cashPriceCalculated": 0,
+  "isImageTypeInternal": null,
+  "categoryFriendlyName": "Playstation5 Consoles",
+  "superCatFriendlyName": "Gaming",
+  "exchangePriceCalculated": 0,
+  "priceLastChanged_timestamp": 1785187804,
+  "priceReduced": 0,
+  "firstImageDate": null,
+  "objectID": "SPS5S1TBWBB003",
+  "_highlightResult": {
+   "boxName": {
+    "value": "<em>Playstation</em> <em>5</em> Slim Console, 1TB, White, Discounted Bundle",
+    "matchLevel": "full",
+    "fullyHighlighted": false,
+    "matchedWords": [
+     "playstation",
+     "5"
+    ]
+   },
+   "categoryFriendlyName": {
+    "value": "<em>Playstation5</em> Consoles",
+    "matchLevel": "full",
+    "fullyHighlighted": false,
+    "matchedWords": [
+     "playstation",
+     "5"
+    ]
+   }
+  }
+ }
+}
