@@ -157,28 +157,48 @@
   "url": "https://www.metacritic.com/game/call-of-duty-black-ops-7/"
  },
  "call duty black ops cold war": null,
- "call duty black ops cold war all": null,
+ "call duty black ops cold war all": {
+  "count": 42,
+  "score": 76,
+  "url": "https://www.metacritic.com/game/call-of-duty-black-ops-cold-war/"
+ },
  "call duty modern warfare 2": {
   "count": 100,
   "score": 94,
   "url": "https://www.metacritic.com/game/call-of-duty-modern-warfare-2/"
  },
  "call duty modern warfare 2 3 hk": null,
- "call duty modern warfare 2 all": null,
+ "call duty modern warfare 2 all": {
+  "count": 100,
+  "score": 94,
+  "url": "https://www.metacritic.com/game/call-of-duty-modern-warfare-2/"
+ },
  "call duty modern warfare 2 ppsa08018": null,
  "call duty modern warfare 3": {
   "count": 71,
   "score": 56,
   "url": "https://www.metacritic.com/game/call-of-duty-modern-warfare-iii/"
  },
- "call duty modern warfare 3 all": null,
- "call duty modern warfare 3 uae": null,
+ "call duty modern warfare 3 all": {
+  "count": 71,
+  "score": 56,
+  "url": "https://www.metacritic.com/game/call-of-duty-modern-warfare-iii/"
+ },
+ "call duty modern warfare 3 uae": {
+  "count": 71,
+  "score": 56,
+  "url": "https://www.metacritic.com/game/call-of-duty-modern-warfare-iii/"
+ },
  "call duty vanguard": {
   "count": 72,
   "score": 73,
   "url": "https://www.metacritic.com/game/call-of-duty-vanguard/"
  },
- "call duty vanguard all": null,
+ "call duty vanguard all": {
+  "count": 72,
+  "score": 73,
+  "url": "https://www.metacritic.com/game/call-of-duty-vanguard/"
+ },
  "callisto protocol": {
   "count": 94,
   "score": 69,
@@ -235,13 +255,21 @@
   "score": 63,
   "url": "https://www.metacritic.com/game/cricket-22/"
  },
- "cricket 22 international": null,
+ "cricket 22 international": {
+  "count": 4,
+  "score": 63,
+  "url": "https://www.metacritic.com/game/cricket-22/"
+ },
  "cricket 24": {
   "count": 7,
   "score": 57,
   "url": "https://www.metacritic.com/game/cricket-24/"
  },
- "cricket 24 international": null,
+ "cricket 24 international": {
+  "count": 7,
+  "score": 57,
+  "url": "https://www.metacritic.com/game/cricket-24/"
+ },
  "cricket 26": null,
  "cricket 26 international": null,
  "crimson desert": {
