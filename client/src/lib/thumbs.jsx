@@ -35,11 +35,11 @@ export function Thumb({ title, className = '', fallback = 'light' }) {
   const src = useThumb(title);
   const [failed, setFailed] = useState(false);
   useEffect(() => setFailed(false), [src]);
-  const bg = fallback === 'dark' ? 'bg-surface' : 'bg-grey-100';
+  const bg = fallback === 'dark' ? 'bg-white/10' : 'bg-chip';
   if (!src || failed) {
     return (
-      <span aria-hidden="true" className={`flex items-end p-1.5 ${bg} ${className}`}>
-        <span className="size-2 bg-grey-300" />
+      <span aria-hidden="true" className={`flex items-center justify-center ${bg} ${className}`}>
+        <svg viewBox="0 0 24 24" className="size-1/3 max-h-6 max-w-6 text-line" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="4" y="3" width="16" height="18" rx="2" /><circle cx="12" cy="12" r="3" /></svg>
       </span>
     );
   }

@@ -31,12 +31,13 @@ npm test                                          # 16 tests
 
 ## Visual design
 
-Follows the visual language of sui.io: black hero sections with a blue glow and faint grid, white content
-sections, one blue (`#298DFF`), square geometry throughout, regular-weight display type, mono for meta,
-dotted rules, and text + arrow-block buttons. Sui's typeface (TWK Everett) is licensed, so the app uses
-the free, closely related **Geist / Geist Mono**, self-hosted via `@fontsource` (no Google Fonts request).
-New-copy deals use blue; pre-owned uses orange (`#FF6C3D`) so the two are never confused.
-Tokens live in `client/src/index.css`; shared pieces in `client/src/components/ui.jsx`.
+Follows the visual language of playstation.com: white pages on a cool light-grey ground, deep navy hero
+bands, one PlayStation-style blue (`#0072CE`) for actions, pill buttons and inputs, 8–12px cards, a 2px
+blue ring for hover and focus instead of drop shadows, light-weight display type and bold buttons.
+Sony's SST typeface is proprietary, so the app uses the free humanist **Source Sans 3** (self-hosted via
+`@fontsource`). New-copy deals use blue; pre-owned uses PlayStation Plus yellow (`#FFC800`) so the two are
+never confused. It deliberately uses no Sony logos or PlayStation symbols. Tokens live in
+`client/src/index.css`; shared pieces in `client/src/components/ui.jsx`.
 
 ## How each store is fetched
 

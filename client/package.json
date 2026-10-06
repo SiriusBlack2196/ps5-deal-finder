@@ -10,8 +10,7 @@
     "build:artifact": "VITE_SNAPSHOT=1 vite build && python3 make-artifact.py"
   },
   "dependencies": {
-    "@fontsource-variable/geist": "^5.3.0",
-    "@fontsource/geist-mono": "^5.3.0",
+    "@fontsource-variable/source-sans-3": "^5.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

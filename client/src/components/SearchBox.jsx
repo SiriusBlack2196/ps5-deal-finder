@@ -1,5 +1,4 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { Arrow } from './ui.jsx';
 import { suggest } from '../lib/api.js';
 import { Thumb } from '../lib/thumbs.jsx';
 
@@ -48,7 +47,8 @@ export default function SearchBox({ initial = '', onSearch, size = 'lg', autoFoc
   return (
     <form role="search" onSubmit={(e) => { e.preventDefault(); submit(); }} className="relative w-full">
       <label htmlFor={`${listId}-input`} className="sr-only">Search for a PS5 game</label>
-      <div className={`flex items-stretch bg-white text-black focus-within:shadow-[0_0_0_3px_rgba(41,141,255,0.45)] ${big ? 'h-14 sm:h-16' : 'h-11'}`}>
+      <div className={`flex items-center rounded-full bg-white text-ink shadow-[inset_0_0_0_1px_var(--color-line)] transition-shadow focus-within:shadow-[inset_0_0_0_2px_var(--color-blue)] ${big ? 'h-14 pl-5 pr-1.5 sm:h-16' : 'h-11 pl-4 pr-1'}`}>
+        <svg aria-hidden="true" viewBox="0 0 24 24" className={`${big ? 'size-6' : 'size-5'} shrink-0 text-muted`} fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" strokeLinecap="round" /></svg>
         <input
           id={`${listId}-input`}
           ref={inputRef}
@@ -66,22 +66,18 @@ export default function SearchBox({ initial = '', onSearch, size = 'lg', autoFoc
           aria-controls={listId}
           aria-autocomplete="list"
           aria-activedescendant={active >= 0 ? `${listId}-${active}` : undefined}
-          className={`min-w-0 flex-1 bg-transparent outline-none placeholder:text-grey-500 focus-visible:outline-none ${big ? 'px-5 text-lg sm:text-xl' : 'px-4 text-base'}`}
+          className={`min-w-0 flex-1 bg-transparent outline-none placeholder:text-muted focus-visible:shadow-none ${big ? 'px-3 text-lg' : 'px-2.5 text-base'}`}
         />
         <button
           type="submit"
-          aria-label="Find deals"
-          className={`group flex shrink-0 items-center bg-blue text-white ${big ? 'gap-3 pl-5' : ''}`}
+          className={`btn-label shrink-0 rounded-full bg-blue text-white transition-colors hover:bg-blue-hover active:bg-blue-press ${big ? 'h-11 px-6 text-[0.95rem] sm:h-[3.25rem] sm:px-8' : 'h-9 px-4 text-sm'}`}
         >
-          {big && <span className="hidden text-[0.95rem] sm:inline">Find deals</span>}
-          <span className={`arrow-box flex items-center justify-center ${big ? 'h-full w-14 sm:w-16' : 'h-full w-11'}`}>
-            <Arrow className={big ? 'size-5' : 'size-4'} />
-          </span>
+          {big ? 'Find deals' : 'Search'}
         </button>
       </div>
 
       {showList && (
-        <ul id={listId} role="listbox" className="absolute inset-x-0 top-full z-30 border border-t-0 border-grey-300 bg-white py-1 text-black shadow-[0_16px_40px_-12px_rgba(0,0,0,0.45)]">
+        <ul id={listId} role="listbox" className="absolute inset-x-0 top-full z-30 mt-2 overflow-hidden rounded-card bg-white py-2 text-ink shadow-[0_0_0_1px_var(--color-line),0_16px_40px_-16px_rgba(0,23,46,0.45)]">
           {items.map((t, i) => (
             <li
               key={t}
@@ -90,9 +86,9 @@ export default function SearchBox({ initial = '', onSearch, size = 'lg', autoFoc
               aria-selected={i === active}
               onMouseDown={(e) => { e.preventDefault(); submit(t); }}
               onMouseEnter={() => setActive(i)}
-              className={`flex cursor-pointer items-center gap-3.5 px-4 py-2 text-base ${i === active ? 'bg-grey-100' : ''}`}
+              className={`flex cursor-pointer items-center gap-3.5 px-4 py-2 text-base ${i === active ? 'bg-ground' : ''}`}
             >
-              <Thumb title={t} className={`h-12 w-9 shrink-0 ${i === active ? 'outline-2 outline-blue' : ''}`} />
+              <Thumb title={t} className={`h-12 w-9 shrink-0 rounded-[6px] ${i === active ? 'shadow-[0_0_0_2px_var(--color-blue)]' : ''}`} />
               <span><Highlight text={t} query={value} /></span>
             </li>
           ))}
@@ -106,5 +102,5 @@ function Highlight({ text, query }) {
   const q = query.trim().toLowerCase();
   const i = q ? text.toLowerCase().indexOf(q) : -1;
   if (i < 0) return text;
-  return <>{text.slice(0, i)}<span className="text-blue">{text.slice(i, i + q.length)}</span>{text.slice(i + q.length)}</>;
+  return <>{text.slice(0, i)}<span className="font-bold">{text.slice(i, i + q.length)}</span>{text.slice(i + q.length)}</>;
 }
