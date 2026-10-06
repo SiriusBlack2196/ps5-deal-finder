@@ -1,5 +1,7 @@
-filters categoryName: nbHits=0 []
-facetFilters categoryName: nbHits=0 []
-facetFilters categoryFriendlyName: nbHits=0 []
-no filter: nbHits=34 [('Spider-Man 2 (No DLC)', 'Playstation5 Software'), ('Amazing Spider-Man 2', 'Playstation4 Software'), ('PS5 Official DualSense Controller Spider-Man 2, C', 'Playstation5 Controllers')]
-using None
+categoryId='1063' categoryFriendlyName='Playstation5 Games'
+filters categoryId=: nbHits=0 []
+filters categoryId:: nbHits=560 [('Wolverine', 'Playstation5 Software'), ('Ghost of Yotei', 'Playstation5 Software'), ('Black Myth: Wukong', 'Playstation5 Software')]
+facetFilters categoryId: nbHits=560 [('Wolverine', 'Playstation5 Software'), ('Ghost of Yotei', 'Playstation5 Software'), ('Black Myth: Wukong', 'Playstation5 Software')]
+facetFilters categoryFriendlyName: nbHits=560 [('Wolverine', 'Playstation5 Software'), ('Black Myth: Wukong', 'Playstation5 Software'), ('Onimusha: Way of the Sword', 'Playstation5 Software')]
+numericFilters categoryId: nbHits=0 []
+using {'filters': 'categoryId:1063'}
