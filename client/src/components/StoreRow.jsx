@@ -61,7 +61,7 @@ export function ListingRow({ l, storeName, highlight }) {
               target="_blank"
               rel="noopener noreferrer nofollow"
               size="md"
-              tone={highlight ? 'primary' : 'secondary'}
+              tone="primary"
               className="w-full sm:w-auto"
             >
               View deal<span className="sr-only"> at {storeName} (opens in a new tab)</span>

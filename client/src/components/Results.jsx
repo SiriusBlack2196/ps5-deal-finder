@@ -148,7 +148,7 @@ function DealCard({ kind, l, storeName }) {
       href={l.url}
       target="_blank"
       rel="noopener noreferrer nofollow"
-      className="lift flex flex-col rounded-card bg-white p-4 text-ink sm:p-6"
+      className="lift group flex flex-col rounded-card bg-white p-4 text-ink sm:p-6"
     >
       <span className="flex flex-wrap items-center gap-1.5">
         <span className="inline-flex h-6 w-fit items-center rounded-full bg-green px-2.5 text-xs font-bold text-white">
@@ -161,7 +161,7 @@ function DealCard({ kind, l, storeName }) {
         {l.edition === 'Standard' ? (isNew ? 'New copy' : 'Pre-owned copy') : `${l.edition} edition, ${isNew ? 'new' : 'pre-owned'}`}
         {l.shipping == null ? ', excl. shipping' : ''}
       </span>
-      <span className={`btn-label mt-4 inline-flex h-10 items-center justify-center rounded-full text-sm sm:mt-5 sm:h-11 ${isNew ? 'bg-blue text-white' : 'bg-ink text-white'}`}>
+      <span className={`btn-label mt-4 inline-flex h-10 items-center justify-center rounded-full text-sm sm:mt-5 sm:h-11 bg-blue text-white transition-colors duration-200 group-hover:bg-blue-hover`}>
         View deal
       </span>
       <span className="sr-only"> (opens {storeName} in a new tab)</span>
