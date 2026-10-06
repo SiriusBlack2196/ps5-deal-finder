@@ -37,7 +37,7 @@ export function ListingRow({ l, storeName, highlight }) {
             <p className="text-[1.05rem] font-semibold leading-tight">{storeName}</p>
             <p className="mt-1 line-clamp-2 text-sm text-muted">{l.title}</p>
             <div className="mt-2.5 flex flex-wrap gap-1.5">
-              {l.condition === 'preowned' ? <Chip tone="used">Pre-owned</Chip> : <Chip>New</Chip>}
+              {l.condition === 'preowned' ? <Chip>Pre-owned</Chip> : <Chip>New</Chip>}
               {l.edition !== 'Standard' && <Chip>{l.edition} edition</Chip>}
               {l.platform === 'ps4-ps5-upgrade' && <Chip tone="info">PS4 disc, free PS5 upgrade</Chip>}
               {l.preorder && <Chip tone="info">Pre-order</Chip>}
