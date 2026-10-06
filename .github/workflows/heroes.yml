@@ -45,7 +45,7 @@ jobs:
                   r = s.get(v['url'], timeout=20)
                   img = r.status_code == 200 and ld_image(r.text)
                   if not img: time.sleep(0.8); continue
-                  big = re.sub(r'width=\d+', 'width=1600', re.sub(r'height=\d+', 'height=900', img))
+                  big = img   # signed resize URL: params can't be changed
                   ir = s.get(big, timeout=30); ir.raise_for_status()
                   im = Image.open(io.BytesIO(ir.content)).convert('RGB')
                   w, h = im.size
