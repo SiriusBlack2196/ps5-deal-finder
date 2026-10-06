@@ -159,7 +159,7 @@ function DealCard({ kind, l, storeName }) {
     >
       <span className="flex flex-wrap items-center gap-1.5">
         <span className="inline-flex h-6 w-fit items-center rounded-full bg-green px-2.5 text-xs font-bold text-white">
-          {isNew ? 'Best deal' : 'Best pre-owned'}
+          {isNew ? 'Best deal (sealed pack)' : 'Best pre-owned'}
         </span>
       </span>
       <span className="mt-3"><Price price={l.effectivePrice} mrp={l.mrp} discountPct={l.discountPct} deal size="lg" /></span>
