@@ -1,6 +1,7 @@
 import cgLogo from '../assets/logos/consolegarage.png';
 import gnLogo from '../assets/logos/gamenation.png';
 import e2zLogo from '../assets/logos/e2z.png';
+import glLogo from '../assets/logos/gameloot.png';
 
 const inrFmt = new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 });
 
@@ -21,7 +22,7 @@ export function timeAgo(iso, now = Date.now()) {
 // Logos are bundled (the artifact build can't load images from store servers).
 // `tile` is the badge background the logo sits on.
 export const STORE_STYLE = {
-  gameloot: { mono: 'GL', bg: '#D7261E', fg: '#fff', domain: 'gameloot.in' },
+  gameloot: { logo: glLogo, tile: '#fff', mono: 'GL', bg: '#CB0201', fg: '#fff', domain: 'gameloot.in' },
   consolegarage: { logo: cgLogo, tile: '#fff', mono: 'CG', bg: '#1A80C4', fg: '#fff', domain: 'consolegarage.com' },
   gamenation: { logo: gnLogo, tile: '#fff', mono: 'GN', bg: '#1F7A33', fg: '#fff', domain: 'gamenation.in' },
   e2z: { logo: e2zLogo, tile: '#000', mono: 'E2Z', bg: '#000', fg: '#FFC800', domain: 'e2zstore.com' },

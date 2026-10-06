@@ -850,7 +850,7 @@
  },
  {
   "key": "final fantasy tactics ivalice chronicles",
-  "title": "FINAL FANTASY TACTICS \u2013 the Ivalice Chronicles",
+  "title": "FINAL FANTASY TACTICS – the Ivalice Chronicles",
   "slugs": [
    "final-fantasy-tactics-the-ivalice-chronicles"
   ]
@@ -1484,8 +1484,8 @@
   ]
  },
  {
-  "key": "metal gear solid \u03b4 delta snake eater",
-  "title": "Metal Gear Solid \u0394 Delta Snake Eater",
+  "key": "metal gear solid δ delta snake eater",
+  "title": "Metal Gear Solid Δ Delta Snake Eater",
   "slugs": [
    "metal-gear-solid-delta-snake-eater"
   ]
@@ -1577,7 +1577,7 @@
  },
  {
   "key": "mortal kombat 1 kollectors",
-  "title": "Mortal Kombat 1 Kollector\u2019s Edition",
+  "title": "Mortal Kombat 1 Kollector’s Edition",
   "slugs": [
    "mortal-kombat-1-kollectors",
    "mortal-kombat-1-kollectors-edition"
@@ -1815,7 +1815,7 @@
  },
  {
   "key": "payday 3",
-  "title": "PAYDAY 3 Collector\u2019s Edition",
+  "title": "PAYDAY 3 Collector’s Edition",
   "slugs": [
    "payday-3-collectors",
    "payday-3-collectors-edition"
@@ -2226,7 +2226,7 @@
  },
  {
   "key": "sid meiers civilization 7",
-  "title": "Sid Meier\u2019s Civilization VII",
+  "title": "Sid Meier’s Civilization VII",
   "slugs": [
    "sid-meiers-civilization-vii"
   ]
@@ -2713,7 +2713,7 @@
  },
  {
   "key": "rainbow six extraction",
-  "title": "Tom Clancy\u2019s Rainbow Six Extraction",
+  "title": "Tom Clancy’s Rainbow Six Extraction",
   "slugs": [
    "tom-clancys-rainbow-six-extraction"
   ]
@@ -2727,7 +2727,7 @@
  },
  {
   "key": "tony hawks pro skater 3 4",
-  "title": "Tony Hawk\u2019s Pro Skater 3 + 4",
+  "title": "Tony Hawk’s Pro Skater 3 + 4",
   "slugs": [
    "tony-hawks-pro-skater-3-4"
   ]
@@ -2819,7 +2819,7 @@
  },
  {
   "key": "vampire masquerade bloodlines 2",
-  "title": "Vampire the Masquerade \u2013 Bloodlines 2",
+  "title": "Vampire the Masquerade – Bloodlines 2",
   "slugs": [
    "vampire-the-masquerade-bloodlines-2"
   ]
@@ -2968,9 +2968,867 @@
  },
  {
   "key": "yakuza zero directors cut",
-  "title": "Yakuza Zero Director\u2019s Cut",
+  "title": "Yakuza Zero Director’s Cut",
   "slugs": [
    "yakuza-zero-directors-cut"
+  ]
+ },
+ {
+  "key": "plague tale collection",
+  "title": "A Plague Tale Collection",
+  "slugs": [
+   "a-plague-tale-collection"
+  ]
+ },
+ {
+  "key": "quiet place road ahead",
+  "title": "A Quiet Place the Road Ahead",
+  "slugs": [
+   "a-quiet-place-the-road-ahead"
+  ]
+ },
+ {
+  "key": "aew fight forever",
+  "title": "AEW Fight Forever in",
+  "slugs": [
+   "aew-fight-forever-in"
+  ]
+ },
+ {
+  "key": "alan wake",
+  "title": "Alan Wake",
+  "slugs": [
+   "alan-wake"
+  ]
+ },
+ {
+  "key": "alone dark",
+  "title": "Alone in the Dark",
+  "slugs": [
+   "alone-in-the-dark"
+  ]
+ },
+ {
+  "key": "aragami 2",
+  "title": "Aragami 2",
+  "slugs": [
+   "aragami-2"
+  ]
+ },
+ {
+  "key": "atelier ryza 3",
+  "title": "Atelier Ryza 3",
+  "slugs": [
+   "atelier-ryza-3"
+  ]
+ },
+ {
+  "key": "atomic heart",
+  "title": "Atomic Heart",
+  "slugs": [
+   "atomic-heart"
+  ]
+ },
+ {
+  "key": "babylons fall",
+  "title": "Babylons Fall",
+  "slugs": [
+   "babylons-fall"
+  ]
+ },
+ {
+  "key": "baldurs gate 3",
+  "title": "Baldurs Gate 3",
+  "slugs": [
+   "baldurs-gate-3"
+  ]
+ },
+ {
+  "key": "baldurs gate 3 japanese",
+  "title": "Baldurs Gate 3 (Japanese)",
+  "slugs": [
+   "baldurs-gate-3",
+   "baldurs-gate-3-japanese"
+  ]
+ },
+ {
+  "key": "biomutant",
+  "title": "Biomutant",
+  "slugs": [
+   "biomutant"
+  ]
+ },
+ {
+  "key": "bleach rebirth souls",
+  "title": "Bleach Rebirth of Souls",
+  "slugs": [
+   "bleach-rebirth-of-souls"
+  ]
+ },
+ {
+  "key": "borderlands 3",
+  "title": "Borderlands 3",
+  "slugs": [
+   "borderlands-3"
+  ]
+ },
+ {
+  "key": "call duty black ops 6 esrb",
+  "title": "Call of Duty Black Ops 6 (ESRB, US Region)",
+  "slugs": [
+   "call-of-duty-black-ops-6",
+   "call-of-duty-black-ops-6-esrb-us-region"
+  ]
+ },
+ {
+  "key": "call duty black ops 7 esrb",
+  "title": "Call of Duty Black Ops 7 (ESRB, US Region)",
+  "slugs": [
+   "call-of-duty-black-ops-7",
+   "call-of-duty-black-ops-7-esrb-us-region"
+  ]
+ },
+ {
+  "key": "call duty modern warfare 2 esrb",
+  "title": "Call of Duty Modern Warfare II (ESRB, US Region)",
+  "slugs": [
+   "call-of-duty-modern-warfare-ii",
+   "call-of-duty-modern-warfare-ii-esrb-us-region"
+  ]
+ },
+ {
+  "key": "call duty modern warfare 3 elas 10570 singapore",
+  "title": "Call of Duty Modern Warfare III (ELAS 10570, Singapore Region)",
+  "slugs": [
+   "call-of-duty-modern-warfare-iii",
+   "call-of-duty-modern-warfare-iii-elas-10570-singapore-region"
+  ]
+ },
+ {
+  "key": "call duty modern warfare 3 esrb",
+  "title": "Call of Duty Modern Warfare III (ESRB, US Region)",
+  "slugs": [
+   "call-of-duty-modern-warfare-iii",
+   "call-of-duty-modern-warfare-iii-esrb-us-region"
+  ]
+ },
+ {
+  "key": "call duty modern warfare 3 hong kong",
+  "title": "Call of Duty Modern Warfare III (Hong Kong)",
+  "slugs": [
+   "call-of-duty-modern-warfare-iii",
+   "call-of-duty-modern-warfare-iii-hong-kong"
+  ]
+ },
+ {
+  "key": "concord",
+  "title": "Concord",
+  "slugs": [
+   "concord"
+  ]
+ },
+ {
+  "key": "crimson desert day one",
+  "title": "Crimson Desert Day One Edition",
+  "slugs": [
+   "crimson-desert",
+   "crimson-desert-day-one-edition"
+  ]
+ },
+ {
+  "key": "cronos dawn",
+  "title": "Cronos the New Dawn",
+  "slugs": [
+   "cronos-the-new-dawn"
+  ]
+ },
+ {
+  "key": "cult lamb",
+  "title": "Cult of the Lamb",
+  "slugs": [
+   "cult-of-the-lamb"
+  ]
+ },
+ {
+  "key": "dead island 2",
+  "title": "Dead Island 2",
+  "slugs": [
+   "dead-island-2"
+  ]
+ },
+ {
+  "key": "dead rising remaster",
+  "title": "Dead Rising Deluxe Remaster",
+  "slugs": [
+   "dead-rising-remaster",
+   "dead-rising-deluxe-remaster"
+  ]
+ },
+ {
+  "key": "demon slayer kimetsu no yaiba hinokami chronicles",
+  "title": "Demon Slayer Kimetsu no Yaiba the Hinokami Chronicles",
+  "slugs": [
+   "demon-slayer-kimetsu-no-yaiba-the-hinokami-chronicles"
+  ]
+ },
+ {
+  "key": "destroy all humans 2 reprobed",
+  "title": "Destroy All Humans! 2-Reprobed",
+  "slugs": [
+   "destroy-humans-2-reprobed",
+   "destroy-all-humans-2-reprobed"
+  ]
+ },
+ {
+  "key": "destruction all stars",
+  "title": "Destruction All Stars",
+  "slugs": [
+   "destruction-stars",
+   "destruction-all-stars"
+  ]
+ },
+ {
+  "key": "diablo 4",
+  "title": "Diablo IV",
+  "slugs": [
+   "diablo-iv"
+  ]
+ },
+ {
+  "key": "digimon story time stranger",
+  "title": "Digimon Story Time Stranger",
+  "slugs": [
+   "digimon-story-time-stranger"
+  ]
+ },
+ {
+  "key": "directive 8020",
+  "title": "Directive 8020",
+  "slugs": [
+   "directive-8020"
+  ]
+ },
+ {
+  "key": "dredge",
+  "title": "Dredge",
+  "slugs": [
+   "dredge"
+  ]
+ },
+ {
+  "key": "earth defense force 6",
+  "title": "Earth Defense Force 6",
+  "slugs": [
+   "earth-defense-force-6"
+  ]
+ },
+ {
+  "key": "elden ring nightreign retail",
+  "title": "Elden Ring Nightreign – Retail Disc",
+  "slugs": [
+   "elden-ring-nightreign-retail-disc"
+  ]
+ },
+ {
+  "key": "elden ring retail",
+  "title": "Elden Ring – Retail Disc",
+  "slugs": [
+   "elden-ring-retail-disc"
+  ]
+ },
+ {
+  "key": "everspace 2",
+  "title": "Everspace 2",
+  "slugs": [
+   "everspace-2"
+  ]
+ },
+ {
+  "key": "f1 2023",
+  "title": "F1 2023",
+  "slugs": [
+   "f1-2023"
+  ]
+ },
+ {
+  "key": "fantasy life i girl who steals time",
+  "title": "Fantasy Life I the Girl Who Steals Time",
+  "slugs": [
+   "fantasy-life-i-the-girl-who-steals-time"
+  ]
+ },
+ {
+  "key": "farming simulator 22",
+  "title": "Farming Simulator 22",
+  "slugs": [
+   "farming-simulator-22"
+  ]
+ },
+ {
+  "key": "farming simulator 25",
+  "title": "Farming Simulator 25",
+  "slugs": [
+   "farming-simulator-25"
+  ]
+ },
+ {
+  "key": "final fantasy 7 remake intergrade without episode intermission yuffie",
+  "title": "Final Fantasy 7 Remake Intergrade (Without Episode Intermission Yuffie)",
+  "slugs": [
+   "final-fantasy-7-remake-intergrade",
+   "final-fantasy-7-remake-intergrade-without-episode-intermission-yuffie"
+  ]
+ },
+ {
+  "key": "final fantasy 7 remake intergrade rebirth twin pack",
+  "title": "Final Fantasy VII Remake Intergrade & Rebirth Twin Pack Physical Edition",
+  "slugs": [
+   "final-fantasy-vii-remake-intergrade-and-rebirth-twin-pack",
+   "final-fantasy-vii-remake-intergrade-and-rebirth-twin-pack-physical-edition"
+  ]
+ },
+ {
+  "key": "five nights at freddys security breach",
+  "title": "Five Nights at Freddys Security Breach",
+  "slugs": [
+   "five-nights-at-freddys-security-breach"
+  ]
+ },
+ {
+  "key": "fortnite transformers pack",
+  "title": "Fortnite Transformers Pack",
+  "slugs": [
+   "fortnite-transformers-pack"
+  ]
+ },
+ {
+  "key": "ghostbusters spirits unleashed",
+  "title": "Ghostbusters Spirits Unleashed",
+  "slugs": [
+   "ghostbusters-spirits-unleashed"
+  ]
+ },
+ {
+  "key": "gran turismo 7 25th anniversary",
+  "title": "Gran Turismo 7 (25th Anniversary Edition)",
+  "slugs": [
+   "gran-turismo-7",
+   "gran-turismo-7-25th-anniversary-edition"
+  ]
+ },
+ {
+  "key": "grand theft auto 6 code box",
+  "title": "Grand Theft Auto VI Standard Edition (Code in the Box)",
+  "slugs": [
+   "grand-theft-auto-vi",
+   "grand-theft-auto-vi-standard-edition-code-in-the-box"
+  ]
+ },
+ {
+  "key": "greedfall",
+  "title": "GreedFall",
+  "slugs": [
+   "greedfall"
+  ]
+ },
+ {
+  "key": "green hell",
+  "title": "Green Hell",
+  "slugs": [
+   "green-hell"
+  ]
+ },
+ {
+  "key": "halo campaign evolved",
+  "title": "Halo Campaign Evolved",
+  "slugs": [
+   "halo-campaign-evolved"
+  ]
+ },
+ {
+  "key": "hell let loose",
+  "title": "Hell Let Loose",
+  "slugs": [
+   "hell-let-loose"
+  ]
+ },
+ {
+  "key": "high life 2",
+  "title": "High on Life 2",
+  "slugs": [
+   "high-on-life-2"
+  ]
+ },
+ {
+  "key": "jurassic world evolution 2",
+  "title": "Jurassic World Evolution 2",
+  "slugs": [
+   "jurassic-world-evolution-2"
+  ]
+ },
+ {
+  "key": "just dance 2023 code box",
+  "title": "Just Dance 2023 (Code in the Box)",
+  "slugs": [
+   "just-dance-2023",
+   "just-dance-2023-code-in-the-box"
+  ]
+ },
+ {
+  "key": "kingdom come deliverance",
+  "title": "Kingdom Come Deliverance",
+  "slugs": [
+   "kingdom-come-deliverance"
+  ]
+ },
+ {
+  "key": "life is strange reunion",
+  "title": "Life is Strange Reunion",
+  "slugs": [
+   "life-is-strange-reunion"
+  ]
+ },
+ {
+  "key": "like dragon gaiden man who erased his name",
+  "title": "Like a Dragon Gaiden the Man Who Erased His Name",
+  "slugs": [
+   "like-a-dragon-gaiden-the-man-who-erased-his-name"
+  ]
+ },
+ {
+  "key": "mxgp moto 2020",
+  "title": "MXGP Moto 2020",
+  "slugs": [
+   "mxgp-moto-2020"
+  ]
+ },
+ {
+  "key": "maneater",
+  "title": "Maneater",
+  "slugs": [
+   "maneater"
+  ]
+ },
+ {
+  "key": "midnight suns",
+  "title": "Marvels Midnight Suns",
+  "slugs": [
+   "marvels-midnight-suns"
+  ]
+ },
+ {
+  "key": "spider man miles morales",
+  "title": "Marvels Spider Man Miles Morales",
+  "slugs": [
+   "marvels-spider-man-miles-morales"
+  ]
+ },
+ {
+  "key": "metal gear master collection volume 2",
+  "title": "Metal Gear Master Collection Volume 2",
+  "slugs": [
+   "metal-gear-master-collection-volume-2"
+  ]
+ },
+ {
+  "key": "metal gear solid master collection vol 1",
+  "title": "Metal Gear Solid Master Collection Vol 1",
+  "slugs": [
+   "metal-gear-solid-master-collection-vol-1"
+  ]
+ },
+ {
+  "key": "mighty morphin power rangers ritas rewind",
+  "title": "Mighty Morphin Power Rangers Ritas Rewind",
+  "slugs": [
+   "mighty-morphin-power-rangers-ritas-rewind"
+  ]
+ },
+ {
+  "key": "miraculous rise sphinx",
+  "title": "Miraculous Rise of the Sphinx",
+  "slugs": [
+   "miraculous-rise-of-the-sphinx"
+  ]
+ },
+ {
+  "key": "mortal shell",
+  "title": "Mortal Shell",
+  "slugs": [
+   "mortal-shell"
+  ]
+ },
+ {
+  "key": "motogp 22",
+  "title": "MotoGP 22",
+  "slugs": [
+   "motogp-22"
+  ]
+ },
+ {
+  "key": "nascar arcade rush",
+  "title": "NASCAR Arcade Rush",
+  "slugs": [
+   "nascar-arcade-rush"
+  ]
+ },
+ {
+  "key": "ninja gaiden 2 black",
+  "title": "Ninja Gaiden II Black",
+  "slugs": [
+   "ninja-gaiden-ii-black"
+  ]
+ },
+ {
+  "key": "no mans sky",
+  "title": "No Mans Sky",
+  "slugs": [
+   "no-mans-sky"
+  ]
+ },
+ {
+  "key": "observer system redux",
+  "title": "Observer System Redux",
+  "slugs": [
+   "observer-system-redux"
+  ]
+ },
+ {
+  "key": "onimusha way sword no included",
+  "title": "Onimusha Way of the Sword Steelbook (No Game Included)",
+  "slugs": [
+   "onimusha-way-of-the-sword-steelbook",
+   "onimusha-way-of-the-sword-steelbook-no-game-included"
+  ]
+ },
+ {
+  "key": "outriders day one",
+  "title": "Outriders Day One Edition",
+  "slugs": [
+   "outriders",
+   "outriders-day-one-edition"
+  ]
+ },
+ {
+  "key": "overcooked all you can eat",
+  "title": "Overcooked All You Can Eat",
+  "slugs": [
+   "overcooked-you-can-eat",
+   "overcooked-all-you-can-eat"
+  ]
+ },
+ {
+  "key": "pga tour 2k23",
+  "title": "PGA Tour 2K23",
+  "slugs": [
+   "pga-tour-2k23"
+  ]
+ },
+ {
+  "key": "pacific drive",
+  "title": "Pacific Drive",
+  "slugs": [
+   "pacific-drive"
+  ]
+ },
+ {
+  "key": "puyo puyo tetris 2",
+  "title": "Puyo Puyo Tetris 2",
+  "slugs": [
+   "puyo-puyo-tetris-2"
+  ]
+ },
+ {
+  "key": "rainbow 6 siege x",
+  "title": "Rainbow 6 Siege X",
+  "slugs": [
+   "rainbow-6-siege-x"
+  ]
+ },
+ {
+  "key": "stalker 2 heart chornobyl day one",
+  "title": "STALKER 2 Heart of Chornobyl Day One Edition",
+  "slugs": [
+   "stalker-2-heart-of-chornobyl",
+   "stalker-2-heart-of-chornobyl-day-one-edition"
+  ]
+ },
+ {
+  "key": "scorn",
+  "title": "Scorn",
+  "slugs": [
+   "scorn"
+  ]
+ },
+ {
+  "key": "skull island rise kong",
+  "title": "Skull Island Rise of Kong",
+  "slugs": [
+   "skull-island-rise-of-kong"
+  ]
+ },
+ {
+  "key": "sniper ghost warrior contracts 2",
+  "title": "Sniper Ghost Warrior Contracts 2",
+  "slugs": [
+   "sniper-ghost-warrior-contracts-2"
+  ]
+ },
+ {
+  "key": "sonic x shadow generations",
+  "title": "Sonic X Shadow Generations",
+  "slugs": [
+   "sonic-x-shadow-generations"
+  ]
+ },
+ {
+  "key": "hd camera",
+  "title": "Sony Official HD Camera (Open Box)",
+  "slugs": [
+   "sony-official-hd-camera",
+   "sony-official-hd-camera-open-box"
+  ]
+ },
+ {
+  "key": "soul hackers 2",
+  "title": "Soul Hackers 2",
+  "slugs": [
+   "soul-hackers-2"
+  ]
+ },
+ {
+  "key": "south park snow day",
+  "title": "South Park Snow Day",
+  "slugs": [
+   "south-park-snow-day"
+  ]
+ },
+ {
+  "key": "starsand",
+  "title": "Starsand",
+  "slugs": [
+   "starsand"
+  ]
+ },
+ {
+  "key": "steelrising",
+  "title": "Steelrising",
+  "slugs": [
+   "steelrising"
+  ]
+ },
+ {
+  "key": "stranger paradise final fantasy origin",
+  "title": "Stranger of Paradise Final Fantasy Origin",
+  "slugs": [
+   "stranger-of-paradise-final-fantasy-origin"
+  ]
+ },
+ {
+  "key": "subnautica below zero",
+  "title": "Subnautica Below Zero",
+  "slugs": [
+   "subnautica-below-zero"
+  ]
+ },
+ {
+  "key": "tales arise",
+  "title": "Tales of Arise",
+  "slugs": [
+   "tales-of-arise"
+  ]
+ },
+ {
+  "key": "teenage mutant ninja turtles cowabunga collection",
+  "title": "Teenage Mutant Ninja Turtles Cowabunga Collection",
+  "slugs": [
+   "teenage-mutant-ninja-turtles-cowabunga-collection"
+  ]
+ },
+ {
+  "key": "terminator resistance",
+  "title": "Terminator Resistance",
+  "slugs": [
+   "terminator-resistance"
+  ]
+ },
+ {
+  "key": "blood dawnwalker no included",
+  "title": "The Blood of DawnWalker Steelbook (No Game Included)",
+  "slugs": [
+   "the-blood-of-dawnwalker-steelbook",
+   "the-blood-of-dawnwalker-steelbook-no-game-included"
+  ]
+ },
+ {
+  "key": "dark pictures anthology volume 2",
+  "title": "The Dark Pictures Anthology Volume 2",
+  "slugs": [
+   "the-dark-pictures-anthology-volume-2"
+  ]
+ },
+ {
+  "key": "elder scrolls 4 oblivion remastered",
+  "title": "The Elder Scrolls IV Oblivion Remastered",
+  "slugs": [
+   "the-elder-scrolls-iv-oblivion-remastered"
+  ]
+ },
+ {
+  "key": "legend heroes trails through daybreak",
+  "title": "The Legend of Heroes Trails Through Daybreak",
+  "slugs": [
+   "the-legend-of-heroes-trails-through-daybreak"
+  ]
+ },
+ {
+  "key": "legend heroes trails through daybreak 2",
+  "title": "The Legend of Heroes Trails Through Daybreak 2",
+  "slugs": [
+   "the-legend-of-heroes-trails-through-daybreak-2"
+  ]
+ },
+ {
+  "key": "legend heroes trails into reverie",
+  "title": "The Legend of Heroes Trails into Reverie",
+  "slugs": [
+   "the-legend-of-heroes-trails-into-reverie"
+  ]
+ },
+ {
+  "key": "legend heroes trails cold steel 4 legend heroes trails cold steel 3",
+  "title": "The Legend of Heroes Trails of Cold Steel IV & the Legend of Heroes Trails of Cold Steel III",
+  "slugs": [
+   "the-legend-of-heroes-trails-of-cold-steel-iv-and-the-legend-of-heroes-trails-of-cold-steel-iii"
+  ]
+ },
+ {
+  "key": "messenger",
+  "title": "The Messenger",
+  "slugs": [
+   "the-messenger"
+  ]
+ },
+ {
+  "key": "outer worlds 2",
+  "title": "The Outer Worlds 2",
+  "slugs": [
+   "the-outer-worlds-2"
+  ]
+ },
+ {
+  "key": "precinct",
+  "title": "The Precinct",
+  "slugs": [
+   "the-precinct"
+  ]
+ },
+ {
+  "key": "rogue prince persia",
+  "title": "The Rogue Prince of Persia",
+  "slugs": [
+   "the-rogue-prince-of-persia"
+  ]
+ },
+ {
+  "key": "tiebreak",
+  "title": "Tiebreak",
+  "slugs": [
+   "tiebreak"
+  ]
+ },
+ {
+  "key": "tintin reporter cigars pharaoh",
+  "title": "Tintin Reporter Cigars of the Pharaoh",
+  "slugs": [
+   "tintin-reporter-cigars-of-the-pharaoh"
+  ]
+ },
+ {
+  "key": "trolls remix rescue",
+  "title": "Trolls Remix Rescue",
+  "slugs": [
+   "trolls-remix-rescue"
+  ]
+ },
+ {
+  "key": "two point campus",
+  "title": "Two Point Campus",
+  "slugs": [
+   "two-point-campus"
+  ]
+ },
+ {
+  "key": "two point campus enrolment",
+  "title": "Two Point Campus Enrolment Edition",
+  "slugs": [
+   "two-point-campus-enrolment",
+   "two-point-campus-enrolment-edition"
+  ]
+ },
+ {
+  "key": "unknown9 awakeing",
+  "title": "Unknown9 Awakeing",
+  "slugs": [
+   "unknown9-awakeing"
+  ]
+ },
+ {
+  "key": "vampire masquerade bloodlines 2 day one",
+  "title": "Vampire the Masquerade Bloodlines 2 (Day one Edition)",
+  "slugs": [
+   "vampire-the-masquerade-bloodlines-2",
+   "vampire-the-masquerade-bloodlines-2-day-one-edition"
+  ]
+ },
+ {
+  "key": "way hunter",
+  "title": "Way of the Hunter",
+  "slugs": [
+   "way-of-the-hunter"
+  ]
+ },
+ {
+  "key": "wo long fallen dynasty",
+  "title": "Wo Long Fallen Dynasty",
+  "slugs": [
+   "wo-long-fallen-dynasty"
+  ]
+ },
+ {
+  "key": "wreckfest",
+  "title": "Wreckfest",
+  "slugs": [
+   "wreckfest"
+  ]
+ },
+ {
+  "key": "yakuza kiwami 1 2",
+  "title": "Yakuza Kiwami 1+2",
+  "slugs": [
+   "yakuza-kiwami-1-2"
+  ]
+ },
+ {
+  "key": "yakuza series 20th anniversary",
+  "title": "Yakuza Series 20th Anniversary Edition",
+  "slugs": [
+   "yakuza-series-20th",
+   "yakuza-series-20th-anniversary-edition"
+  ]
+ },
+ {
+  "key": "ys x nordics",
+  "title": "Ys X Nordics",
+  "slugs": [
+   "ys-x-nordics"
+  ]
+ },
+ {
+  "key": "ys x proud nordics",
+  "title": "Ys X Proud Nordics",
+  "slugs": [
+   "ys-x-proud-nordics"
   ]
  }
 ]
