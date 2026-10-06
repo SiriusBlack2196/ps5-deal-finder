@@ -10,6 +10,7 @@ export const POPULAR = [
   'God of War Ragnarok',
   'Call of Duty Black Ops 7',
   '007 First Light',
+  'Battlefield 6',
 ];
 
 export const SEED_TITLES = [
