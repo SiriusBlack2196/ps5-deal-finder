@@ -118,5 +118,21 @@
   {
     "file": "gameloot-mobile.png",
     "url": "https://storage.googleapis.com/firecrawl-scrape-media/screenshot-ffc0350b-0fb8-4a83-a6cb-7e209a45132b.png?GoogleAccessId=scrape-bucket-accessor%40firecrawl.iam.gserviceaccount.com&Expires=1791908142&Signature=Lg%2FiC8qe3FNQZOBR3UIZXpN%2F7Mgrgd5w3TMRP53oQDysGsC1BtRNELTV6HkkuuG3oPfgvjDd8TU%2Bz0JW6CAP0Y4mxP59EdkwN5%2BmpHrNu8NdANk2Cs%2BPO0OoRVo2O0XoNB%2BWAWEyk82%2BC%2BkFUekwVdJjjxt7kj5whU%2Fl7upKepuD5oGDlyql8w0HpXwKV%2B0iVsyqvYvpCxSBOxVzP20HMby425KRIr7976Qt3ZeNhOt2h9z7W5aWvVBJBQgzwlYmaa5V3yJJrIB5uwhn%2F%2Fdzxo1aecRNTHR23xS0eJoCoEYTJmJfg5FkDw2xtj66TBn7OOihtHz5rt6iWYnUk5RF1w%3D%3D"
+  },
+  {
+    "file": "cex-favicon.ico",
+    "url": "https://in.webuy.com/favicon.ico"
+  },
+  {
+    "file": "cex-touch.png",
+    "url": "https://in.webuy.com/apple-touch-icon.png"
+  },
+  {
+    "file": "cex-google256.png",
+    "url": "https://www.google.com/s2/favicons?domain=in.webuy.com&sz=256"
+  },
+  {
+    "file": "cex-uk-logo.svg",
+    "url": "https://uk.webuy.com/images/logo.svg"
   }
 ]
