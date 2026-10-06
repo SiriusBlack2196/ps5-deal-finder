@@ -20,7 +20,7 @@ jobs:
         run: |
           python - <<'PY'
           import json, io, os, sys, time, requests
-          sys.path.insert(0, 'thumbs'); from trim import trim_frame
+          sys.path.insert(0, 'thumbs'); from trim import trim_frame, portraitize
           from PIL import Image
           os.makedirs('thumbs/out', exist_ok=True); os.makedirs('thumbs/lg', exist_ok=True)
           items = json.load(open('thumbs/urls.json'))
@@ -35,6 +35,7 @@ jobs:
               try:
                   r = s.get(it['url'], timeout=20); r.raise_for_status()
                   src, _ = trim_frame(Image.open(io.BytesIO(r.content)).convert('RGB'))
+                  src, _ = portraitize(src)   # wide promo art -> portrait cover
                   big = src.copy(); big.thumbnail((520, 700), Image.LANCZOS)
                   big.save(lg, 'WEBP', quality=76, method=6)
                   if not os.path.exists(out):

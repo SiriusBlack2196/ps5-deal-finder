@@ -32,3 +32,19 @@ if __name__ == '__main__':
             if ok:
                 t.save(f, 'WEBP', quality=80 if '/lg' in d else 74, method=6); n += 1
         print(d, 'trimmed', n)
+
+
+def portraitize(im, ratio=5 / 7):
+    """Wide promo art -> portrait cover: the full image centred on a blurred,
+    darkened, enlarged copy of itself. Box art (already portrait) is returned as is."""
+    from PIL import ImageFilter, ImageEnhance
+    w, h = im.size
+    if w / h <= 1.05:
+        return im, False
+    cw, ch = w, round(w / ratio)
+    s = max(cw / w, ch / h)
+    bg = im.resize((round(w * s), round(h * s)), Image.LANCZOS)
+    bg = bg.crop(((bg.width - cw) // 2, (bg.height - ch) // 2, (bg.width - cw) // 2 + cw, (bg.height - ch) // 2 + ch))
+    bg = ImageEnhance.Brightness(bg.filter(ImageFilter.GaussianBlur(radius=max(8, cw // 24)))).enhance(0.7)
+    bg.paste(im, (0, (ch - h) // 2))
+    return bg, True
