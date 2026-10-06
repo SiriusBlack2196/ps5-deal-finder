@@ -1,2 +1,2 @@
-
-scored=413 of 531 at 2026-10-06T16:47:05.084725Z
+among-us-crewmate ERR HTTPSConnectionPool(host='www.metacritic.com', port=443): Read timed out. (read timeout=20)
+scored=500 of 673 at 2026-10-06T19:46:45.466974Z
