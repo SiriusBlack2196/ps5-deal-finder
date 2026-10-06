@@ -81,6 +81,7 @@
   "key": "among crewmate",
   "title": "Among Us Crewmate Edition",
   "slugs": [
+   "among-crewmate",
    "among-us-crewmate",
    "among-us-crewmate-edition"
   ]
@@ -147,6 +148,7 @@
   "key": "atari 50 anniversary celebration expanded",
   "title": "Atari 50 the Anniversary Celebration Expanded Edition",
   "slugs": [
+   "atari-50-the-anniversary-celebration-expanded",
    "atari-50-the-celebration-expanded",
    "atari-50-the-anniversary-celebration-expanded-edition"
   ]
@@ -248,6 +250,7 @@
   "key": "black myth wukong usa",
   "title": "Black Myth Wukong Deluxe Imported USA",
   "slugs": [
+   "black-myth-wukong-imported",
    "black-myth-wukong-imported-usa",
    "black-myth-wukong-deluxe-imported-usa"
   ]
@@ -291,6 +294,7 @@
   "key": "call duty modern warfare 2 ppsa08018",
   "title": "Call of Duty Modern Warfare II INDIAN PPSA08018",
   "slugs": [
+   "call-of-duty-modern-warfare-ii-indian",
    "call-of-duty-modern-warfare-ii-indian-ppsa08018"
   ]
  },
@@ -305,6 +309,7 @@
   "key": "call duty modern warfare 3 all",
   "title": "Call of Duty Modern Warfare III ALL Region (US)",
   "slugs": [
+   "call-of-duty-modern-warfare-iii",
    "call-of-duty-modern-warfare-iii-all-region",
    "call-of-duty-modern-warfare-iii-all-region-us"
   ]
@@ -313,6 +318,7 @@
   "key": "call duty modern warfare 3 uae",
   "title": "Call of Duty Modern Warfare III Region (UAE)",
   "slugs": [
+   "call-of-duty-modern-warfare-iii",
    "call-of-duty-modern-warfare-iii-region",
    "call-of-duty-modern-warfare-iii-region-uae"
   ]
@@ -328,6 +334,7 @@
   "key": "call duty black ops cold war all",
   "title": "Call of Duty: Black Ops Cold War ALL Region (US)",
   "slugs": [
+   "call-of-duty-black-ops-cold-war",
    "call-of-duty-black-ops-cold-war-all-region",
    "call-of-duty-black-ops-cold-war-all-region-us"
   ]
@@ -343,6 +350,7 @@
   "key": "call duty modern warfare 2 all",
   "title": "Call of Duty: Modern Warfare 2 ALL Region (US)",
   "slugs": [
+   "call-of-duty-modern-warfare-2",
    "call-of-duty-modern-warfare-2-all-region",
    "call-of-duty-modern-warfare-2-all-region-us"
   ]
@@ -351,6 +359,7 @@
   "key": "call duty modern warfare 2 3 hk",
   "title": "Call of Duty: Modern Warfare 2 Region 3 (HK)",
   "slugs": [
+   "call-of-duty-modern-warfare-2-3",
    "call-of-duty-modern-warfare-2-region-3",
    "call-of-duty-modern-warfare-2-region-3-hk"
   ]
@@ -359,6 +368,7 @@
   "key": "call duty vanguard all",
   "title": "Call of Duty: Vanguard ALL Region (US)",
   "slugs": [
+   "call-of-duty-vanguard",
    "call-of-duty-vanguard-all-region",
    "call-of-duty-vanguard-all-region-us"
   ]
@@ -425,6 +435,7 @@
   "key": "cricket 22 international",
   "title": "Cricket 22 International Edition",
   "slugs": [
+   "cricket-22",
    "cricket-22-international",
    "cricket-22-international-edition"
   ]
@@ -440,6 +451,7 @@
   "key": "cricket 24 international",
   "title": "Cricket 24 International Edition",
   "slugs": [
+   "cricket-24",
    "cricket-24-international",
    "cricket-24-international-edition"
   ]
@@ -455,6 +467,7 @@
   "key": "cricket 26 international",
   "title": "Cricket 26 International Edition",
   "slugs": [
+   "cricket-26",
    "cricket-26-international",
    "cricket-26-international-edition"
   ]
@@ -837,7 +850,7 @@
  },
  {
   "key": "final fantasy tactics ivalice chronicles",
-  "title": "FINAL FANTASY TACTICS – the Ivalice Chronicles",
+  "title": "FINAL FANTASY TACTICS \u2013 the Ivalice Chronicles",
   "slugs": [
    "final-fantasy-tactics-the-ivalice-chronicles"
   ]
@@ -1129,8 +1142,8 @@
   "key": "horizon forbidden west ediition",
   "title": "Horizon Forbidden West Complete ediition",
   "slugs": [
-   "horizon-forbidden-west-ediition",
-   "horizon-forbidden-west-complete-ediition"
+   "horizon-forbidden-west-complete-ediition",
+   "horizon-forbidden-west-ediition"
   ]
  },
  {
@@ -1471,8 +1484,8 @@
   ]
  },
  {
-  "key": "metal gear solid δ delta snake eater",
-  "title": "Metal Gear Solid Δ Delta Snake Eater",
+  "key": "metal gear solid \u03b4 delta snake eater",
+  "title": "Metal Gear Solid \u0394 Delta Snake Eater",
   "slugs": [
    "metal-gear-solid-delta-snake-eater"
   ]
@@ -1564,7 +1577,7 @@
  },
  {
   "key": "mortal kombat 1 kollectors",
-  "title": "Mortal Kombat 1 Kollector’s Edition",
+  "title": "Mortal Kombat 1 Kollector\u2019s Edition",
   "slugs": [
    "mortal-kombat-1-kollectors",
    "mortal-kombat-1-kollectors-edition"
@@ -1802,7 +1815,7 @@
  },
  {
   "key": "payday 3",
-  "title": "PAYDAY 3 Collector’s Edition",
+  "title": "PAYDAY 3 Collector\u2019s Edition",
   "slugs": [
    "payday-3-collectors",
    "payday-3-collectors-edition"
@@ -2213,7 +2226,7 @@
  },
  {
   "key": "sid meiers civilization 7",
-  "title": "Sid Meier’s Civilization VII",
+  "title": "Sid Meier\u2019s Civilization VII",
   "slugs": [
    "sid-meiers-civilization-vii"
   ]
@@ -2552,6 +2565,7 @@
   "title": "The Blood of Dawnwalker Day One Steelbook Edition",
   "slugs": [
    "the-blood-of-dawnwalker-steelbook",
+   "blood-of-dawnwalker-steelbook",
    "the-blood-of-dawnwalker-day-one-steelbook-edition"
   ]
  },
@@ -2609,6 +2623,8 @@
   "key": "last part 1",
   "title": "The Last of Us Part 1",
   "slugs": [
+   "the-last-of-part-1",
+   "last-of-part-1",
    "the-last-of-us-part-1"
   ]
  },
@@ -2637,6 +2653,8 @@
   "key": "medium two worlds",
   "title": "The Medium Two Worlds Special Edition",
   "slugs": [
+   "the-medium-two-worlds-special",
+   "medium-two-worlds-special",
    "the-medium-two-worlds",
    "the-medium-two-worlds-special-edition"
   ]
@@ -2695,7 +2713,7 @@
  },
  {
   "key": "rainbow six extraction",
-  "title": "Tom Clancy’s Rainbow Six Extraction",
+  "title": "Tom Clancy\u2019s Rainbow Six Extraction",
   "slugs": [
    "tom-clancys-rainbow-six-extraction"
   ]
@@ -2709,7 +2727,7 @@
  },
  {
   "key": "tony hawks pro skater 3 4",
-  "title": "Tony Hawk’s Pro Skater 3 + 4",
+  "title": "Tony Hawk\u2019s Pro Skater 3 + 4",
   "slugs": [
    "tony-hawks-pro-skater-3-4"
   ]
@@ -2801,7 +2819,7 @@
  },
  {
   "key": "vampire masquerade bloodlines 2",
-  "title": "Vampire the Masquerade – Bloodlines 2",
+  "title": "Vampire the Masquerade \u2013 Bloodlines 2",
   "slugs": [
    "vampire-the-masquerade-bloodlines-2"
   ]
@@ -2950,7 +2968,7 @@
  },
  {
   "key": "yakuza zero directors cut",
-  "title": "Yakuza Zero Director’s Cut",
+  "title": "Yakuza Zero Director\u2019s Cut",
   "slugs": [
    "yakuza-zero-directors-cut"
   ]

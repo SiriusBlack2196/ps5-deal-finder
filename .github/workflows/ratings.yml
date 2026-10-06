@@ -38,7 +38,7 @@ jobs:
               return None
           debug = []
           for i, t in enumerate(titles):
-              if t['key'] in out: continue
+              if out.get(t['key']): continue
               res = None
               for sl in t['slugs']:
                   url = f'https://www.metacritic.com/game/{sl}/'
