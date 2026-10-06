@@ -19,7 +19,8 @@
   --color-navy: #003866;
   --color-navy-deep: #00172E;
   --color-yellow: #FFC800;       /* pre-owned (PS Plus yellow) */
-  --color-green: #008066;
+  --color-green: #008066;        /* deals, savings, discounts */
+  --color-green-tint: #E3F5EF;
   --color-red: #C81B3A;
 
   --font-sans: "Source Sans 3 Variable", "Source Sans 3", Arial, sans-serif;

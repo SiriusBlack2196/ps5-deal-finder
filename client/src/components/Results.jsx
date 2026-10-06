@@ -154,10 +154,12 @@ function DealCard({ kind, l, storeName }) {
       rel="noopener noreferrer nofollow"
       className="lift flex flex-col rounded-card bg-white p-4 text-ink sm:p-6"
     >
-      <span className={`inline-flex h-6 w-fit items-center rounded-full px-2.5 text-xs font-bold ${isNew ? 'bg-blue text-white' : 'bg-yellow text-ink'}`}>
-        {isNew ? 'Best deal' : 'Best pre-owned'}
+      <span className="flex flex-wrap items-center gap-1.5">
+        <span className="inline-flex h-6 w-fit items-center rounded-full bg-green px-2.5 text-xs font-bold text-white">
+          {isNew ? 'Best deal' : 'Best pre-owned'}
+        </span>
       </span>
-      <span className="price mt-3 text-[2rem] leading-none sm:text-[2.75rem]">{inr(l.effectivePrice)}</span>
+      <span className="price mt-3 text-[2rem] leading-none text-green sm:text-[2.75rem]">{inr(l.effectivePrice)}</span>
       <span className="mt-2 text-[0.95rem] font-semibold leading-snug">{storeName}</span>
       <span className="text-sm text-muted">
         {l.edition === 'Standard' ? (isNew ? 'New copy' : 'Pre-owned copy') : `${l.edition} edition, ${isNew ? 'new' : 'pre-owned'}`}

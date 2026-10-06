@@ -25,14 +25,14 @@ export function StoreBadge({ id, name }) {
 
 export function ListingRow({ l, storeName, highlight }) {
   const shippingText = l.shipping == null ? 'Shipping not listed' : l.shipping === 0 ? 'Free shipping' : `+ ${inr(l.shipping)} shipping`;
-  const ring = highlight === 'new' ? 'shadow-[0_0_0_2px_var(--color-blue)]' : highlight === 'used' ? 'shadow-[0_0_0_2px_var(--color-yellow)]' : 'shadow-[0_0_0_1px_var(--color-line)]';
+  const ring = highlight ? 'shadow-[0_0_0_2px_var(--color-green)]' : 'shadow-[0_0_0_1px_var(--color-line)]';
   return (
     <li className={`rounded-card bg-white p-4 sm:p-5 ${ring} ${l.inStock ? '' : 'opacity-75'}`}>
       {highlight && (
         <p className="mb-3">
-          {highlight === 'new'
-            ? <span className="inline-flex h-6 items-center rounded-full bg-blue px-2.5 text-xs font-bold text-white">Best deal</span>
-            : <span className="inline-flex h-6 items-center rounded-full bg-yellow px-2.5 text-xs font-bold text-ink">Best pre-owned</span>}
+          <span className="inline-flex h-6 items-center rounded-full bg-green px-2.5 text-xs font-bold text-white">
+            {highlight === 'new' ? 'Best deal' : 'Best pre-owned'}
+          </span>
         </p>
       )}
       <div className="flex items-start gap-3.5">
@@ -54,7 +54,7 @@ export function ListingRow({ l, storeName, highlight }) {
             {shippingText}<br />
             Checked {timeAgo(l.fetchedAt)}
           </p>
-          <p className="price text-right text-[1.6rem] leading-none [grid-area:price] sm:text-[1.85rem]">{inr(l.effectivePrice)}</p>
+          <p className={`price text-right text-[1.6rem] leading-none [grid-area:price] sm:text-[1.85rem] ${highlight ? 'text-green' : ''}`}>{inr(l.effectivePrice)}</p>
           <div className="[grid-area:cta] sm:justify-self-end">
             <Button
               as="a"
