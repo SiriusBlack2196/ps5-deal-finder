@@ -1,0 +1,50 @@
+# Downloads game covers listed in thumbs/urls.json, shrinks them to small WebP
+# thumbnails and commits them to thumbs/out/. Used to embed covers in the
+# claude.ai artifact build, which cannot load images from store servers.
+name: Build thumbnails
+on:
+  push:
+    paths: ['thumbs/urls.json', '.github/workflows/thumbs.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  thumbs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install pillow requests
+      - name: Fetch and resize
+        run: |
+          python - <<'PY'
+          import json, io, os, time, requests
+          from PIL import Image
+          os.makedirs('thumbs/out', exist_ok=True)
+          items = json.load(open('thumbs/urls.json'))
+          ok = fail = 0
+          s = requests.Session()
+          s.headers['User-Agent'] = 'PS5DealFinder/0.1 (thumbnail cache; https://github.com/SiriusBlack2196/ps5-deal-finder)'
+          for it in items:
+              out = f"thumbs/out/{it['file']}"
+              if os.path.exists(out):
+                  ok += 1; continue
+              try:
+                  r = s.get(it['url'], timeout=20); r.raise_for_status()
+                  im = Image.open(io.BytesIO(r.content)).convert('RGB')
+                  im.thumbnail((180, 240))
+                  im.save(out, 'WEBP', quality=72, method=6)
+                  ok += 1
+              except Exception as e:
+                  fail += 1; print('FAIL', it['key'], it['url'], e)
+              time.sleep(0.25)  # be polite to the stores
+          print(f'ok={ok} fail={fail}')
+          PY
+      - name: Commit thumbnails
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add thumbs/out
+          git diff --cached --quiet || git commit -m "Thumbnails: $(ls thumbs/out | wc -l) covers"
+          git push
