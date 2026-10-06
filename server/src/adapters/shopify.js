@@ -51,6 +51,7 @@ export function createShopifyAdapter(store) {
           title: detail.title || p.title,
           variantTitle: onlyDefault ? undefined : v.title,
           price: Number(v.price) / 100, // paise -> rupees
+          mrp: v.compare_at_price ? Number(v.compare_at_price) / 100 : null,
           shipping: null,
           inStock: Boolean(v.available),
           url: `${store.baseUrl}/products/${handle}${onlyDefault ? '' : `?variant=${v.id}`}`,

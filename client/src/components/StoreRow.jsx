@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { inr, timeAgo, STORE_STYLE } from '../lib/format.js';
-import { Button, Chip } from './ui.jsx';
+import { Button, Chip, Price } from './ui.jsx';
 import { SNAPSHOT } from '../lib/api.js';
 
 export function StoreBadge({ id, name }) {
@@ -37,7 +37,7 @@ export function ListingRow({ l, storeName, highlight }) {
       )}
       <div className="flex items-start gap-3.5">
         <StoreBadge id={l.store} name={storeName} />
-        <div className="grid min-w-0 flex-1 grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-3 [grid-template-areas:'info_price'_'meta_meta'_'cta_cta'] sm:[grid-template-areas:'info_price'_'meta_cta'] lg:grid-cols-[minmax(0,1fr)_11rem_8rem_auto] lg:items-center lg:gap-x-8 lg:[grid-template-areas:'info_meta_price_cta']">
+        <div className="grid min-w-0 flex-1 grid-cols-1 gap-x-4 gap-y-3 [grid-template-areas:'info'_'price'_'meta'_'cta'] sm:grid-cols-[minmax(0,1fr)_auto] sm:[grid-template-areas:'info_price'_'meta_cta'] lg:grid-cols-[minmax(0,1fr)_10rem_12rem_auto] lg:items-center lg:gap-x-8 lg:[grid-template-areas:'info_meta_price_cta']">
           <div className="min-w-0 [grid-area:info]">
             <p className="text-[1.05rem] font-semibold leading-tight">{storeName}</p>
             <p className="mt-1 line-clamp-2 text-sm text-muted">{l.title}</p>
@@ -54,7 +54,10 @@ export function ListingRow({ l, storeName, highlight }) {
             {shippingText}<br />
             Checked {timeAgo(l.fetchedAt)}
           </p>
-          <p className={`price text-right text-[1.6rem] leading-none [grid-area:price] sm:text-[1.85rem] ${highlight ? 'text-green' : ''}`}>{inr(l.effectivePrice)}</p>
+          <div className="[grid-area:price] sm:justify-self-end">
+            <span className="sm:hidden"><Price price={l.effectivePrice} mrp={l.mrp} discountPct={l.discountPct} deal={!!highlight} /></span>
+            <span className="hidden sm:block"><Price price={l.effectivePrice} mrp={l.mrp} discountPct={l.discountPct} deal={!!highlight} align="end" /></span>
+          </div>
           <div className="[grid-area:cta] sm:justify-self-end">
             <Button
               as="a"

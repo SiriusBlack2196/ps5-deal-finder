@@ -6,7 +6,7 @@ import SnapshotNote from './SnapshotNote.jsx';
 import { useThumb } from '../lib/thumbs.jsx';
 import { pickGame, applyFilters, bestDeals, priceSpread, editionsIn } from '../lib/derive.js';
 import { inr } from '../lib/format.js';
-import { Button, Wordmark } from './ui.jsx';
+import { Button, Price, Wordmark } from './ui.jsx';
 
 const DEFAULT_FILTERS = { condition: 'all', inStockOnly: true, edition: 'all' };
 
@@ -159,7 +159,7 @@ function DealCard({ kind, l, storeName }) {
           {isNew ? 'Best deal' : 'Best pre-owned'}
         </span>
       </span>
-      <span className="price mt-3 text-[2rem] leading-none text-green sm:text-[2.75rem]">{inr(l.effectivePrice)}</span>
+      <span className="mt-3"><Price price={l.effectivePrice} mrp={l.mrp} discountPct={l.discountPct} deal size="lg" /></span>
       <span className="mt-2 text-[0.95rem] font-semibold leading-snug">{storeName}</span>
       <span className="text-sm text-muted">
         {l.edition === 'Standard' ? (isNew ? 'New copy' : 'Pre-owned copy') : `${l.edition} edition, ${isNew ? 'new' : 'pre-owned'}`}

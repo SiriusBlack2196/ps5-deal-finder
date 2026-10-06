@@ -36,6 +36,7 @@ export function createWooAdapter(store) {
         store: store.id,
         title: decodeEntities(p.name),
         price: wooPrice(p.prices),
+        mrp: wooPrice(p.prices && { ...p.prices, price: p.prices.regular_price }),
         shipping: null, // not exposed by the Store API
         inStock: Boolean(p.is_in_stock),
         url: p.permalink,

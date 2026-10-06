@@ -44,6 +44,9 @@ export function processListings(rawListings, preparedQuery) {
       price: Math.round(r.price),
       shipping: r.shipping ?? null,
       effectivePrice: Math.round(r.price) + (r.shipping ?? 0),
+      // Store-stated MRP (WooCommerce regular_price / Shopify compare_at_price); null unless higher than the price.
+      mrp: r.mrp > r.price ? Math.round(r.mrp) : null,
+      discountPct: r.mrp > r.price ? Math.round((1 - r.price / r.mrp) * 100) : 0,
       condition,
       edition,
       platform,               // 'ps5' | 'ps4-ps5-upgrade' (shown as its own tag)

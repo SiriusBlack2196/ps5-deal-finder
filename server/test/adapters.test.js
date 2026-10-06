@@ -19,6 +19,20 @@ function service(over = {}) {
 }
 const byStore = (res, id) => res.stores.find((s) => s.store === id);
 
+test('MRP is kept only when higher than the selling price', async () => {
+  const { processListings } = await import('../src/matching/pipeline.js');
+  const { prepareQuery } = await import('../src/matching/match.js');
+  const base = { store: 'x', title: 'Astro Bot PS5', inStock: true, url: 'u', fetchedAt: 't' };
+  const { kept } = processListings([
+    { ...base, url: 'a', price: 3300, mrp: 3999 },
+    { ...base, url: 'b', price: 2699, mrp: 2699 },
+    { ...base, url: 'c', price: 2000, mrp: null },
+  ], prepareQuery('astro bot'));
+  const byUrl = Object.fromEntries(kept.map((l) => [l.url, l]));
+  assert.equal(byUrl.a.mrp, 3999); assert.equal(byUrl.a.discountPct, 17);
+  assert.equal(byUrl.b.mrp, null); assert.equal(byUrl.c.mrp, null);
+});
+
 test('Woo prices respect currency_minor_unit (E2Z paise vs Gameloot rupees)', () => {
   assert.equal(wooPrice({ price: '519900', currency_minor_unit: 2 }), 5199);
   assert.equal(wooPrice({ price: '2599', currency_minor_unit: 0 }), 2599);
