@@ -25,24 +25,22 @@ jobs:
               req = urllib.request.Request(f'{host}/1/indexes/{IDX}/query', data=body, headers=H, method='POST')
               return json.load(urllib.request.urlopen(req, timeout=30))
           os.makedirs('catalog/cex', exist_ok=True)
-          probe = {}
-          try:
-              r = q({'query': 'playstation 5', 'hitsPerPage': 3, 'facets': '["categoryName","superCatName","categoryFriendlyName"]', 'maxValuesPerFacet': 200})
-          except Exception as e:
-              print('direct failed', e); r = q({'query': 'playstation 5', 'hitsPerPage': 3, 'facets': '["categoryName","superCatName"]', 'maxValuesPerFacet': 200}, host='https://search.webuy.io')
-          probe['facets'] = {k: {n: c for n, c in v.items() if 'ay' in n.lower() or 'ps' in n.lower()} for k, v in (r.get('facets') or {}).items()}
-          probe['sampleHit'] = (r.get('hits') or [None])[0]
-          json.dump(probe, open('catalog/cex/probe.json', 'w'), indent=1)
-          cats = [n for n in (r.get('facets') or {}).get('categoryName', {}) if 'playstation5' in n.lower().replace(' ', '') and 'game' in n.lower()]
-          print('PS5 game categories:', cats)
-          hits, page = [], 0
-          while cats:
-              fil = ' OR '.join(f'categoryName:"{c}"' for c in cats)
-              r = q({'query': '', 'filters': fil, 'hitsPerPage': 1000, 'page': page})
-              hits += r.get('hits', []); print('page', page, len(r.get('hits', [])), 'of', r.get('nbHits'))
-              page += 1
-              if page >= r.get('nbPages', 0): break
-              time.sleep(1)
+          # The index doesn't allow category filters, so search broadly and keep the
+          # "Playstation5 Games" hits: a few generic queries plus every catalogue title.
+          titles = [t['title'] for t in json.load(open('ratings/titles.json'))]
+          queries = ['ps5', 'playstation 5', 'ps5 game', 'ps5 games'] + titles
+          seen = {}
+          for i, term in enumerate(queries):
+              for page in range(3 if i < 4 else 1):
+                  try: r = q({'query': term, 'hitsPerPage': 1000 if i < 4 else 40, 'page': page})
+                  except Exception as e: print('ERR', term, e); break
+                  for h in r.get('hits', []):
+                      if (h.get('categoryName') or '').lower().replace(' ', '') == 'playstation5games':
+                          h.pop('_highlightResult', None); h.pop('_snippetResult', None); seen[h['boxId']] = h
+                  if page + 1 >= r.get('nbPages', 0): break
+              time.sleep(0.15)
+          hits = list(seen.values())
+          print('PS5 game boxes', len(hits), 'new', sum(1 for h in hits if h.get('new')), 'in store', sum(1 for h in hits if h.get('inStockStore')), 'online', sum(1 for h in hits if h.get('inStockOnline')))
           json.dump(hits, open('catalog/cex/hits.json', 'w'))
           print('total', len(hits))
           PY
