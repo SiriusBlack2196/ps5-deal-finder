@@ -66,7 +66,7 @@ export function createApp({ adapters, searchService, db }) {
     if (!closed) { send('done', {}); res.end(); }
   });
 
-  // Game cover thumbnails (built by .github/workflows/thumbs.yml into thumbs/out).
+  // Game cover thumbnails (built by .github/workflows/thumbs.yml into thumbs/out, large ones in thumbs/lg).
   const thumbsDir = path.resolve(new URL('.', import.meta.url).pathname, '../../thumbs');
   let thumbMap = {};
   try {
@@ -74,6 +74,7 @@ export function createApp({ adapters, searchService, db }) {
     thumbMap = Object.fromEntries(list.filter((t) => fs.existsSync(path.join(thumbsDir, 'out', t.file))).map((t) => [t.key, t.file]));
   } catch { /* no thumbnails built yet */ }
   app.get('/api/thumbs', (_req, res) => res.set('Cache-Control', 'public, max-age=3600').json(thumbMap));
+  app.use('/thumbs/lg', express.static(path.join(thumbsDir, 'lg'), { maxAge: '7d', immutable: true }));
   app.use('/thumbs', express.static(path.join(thumbsDir, 'out'), { maxAge: '7d', immutable: true }));
 
   // Ready for the future price-history UI.

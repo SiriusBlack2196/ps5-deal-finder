@@ -30,7 +30,7 @@ export default function Results({ query, onSearch, onHome }) {
   const hiddenByFilters = okStores.filter((s) => storesWithGame.has(s.id) && !storesVisible.has(s.id));
 
   const heroTitle = game.fallbackTitle || pickTitle(game.listings, query) || query;
-  const cachedThumb = useThumb(game.listings.length ? heroTitle : null);
+  const cachedThumb = useThumb(game.listings.length ? heroTitle : null, 'lg');
   const heroImage = (bestNew || bestUsed || game.listings[0])?.imageUrl || cachedThumb;
   const nothingAnywhere = finished && game.listings.length === 0;
 

@@ -51,7 +51,7 @@ export default function BestDeals({ onSearch }) {
       </div>
       <ul
         ref={track} onScroll={onScroll}
-        className="mt-6 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:scroll-px-8 sm:gap-4 sm:px-8 [&::-webkit-scrollbar]:hidden"
+        className="mt-5 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 py-1 [scrollbar-width:none] sm:scroll-px-8 sm:gap-4 sm:px-8 [&::-webkit-scrollbar]:hidden"
       >
         {deals.map((d) => (
           <li key={d.gameKey} className="w-[14.6rem] shrink-0 snap-start sm:w-[15.8rem]">
@@ -60,7 +60,7 @@ export default function BestDeals({ onSearch }) {
               className="group flex h-full w-full flex-col overflow-hidden rounded-card bg-white text-left shadow-[0_0_0_1px_var(--color-line)]"
             >
               <span className="relative block">
-                <Thumb title={d.title} className="block aspect-[3/4] w-full" />
+                <Thumb title={d.title} size="lg" fit="contain" className="aspect-[4/5] w-full bg-ground p-4" imgClassName="rounded-[6px] shadow-[0_6px_16px_-6px_rgb(0_0_0/0.35)]" />
                 <span className="absolute left-2.5 top-2.5 inline-flex h-7 items-center rounded-full bg-green px-2.5 text-sm font-bold text-white">
                   {d.discountPct}% off
                 </span>
