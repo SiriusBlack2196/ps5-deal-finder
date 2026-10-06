@@ -49,9 +49,10 @@ export default function BestDeals({ onSearch }) {
           <Arrow dir="right" onClick={() => page(1)} disabled={edge.end} />
         </div>
       </div>
+      <div className="relative mt-5">
       <ul
         ref={track} onScroll={onScroll}
-        className="mt-5 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-8 pt-1 [scrollbar-width:none] sm:scroll-px-8 sm:gap-4 sm:px-8 [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-8 pt-1 [scrollbar-width:none] sm:scroll-px-8 sm:gap-4 sm:px-8 [&::-webkit-scrollbar]:hidden"
       >
         {deals.map((d) => (
           <li key={d.gameKey} className="w-[17.1rem] shrink-0 snap-start sm:w-[18.3rem]">
@@ -77,6 +78,10 @@ export default function BestDeals({ onSearch }) {
           </li>
         ))}
       </ul>
+      {/* Edge fades into the page background where cards run off; each hides at its end of the row. */}
+      <span aria-hidden="true" className={`pointer-events-none absolute inset-y-0 left-0 w-10 bg-[linear-gradient(to_right,var(--color-ground),transparent)] transition-opacity duration-200 sm:w-16 lg:w-24 ${edge.start ? 'opacity-0' : 'opacity-100'}`} />
+      <span aria-hidden="true" className={`pointer-events-none absolute inset-y-0 right-0 w-10 bg-[linear-gradient(to_left,var(--color-ground),transparent)] transition-opacity duration-200 sm:w-16 lg:w-24 ${edge.end ? 'opacity-0' : 'opacity-100'}`} />
+      </div>
     </section>
   );
 }
