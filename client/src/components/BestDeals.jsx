@@ -63,13 +63,13 @@ export default function BestDeals({ onSearch }) {
               {/* Same box for every cover: 5:7 is the common PS5 case-art shape; anchored to the top so the PS5 banner always shows. */}
               <Thumb title={d.title} size="lg" className="block aspect-[5/7] w-full object-top" />
               <span className="flex flex-1 flex-col p-3.5 sm:p-4">
-                <span className="line-clamp-2 min-h-[2.6em] font-semibold leading-snug group-hover:text-blue">{d.title}</span>
-                <span className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
+                <span title={d.title} className="truncate font-semibold leading-snug group-hover:text-blue">{d.title}</span>
+                <span className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
                   <s className="text-sm text-muted [font-variant-numeric:tabular-nums]"><span className="sr-only">MRP </span>{inr(d.mrp)}</s>
                   <span className="price text-[1.35rem] leading-none text-green"><span className="sr-only">now </span>{inr(d.price)}</span>
                   <span className="inline-flex h-6 items-center rounded-full bg-green px-2 text-xs font-bold text-white">{d.discountPct}% off</span>
                 </span>
-                <span className="mt-3 flex items-center gap-2 text-sm text-muted">
+                <span className="mt-2.5 flex items-center gap-2 text-sm text-muted">
                   <StoreBadge id={d.store} name={names[d.store]} size="sm" />
                   <span className="truncate">at {names[d.store] || d.store}</span>
                 </span>
