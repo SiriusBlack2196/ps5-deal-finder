@@ -4,7 +4,7 @@
 name: Build thumbnails
 on:
   push:
-    paths: ['thumbs/urls.json', '.github/workflows/thumbs.yml']
+    paths: ['thumbs/urls.json', 'thumbs/trim.py', '.github/workflows/thumbs.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -19,7 +19,8 @@ jobs:
       - name: Fetch and resize
         run: |
           python - <<'PY'
-          import json, io, os, time, requests
+          import json, io, os, sys, time, requests
+          sys.path.insert(0, 'thumbs'); from trim import trim_frame
           from PIL import Image
           os.makedirs('thumbs/out', exist_ok=True); os.makedirs('thumbs/lg', exist_ok=True)
           items = json.load(open('thumbs/urls.json'))
@@ -33,7 +34,7 @@ jobs:
                   ok += 1; continue
               try:
                   r = s.get(it['url'], timeout=20); r.raise_for_status()
-                  src = Image.open(io.BytesIO(r.content)).convert('RGB')
+                  src, _ = trim_frame(Image.open(io.BytesIO(r.content)).convert('RGB'))
                   big = src.copy(); big.thumbnail((520, 700), Image.LANCZOS)
                   big.save(lg, 'WEBP', quality=76, method=6)
                   if not os.path.exists(out):

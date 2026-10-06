@@ -38,7 +38,7 @@ export default function BestDeals({ onSearch }) {
 
   if (!deals.length) return null;
   return (
-    <section aria-labelledby="deals-h" className="mx-auto max-w-6xl pb-12 sm:pb-16">
+    <section aria-labelledby="deals-h" className="mx-auto max-w-6xl pb-6 sm:pb-10">
       <div className="flex items-end justify-between gap-4 px-4 sm:px-8">
         <div>
           <h2 id="deals-h" className="display text-[2rem] sm:text-[2.6rem]">Best deals</h2>
@@ -51,16 +51,17 @@ export default function BestDeals({ onSearch }) {
       </div>
       <ul
         ref={track} onScroll={onScroll}
-        className="mt-5 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 py-1 [scrollbar-width:none] sm:scroll-px-8 sm:gap-4 sm:px-8 [&::-webkit-scrollbar]:hidden"
+        className="mt-5 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-8 pt-1 [scrollbar-width:none] sm:scroll-px-8 sm:gap-4 sm:px-8 [&::-webkit-scrollbar]:hidden"
       >
         {deals.map((d) => (
           <li key={d.gameKey} className="w-[14.6rem] shrink-0 snap-start sm:w-[15.8rem]">
             <button
               type="button" onClick={() => onSearch(d.title)}
-              className="group flex h-full w-full flex-col overflow-hidden rounded-card bg-white text-left shadow-[0_0_0_1px_var(--color-line)]"
+              className="group flex h-full w-full flex-col overflow-hidden rounded-card bg-white text-left shadow-[0_0_0_1px_var(--color-line)] transition-shadow duration-200 hover:shadow-[0_0_0_1px_var(--color-line),0_14px_30px_-12px_rgb(0_0_0/0.35)]"
             >
               <span className="relative block">
-                <Thumb title={d.title} size="lg" fit="contain" className="aspect-[4/5] w-full bg-ground p-4" imgClassName="rounded-[6px] shadow-[0_6px_16px_-6px_rgb(0_0_0/0.35)]" />
+                {/* Same box for every cover: 5:7 is the common PS5 case-art shape; anchored to the top so the PS5 banner always shows. */}
+                <Thumb title={d.title} size="lg" className="block aspect-[5/7] w-full object-top" />
                 <span className="absolute left-2.5 top-2.5 inline-flex h-7 items-center rounded-full bg-green px-2.5 text-sm font-bold text-white">
                   {d.discountPct}% off
                 </span>
