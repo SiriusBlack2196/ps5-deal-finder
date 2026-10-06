@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import SearchBox from './SearchBox.jsx';
 import { Dot, Wordmark } from './ui.jsx';
 import { getPopular, getStores, getSnapshotInfo } from '../lib/api.js';
-import SnapshotNote from './SnapshotNote.jsx';
 import { Thumb } from '../lib/thumbs.jsx';
 
 export default function Home({ onSearch }) {
@@ -45,7 +44,6 @@ export default function Home({ onSearch }) {
               <li className="inline-flex h-8 items-center rounded-full px-3.5 text-sm text-white/60">Amazon and Flipkart coming next</li>
             </ul>
           )}
-          {snap && <SnapshotNote info={snap} className="mx-auto mt-6 max-w-md justify-center text-left" />}
         </div>
       </section>
 

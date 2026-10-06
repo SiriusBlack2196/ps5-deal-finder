@@ -1,8 +1,7 @@
 import { useMemo, useState, useEffect } from 'react';
 import SearchBox from './SearchBox.jsx';
 import { ListingRow, SkeletonRow, StoreNotice } from './StoreRow.jsx';
-import { useSearch, getSnapshotInfo } from '../lib/api.js';
-import SnapshotNote from './SnapshotNote.jsx';
+import { useSearch } from '../lib/api.js';
 import { useThumb } from '../lib/thumbs.jsx';
 import { pickGame, applyFilters, bestDeals, priceSpread, editionsIn } from '../lib/derive.js';
 import { inr } from '../lib/format.js';
@@ -13,8 +12,6 @@ const DEFAULT_FILTERS = { condition: 'all', inStockOnly: true, edition: 'all' };
 export default function Results({ query, onSearch, onHome }) {
   const { stores, byStore, finished, error } = useSearch(query);
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
-  const [snap, setSnap] = useState(null);
-  useEffect(() => { getSnapshotInfo().then(setSnap).catch(() => {}); }, []);
   useEffect(() => setFilters(DEFAULT_FILTERS), [query]);
 
   const storeName = (id) => stores.find((s) => s.id === id)?.name || id;
@@ -71,7 +68,6 @@ export default function Results({ query, onSearch, onHome }) {
               </div>
             </div>
           </header>
-          {snap && <SnapshotNote info={snap} className="mt-5" compact />}
 
           {(bestNew || bestUsed) && (
             <section aria-label="Best prices" className={`mt-8 grid gap-3 sm:gap-4 ${bestNew && bestUsed ? 'grid-cols-2' : 'grid-cols-1 sm:max-w-md'}`}>
