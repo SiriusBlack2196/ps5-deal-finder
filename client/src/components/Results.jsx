@@ -209,7 +209,8 @@ function Filters({ filters, setFilters, editions }) {
           type="checkbox"
           checked={filters.inStockOnly}
           onChange={(e) => set('inStockOnly')(e.target.checked)}
-          className="size-4 accent-blue"
+          /* Custom-drawn so every browser shows the exact PlayStation blue (Safari/Chrome lighten accent-color). */
+          className="size-[1.125rem] shrink-0 cursor-pointer appearance-none rounded-[5px] bg-white bg-center bg-no-repeat shadow-[inset_0_0_0_1.5px_var(--color-muted)] transition-colors checked:bg-blue checked:shadow-none checked:bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2016%2016%22%3E%3Cpath%20d=%22M3.5%208.5l3%203%206-7%22%20fill=%22none%22%20stroke=%22white%22%20stroke-width=%222.2%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%3C/svg%3E')] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
         />
         In stock only
       </label>
