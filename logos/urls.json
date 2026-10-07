@@ -134,5 +134,21 @@
   {
     "file": "cex-uk-logo.svg",
     "url": "https://uk.webuy.com/images/logo.svg"
+  },
+  {
+    "file": "gts-logo.svg",
+    "url": "https://www.gamestheshop.com/logo.svg"
+  },
+  {
+    "file": "gts-favicon.ico",
+    "url": "https://www.gamestheshop.com/favicon.ico"
+  },
+  {
+    "file": "gts-apple.png",
+    "url": "https://www.gamestheshop.com/apple-icon.png"
+  },
+  {
+    "file": "gts-icon.png",
+    "url": "https://www.gamestheshop.com/icon.png"
   }
 ]
