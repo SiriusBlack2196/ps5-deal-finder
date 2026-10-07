@@ -38,3 +38,61 @@ et("condition",e.condition),e.platforms&&t.set("platforms",e.platforms),e.catego
  overflow-y-auto pb-32",style:{background:"#0A0A0A"},children:[(0,t.jsx)(D,{title:"Physical Games",onBack:K,seeAllHref:"/search?condition=Physical&title=Physical",onClose:K}),g.map((e,r)=>(0,t.jsx)(B,{section:e,onClose:K,gradientOffset:2*r},e.brand)),(0,t.jsx)("div",{className:"h-4"})]},
 n overflow-y-auto pb-32",style:{background:"#0A0A0A"},children:[(0,t.jsx)(D,{title:"Digital Store",onBack:K,seeAllHref:"/search?condition=Digital&title=Digital",onClose:K}),(0,t.jsxs)("div",{className:"px-4 mt-5",children:[(0,t.jsx)("p",{className:"text-white font-bold text-[13px] upperc
 == env
+== storefront paths
+"/storefront/auth/refresh
+"/storefront/vouchers/available
+"/storefront/vouchers/validate
+"storefront/auth/email/change/request
+"storefront/auth/email/change/verify
+"storefront/auth/google
+"storefront/auth/otp/request
+"storefront/auth/otp/verify
+"storefront/auth/register
+"storefront/auth/sms/request
+"storefront/auth/sms/request?user=true
+"storefront/auth/sms/verify
+"storefront/auth/sms/verify?user=true
+"storefront/banners/hero/
+"storefront/cart/
+"storefront/cart/merge
+"storefront/collections/
+"storefront/customer/addresses
+"storefront/customer/addresses/verify-phone
+"storefront/customer/assets
+"storefront/customer/profile
+"storefront/newsletter/subscribe
+"storefront/newsletter/unsubscribe
+"storefront/orders
+"storefront/orders/cancel
+"storefront/orders/checkout
+"storefront/orders/checkout/cancel
+"storefront/orders/create
+"storefront/orders/digital-limit
+"storefront/orders/place
+"storefront/orders/status
+"storefront/products
+"storefront/products/categories
+"storefront/products/featured
+"storefront/products/filter
+"storefront/products/platforms
+"storefront/reviews
+"storefront/s3/presigned-upload
+"storefront/s3/upload
+"storefront/search/autocomplete
+"storefront/wishlist/
+`storefront/cart/${e}
+`storefront/customer/addresses/${e}
+`storefront/orders/${e}
+`storefront/orders/${e}/invoice
+`storefront/orders/${e}/shipping-address
+`storefront/products/${e}/
+`storefront/reviews/product/${e}
+`storefront/wishlist/${e}
+== searchProductsAPI def
+:r={},page:a=1}=e.payload,i=yield es(tq.searchProductsAPI,{q:t,condition:r.condition,categories:r.categories,platforms:r.platforms,brands:r.brands,genres:r.genres,priceMin:r.priceMin??void 0,priceMax:r.priceMax??void 0,stockAvailable:r.stockAvailable,sort:r.sort,page:a,limit:20});if(i?.status==="success"){let e=Array.isArray(i.data)?i.data:[],t=new Set,r=e.filter(e=>!t.has(e.id)&&(t.add(e.id),!0)),n=i.meta?.totalItems??i.meta?.total??r.length;if(a>1)yield ea((0,tT.appendSearchResults)({products:r,total:n,page:a}));else{yield ea((0,tT.setSearchResults)({products:r,total:n,page:a}));let e=function(e){let t=new Map,r=new Map,a=new Map,i=new Map,n=new Ma
+== proxy
+)||b?.image?.trim();return g&&e?e:t||e||""},[b,g]);return((0,i.useEffect)(()=>{if(v.current=j,!j)return;let e=()=>{if(s.has(j))return void u(s.get(j));let e=new Image;e.crossOrigin="Anonymous",e.src=`/api/proxy?url=${encodeURIComponent(j)}`,e.onload=()=>{if(v.current!==j)return;let t=(e=>{let t=document.createElement("canvas"),a=t.getContext("2d");if(!a)return"0,0,0";t.width=48,t.height=48,a.drawImage(e,0,0,48,48);let{data:i}=a.getImageData(0,0,48,48),r=0,l=0,s=0,n=0;for(let e=0;e<i.length;e+=4){let t=i[e
+== base url
+.isHTMLForm(e)?new FormData(e):e),ti.getAdapter=e8,ti.HttpStatusCode=to,ti.default=ti;var ts=e.i(47293);let ta="https://green-api.gamestheshop.com",tu=ti.create({baseURL:ta,headers:{"Content-Type":"application/json"},withCredentials:!0}),tf=!1,tl=[],tc=(e,t=null)=>{tl.forEach(r=>{e?r.reject(e):r.resolve(t)}),tl=[]};tu.interceptors.request.use(e
+",{d:"M19 12H5",key:"x3x0zl"}]]);e.s(["ArrowLeft",()=>t],71689)},23785,e=>{"use strict";var t=e.i(93705);let r="https://green-api.gamestheshop.com";e.s(["default",0,{get:async(e,a={})=>{try{return await t.default.get(`${r}/${e}`,{params:a})}catch(e){throw e}},delete:async(e,a)=>{try{let s=`${r}/${e}/`;return await t.default.delete(s,a)}catch(e)
+tp:s,guestId:o}=e,l={email:a,registerToken:t,...o&&{guestId:o}};return s&&(l.emailOtp=s),(await r.default.post("https://green-api.gamestheshop.com/storefront/auth/sms/complete-registration",l,{headers:{"x-register-token":t}})).data}async function d(e){return(await t.default.post("storefront/auth/register",e)).data}async function c(){return(awai
