@@ -1,0 +1,50 @@
+# Release dates (Metacritic JSON-LD datePublished) for every game with a Metacritic
+# page in ratings/scores.json -> ratings/dates.json {key: "YYYY-MM-DD"}. Feeds the
+# home page's "Latest releases".
+name: Release dates
+on:
+  push:
+    paths: ['ratings/scores.json', '.github/workflows/dates.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch dates
+        run: |
+          python3 - <<'PY'
+          import json, re, time, urllib.request
+          scores = json.load(open('ratings/scores.json'))
+          try: out = json.load(open('ratings/dates.json'))
+          except Exception: out = {}
+          UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36'
+          n = 0
+          for key, v in sorted(scores.items()):
+              if not v or not v.get('url') or out.get(key): continue
+              try:
+                  html = urllib.request.urlopen(urllib.request.Request(v['url'], headers={'User-Agent': UA}), timeout=20).read().decode('utf-8', 'replace')
+                  for m in re.finditer(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', html, re.S):
+                      try: d = json.loads(m.group(1))
+                      except Exception: continue
+                      for x in (d if isinstance(d, list) else [d]):
+                          if isinstance(x, dict) and x.get('@type') == 'VideoGame' and x.get('datePublished'):
+                              out[key] = x['datePublished'][:10]; n += 1
+                              break
+                      if out.get(key): break
+              except Exception as e:
+                  print('FAIL', key, e)
+              time.sleep(1.0)
+          json.dump(out, open('ratings/dates.json', 'w'), indent=1, sort_keys=True)
+          print('new dates', n, 'total', len(out))
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ratings/dates.json
+          git diff --cached --quiet || git commit -m "Release dates: $(python3 -c "import json;print(len(json.load(open('ratings/dates.json'))))")"
+          git pull --rebase -q && git push
