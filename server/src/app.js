@@ -34,9 +34,11 @@ export function createApp({ adapters, searchService, db }) {
   // Newest released games among prices seen in the last 7 days (release dates: ratings/dates.json).
   let releaseDates = {};
   try { releaseDates = JSON.parse(fs.readFileSync(path.resolve(new URL('.', import.meta.url).pathname, '../../ratings/dates.json'), 'utf8')); } catch { /* none yet */ }
-  app.get('/api/latest', (_req, res) => {
+  // ?mode=upcoming: future-dated games and pre-orders, soonest first ("Coming soon").
+  app.get('/api/latest', (req, res) => {
     const since = new Date(Date.now() - 7 * 24 * 3600_000).toISOString();
-    res.json(db ? latestReleases(db.latestObservations(since), releaseDates) : []);
+    const mode = req.query.mode === 'upcoming' ? 'upcoming' : 'released';
+    res.json(db ? latestReleases(db.latestObservations(since), releaseDates, { mode }) : []);
   });
 
   // Biggest discounts off store MRP among prices seen in the last 48 hours.
@@ -92,6 +94,14 @@ export function createApp({ adapters, searchService, db }) {
   } catch { /* none yet */ }
   app.get('/api/heroes', (_req, res) => res.set('Cache-Control', 'public, max-age=3600').json(heroMap));
   app.use('/heroes', express.static(path.join(heroesDir, 'screens'), { maxAge: '7d', immutable: true }));
+  // Square store art for the "Latest releases" tiles (.github/workflows/tiles.yml).
+  let tileMap = {};
+  try {
+    const list = JSON.parse(fs.readFileSync(path.join(heroesDir, 'tiles.json'), 'utf8'));
+    tileMap = Object.fromEntries(Object.entries(list).filter(([, v]) => fs.existsSync(path.join(heroesDir, 'tiles', v.file))).map(([k, v]) => [k, v.file]));
+  } catch { /* not built yet */ }
+  app.get('/api/tiles', (_req, res) => res.set('Cache-Control', 'public, max-age=3600').json(tileMap));
+  app.use('/tiles', express.static(path.join(heroesDir, 'tiles'), { maxAge: '7d', immutable: true }));
   app.use('/thumbs/lg', express.static(path.join(thumbsDir, 'lg'), { maxAge: '7d', immutable: true }));
   app.use('/thumbs', express.static(path.join(thumbsDir, 'out'), { maxAge: '7d', immutable: true }));
 

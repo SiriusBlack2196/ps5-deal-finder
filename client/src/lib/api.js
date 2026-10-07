@@ -23,9 +23,9 @@ export async function getPopular() {
   return r.json();
 }
 
-export async function getLatest() {
-  if (SNAPSHOT) return (await loadSnapshot()).getLatest();
-  const r = await fetch('/api/latest');
+export async function getLatest(mode = 'released') {
+  if (SNAPSHOT) return (await loadSnapshot()).getLatest(mode);
+  const r = await fetch(`/api/latest?mode=${mode}`);
   return r.ok ? r.json() : [];
 }
 

@@ -69,8 +69,8 @@ export function getDeals() {
   return deals;
 }
 
-let latest = null;
-export function getLatest() {
-  latest ??= latestReleases(snapshot.listings.map(classifyListing).filter((c) => c.listing).map((c) => c.listing), releaseDates);
-  return latest;
+const latest = {};
+export function getLatest(mode = 'released') {
+  latest[mode] ??= latestReleases(snapshot.listings.map(classifyListing).filter((c) => c.listing).map((c) => c.listing), releaseDates, { mode });
+  return latest[mode];
 }
