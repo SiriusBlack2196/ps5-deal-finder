@@ -5,6 +5,8 @@ import snapshot from '../snapshot/snapshot.json';
 import { prepareQuery } from '@matching/match.js';
 import { processListings, classifyListing } from '@matching/pipeline.js';
 import { topDeals } from '@matching/deals.js';
+import { latestReleases } from '@matching/latest.js';
+import releaseDates from '../../../ratings/dates.json';
 import { tokenize } from '@matching/normalize.js';
 import { POPULAR } from '../../../server/src/catalog.js';
 
@@ -65,4 +67,10 @@ let deals = null;
 export function getDeals() {
   deals ??= topDeals(snapshot.listings.map(classifyListing).filter((c) => c.listing).map((c) => c.listing));
   return deals;
+}
+
+let latest = null;
+export function getLatest() {
+  latest ??= latestReleases(snapshot.listings.map(classifyListing).filter((c) => c.listing).map((c) => c.listing), releaseDates);
+  return latest;
 }

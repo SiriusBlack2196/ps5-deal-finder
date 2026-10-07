@@ -81,6 +81,14 @@ export function openDb(dbPath) {
         FROM price_observations WHERE game_key = ? AND fetched_at >= ? ORDER BY fetched_at`)
         .all(gameKey, sinceIso || '1970-01-01');
     },
+    // Latest observation per listing URL since `sinceIso` (input to latestReleases).
+    latestObservations(sinceIso) {
+      return db.prepare(`SELECT o.store, o.url, o.title, k.display AS displayTitle, o.condition, o.price, o.in_stock AS inStock
+        FROM price_observations o
+        JOIN (SELECT url, MAX(id) AS id FROM price_observations WHERE fetched_at >= ? GROUP BY url) last ON last.id = o.id
+        LEFT JOIN known_titles k ON k.game_key = o.game_key`).all(sinceIso)
+        .map((r) => ({ ...r, inStock: Boolean(r.inStock) }));
+    },
     // Latest observation per listing URL since `sinceIso`, with an MRP (input to topDeals).
     latestDiscounted(sinceIso) {
       return db.prepare(`SELECT o.store, o.url, o.title, o.game_key AS gameKey, k.display AS displayTitle, o.condition, o.edition,

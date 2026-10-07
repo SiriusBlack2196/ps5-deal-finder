@@ -5,6 +5,7 @@ import { publicStoreInfo } from './adapters/index.js';
 import { POPULAR, SEED_TITLES } from './catalog.js';
 import { tokenize } from './matching/normalize.js';
 import { topDeals } from './matching/deals.js';
+import { latestReleases } from './matching/latest.js';
 
 export function createApp({ adapters, searchService, db }) {
   const app = express();
@@ -29,6 +30,14 @@ export function createApp({ adapters, searchService, db }) {
   app.get('/api/stores', (_req, res) => res.json(adapters.map(publicStoreInfo)));
 
   app.get('/api/popular', (_req, res) => res.json(POPULAR));
+
+  // Newest released games among prices seen in the last 7 days (release dates: ratings/dates.json).
+  let releaseDates = {};
+  try { releaseDates = JSON.parse(fs.readFileSync(path.resolve(new URL('.', import.meta.url).pathname, '../../ratings/dates.json'), 'utf8')); } catch { /* none yet */ }
+  app.get('/api/latest', (_req, res) => {
+    const since = new Date(Date.now() - 7 * 24 * 3600_000).toISOString();
+    res.json(db ? latestReleases(db.latestObservations(since), releaseDates) : []);
+  });
 
   // Biggest discounts off store MRP among prices seen in the last 48 hours.
   app.get('/api/deals', (_req, res) => {

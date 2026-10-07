@@ -5,6 +5,7 @@ import { StoreBadge } from './StoreRow.jsx';
 import { getPopular, getStores, getSnapshotInfo } from '../lib/api.js';
 import { Thumb } from '../lib/thumbs.jsx';
 import BestDeals from './BestDeals.jsx';
+import LatestReleases from './LatestReleases.jsx';
 
 export default function Home({ onSearch }) {
   const [popular, setPopular] = useState([]);
@@ -73,6 +74,8 @@ export default function Home({ onSearch }) {
       )}
 
       <BestDeals onSearch={onSearch} />
+
+      <LatestReleases onSearch={onSearch} />
 
       <footer className="bg-white shadow-[0_-1px_0_var(--color-line)]">
         <p className="mx-auto max-w-6xl px-4 py-8 text-sm text-muted sm:px-8">

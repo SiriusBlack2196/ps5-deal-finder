@@ -23,6 +23,12 @@ export async function getPopular() {
   return r.json();
 }
 
+export async function getLatest() {
+  if (SNAPSHOT) return (await loadSnapshot()).getLatest();
+  const r = await fetch('/api/latest');
+  return r.ok ? r.json() : [];
+}
+
 export async function getDeals() {
   if (SNAPSHOT) return (await loadSnapshot()).getDeals();
   const r = await fetch('/api/deals');

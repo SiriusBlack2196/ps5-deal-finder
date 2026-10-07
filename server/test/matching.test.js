@@ -88,3 +88,13 @@ test('CeX box notes: "(No DLC)" is still a game; "** USE <id>**" duplicates are 
   assert.equal(detectKind('Black Myth: Wukong ** USE 8904171334143**', 'PS5 | Games'), 'other');
   assert.equal(detectKind('Spider-Man 2 DLC Pack'), 'dlc');
 });
+
+test('Latest releases: released only, newest first, editions merged, lowest in-stock price', async () => {
+  const { latestReleases } = await import('../src/matching/latest.js');
+  const L = (title, price, inStock = true) => ({ store: 's', title, price, inStock });
+  const out = latestReleases([
+    L('Ghost of Yotei', 4199), L('Ghost of Yotei Deluxe Edition', 3999, false), L('Ghost Of Yotei', 3550),
+    L('Astro Bot', 2999), L('Grand Theft Auto VI', 5999),
+  ], { 'ghost yotei': '2025-10-02', 'astro bot': '2024-09-06', 'grand theft auto vi': '2026-11-19' }, { today: '2026-10-07' });
+  assert.deepEqual(out.map((g) => [g.title, g.date, g.price]), [['Ghost of Yotei', '2025-10-02', 3550], ['Astro Bot', '2024-09-06', 2999]]);
+});
