@@ -1,0 +1,5 @@
+test keys: ['status', 'data', 'facets', 'meta'] meta: {"totalItems": 20, "totalPages": 7, "currentPage": 1, "limit": 3}
+test titles: ["Marvel's Spider-Man 2", "Marvel's Spider-Man: Miles Morales", 'HELLDIVERS 2']
+page 1: 100 meta {"totalItems": 113, "totalPages": 2, "currentPage": 1, "limit": 100}
+page 2: 13 meta {"totalItems": 113, "totalPages": 2, "currentPage": 2, "limit": 100}
+total 113

@@ -1,0 +1,29 @@
+{
+ "id": "1e26a10d-b41d-43df-b3e6-1e6f8ca66919",
+ "product_id": "e7a9cbd8-9afa-4521-b43c-1095db89fefb",
+ "type": "variant",
+ "stock_status": "Out of Stock",
+ "inventory": {
+  "available_stock": 0,
+  "buy_limit_count": 1
+ },
+ "is_digital": false,
+ "edition": {
+  "name": "Standard"
+ },
+ "created_at": "2026-05-18T09:57:49.980198+00:00",
+ "sale_price": 2999,
+ "platform": {
+  "name": "PS5"
+ },
+ "regular_price": 5199,
+ "is_cod_applicable": false,
+ "name": "Marvel's Spider-Man 2",
+ "publisher": {
+  "name": "Sony Interactive Entertainment"
+ },
+ "category": {
+  "name": "Game Software"
+ },
+ "thumbnail": "https://gts-ap-south-1.s3.amazonaws.com/products/images/776f25c6-e5ec-47c3-89e7-4538cdf03e73.jpg"
+}
