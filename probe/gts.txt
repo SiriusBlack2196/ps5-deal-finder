@@ -1,0 +1,40 @@
+pages bytes: 214488
+chunks: 25
+== hosts
+      2 https://green-api.gamestheshop.com
+      2 https://api.dicebear.com/7.x/pixel-art/svg
+      1 https://x.com/gamestheshop/
+      1 https://www.youtube-nocookie.com/embed/
+      1 https://www.instagram.com/gamestheshop/
+      1 https://www.clarity.ms/tag/
+      1 https://wa.me/919833323529/
+      1 https://redux.js.org/Errors
+      1 https://redux-toolkit.js.org/Errors
+      1 https://img.youtube.com/vi/
+      1 https://gts-ap-south-1.s3.ap-south-1.amazonaws.com/products/images/896e6ba8-4a8d880d-fd88-4dcb-b254-92a4340e4f84.jpg
+      1 https://gts-ap-south-1.s3.ap-south-1.amazonaws.com/products/images/71548927-9a298dda-d51e-494a-b6ad-f2cb8629a4c5.jpg
+      1 https://gts-ap-south-1.s3.ap-south-1.amazonaws.com/products/images/4db12851-2e79728f-8046-41e4-8d1e-cabe81de0f51.jpg
+      1 https://gts-ap-south-1.s3.ap-south-1.amazonaws.com/products/images/0ef2b109-bffb8d4c-e742-41ff-8e83-52b5c031283e.jpg
+      1 https://gts-ap-south-1.s3.ap-south-1.amazonaws.com/products/images/02b44f0a-e7695c1d-eb5d-48f4-9a17-fcea9eac0b9e.jpg
+      1 https://gts-ap-south-1.s3.ap-south-1.amazonaws.com
+      1 https://green-api.gamestheshop.com/storefront/auth/sms/complete-registration
+      1 https://bit.ly/3cXEKWf
+== api paths
+      1 `/api/proxy
+== search context
+ronRight,{className:"text-white"})})]})]})}var j=e.i(27875);let N=[{label:"DIGITAL",img:"/psplatform/PS5_010.png",href:"/search?condition=Digital&platforms=PlayStation%2CPS5%2CPS4%2CPSN"},{label:"CONSOLE",img:"/psplatform/PS5_004.png",href:"/search?condition=Physical&platforms=PlayStatio
+forms=PlayStation%2CPS5%2CPS4%2CPSN&categories=Game+Software"},{label:"CONTROLLERS",img:"/psplatform/PS5_007.png",href:"/search?condition=Physical&platforms=PlayStation%2CPS5%2CPS4%2CPSN&categories=Game+Accessories&q=Controller"},{label:"HEADSET",img:"/psplatform/PS5_008.png",href:"/sear
+"whats_hot",platforms:e.platformAliases||[e.name],limit:100}))},[f,e.name,e.platformAliases]),(0,m.useEffect)(()=>{(0,i.searchProductsAPI)({condition:["Digital"],platforms:e.platformAliases||[e.name],limit:20}).then(e=>{A(Array.isArray(e?.data)?e.data:[])}).catch(()=>A([]))},[e.name,e.platform
+lor:"#B91C1C"},{label:"SPORTS",color:"#6B9E8F"},{label:"RACING",color:"#92400E"}].map((e,l)=>(0,t.jsx)(c.default,{href:`/search?platforms=PlayStation,PSN,PS5,PS4&genres=${encodeURIComponent(e.label)}`,className:"flex-shrink-0 group relative",children:(0,t.jsx)("div",{className:" w-[140px
+(r.slice(0,2),16),a=parseInt(r.slice(2,4),16),i=parseInt(r.slice(4,6),16);return`rgba(${s},${a},${i},${t})`}function j({initialQ:e,initialFilters:j,collectionTitle:N,primaryColor:y="#A2B71C"}){let w=(0,u.useDispatch)(),{results:k,loading:_,loadingMore:S,page:z,hasMore:C,filters:A,totalCo
+.useEffect)(()=>{let t=V.current;if(!t)return;let r=new IntersectionObserver(t=>{t[0].isIntersecting&&C&&!_&&!S&&w((0,a.searchProductsAction)({q:e,filters:A,page:z+1}))},{rootMargin:"400px"});return r.observe(t),()=>r.disconnect()},[w,e,A,z,C,_,S]),(0,p.useEffect)(()=>{let e=e=>{J.current&&!J.
+ceMin=j.priceMin),j?.priceMax!=null&&(t.priceMax=j.priceMax),Object.keys(t).length&&w((0,a.setSearchFilters)(t)),w((0,a.searchProductsAction)({q:e,filters:t}))},[e,JSON.stringify(j?.condition),JSON.stringify(j?.categories),JSON.stringify(j?.platforms),JSON.stringify(j?.genres),j?.priceMin,j?.p
+enres),publishers:x(e.publishers,$.publishers)}))},[$]);let X=t=>{let r={...A,...t};w((0,a.setSearchFilters)(t)),w((0,a.searchProductsAction)({q:e,filters:r})),window.scrollTo({top:0,behavior:"smooth"})},G=(e,t)=>{let r=A[e];X({[e]:r.includes(t)?r.filter(e=>e!==t):[...r,t]})},Z=()=>{X({priceMi
+()=>{K({categories:[],platforms:[],brands:[],genres:[],publishers:[]}),E(""),q(""),w((0,a.resetSearchFilters)()),w((0,a.searchProductsAction)({q:e}))},ee=[...(A.condition||[]).map(e=>({label:e,remove:()=>X({condition:(A.condition||[]).filter(t=>t!==e)})})),...A.categories.map(e=>({label:Y.cate
+LAYSTATION",href:"/playstation"},{label:"XBOX",href:"/xbox"},{label:"NINTENDO",href:"/nintendo"},{label:"DIGITAL",href:"/search?condition=Digital&title=Digital"},{label:"PRE ORDER",href:"/preorder"}]}),(0,t.jsx)(p,{title:"COMPANY",items:[{label:"HOME",href:"/"},{label:"ABOUT US",href:"/a
+ry again."))}}var tq=e.i(62860),tT=e.i(74782);function*tL(e){try{let{q:t,filters:r={},page:a=1}=e.payload,i=yield es(tq.searchProductsAPI,{q:t,condition:r.condition,categories:r.categories,platforms:r.platforms,brands:r.brands,genres:r.genres,priceMin:r.priceMin??void 0,priceMax:r.priceMax??vo
+(){yield eY(tk.fetchBannerAssetsAction.type,tP),yield eY(tk.fetchAvatarAssetsAction.type,tI)}(),function*(){yield eY(tT.searchProductsAction.type,tL)}(),function*(){yield eY(tE.fetchReviewsAction.type,tz),yield eY(tE.submitReviewAction.type,tO)}()])}),e.s(["default",()=>t0],19216)},16406,e=>{"
+et("condition",e.condition),e.platforms&&t.set("platforms",e.platforms),e.categories&&t.set("categories",e.categories),`/search?${t.toString()}`},q=[{label:"PlayStation Gift Cards",href:O({condition:"Digital",platforms:"PlayStation,PS5,PS4,PSN"}),icon:p,image:"/categories/Category Menu/1
+ overflow-y-auto pb-32",style:{background:"#0A0A0A"},children:[(0,t.jsx)(D,{title:"Physical Games",onBack:K,seeAllHref:"/search?condition=Physical&title=Physical",onClose:K}),g.map((e,r)=>(0,t.jsx)(B,{section:e,onClose:K,gradientOffset:2*r},e.brand)),(0,t.jsx)("div",{className:"h-4"})]},
+n overflow-y-auto pb-32",style:{background:"#0A0A0A"},children:[(0,t.jsx)(D,{title:"Digital Store",onBack:K,seeAllHref:"/search?condition=Digital&title=Digital",onClose:K}),(0,t.jsxs)("div",{className:"px-4 mt-5",children:[(0,t.jsx)("p",{className:"text-white font-bold text-[13px] upperc
+== env
