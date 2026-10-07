@@ -25,6 +25,10 @@ jobs:
             echo "== api paths"; grep -ohE '["`'"'"'](/api/[A-Za-z0-9/_${}.-]+|/v[0-9]/[A-Za-z0-9/_${}.-]+|/store/[A-Za-z0-9/_${}.-]+)' *.js | sort | uniq -c | sort -rn | head -40
             echo "== search context"; grep -ohE '.{120}(initialQ|searchProducts|/search\?|q=\$\{|query=\$\{).{160}' *.js | head -15
             echo "== env"; grep -ohE 'NEXT_PUBLIC_[A-Z_]+.{0,100}' *.js | sort -u | head -20
+            echo "== storefront paths"; grep -ohE '["`'"'"']/?storefront/[A-Za-z0-9/_${}.?=&-]+' *.js | sort -u | head -60
+            echo "== searchProductsAPI def"; grep -ohE '.{40}searchProductsAPI\s*[:=(,].{600}' *.js | head -4
+            echo "== proxy"; grep -ohE '.{200}/api/proxy.{300}' *.js | head -3
+            echo "== base url"; grep -ohE '.{120}green-api\.gamestheshop\.com.{200}' *.js | head -4
           } >> out.txt
           mkdir -p $GITHUB_WORKSPACE/probe && cp out.txt $GITHUB_WORKSPACE/probe/gts.txt
       - name: Commit
