@@ -125,3 +125,12 @@ test('CeX: pre-owned, bought in store, no MRP, product link by box id', async ()
   assert.equal(l.storeOnly, true);
   assert.match(l.url, /^https:\/\/in\.webuy\.com\/product-detail\?id=\d+$/);
 });
+
+test('Games The Shop: storefront API mapped (MRP, edition, stock); PS4 and digital dropped', async () => {
+  const { svc } = service();
+  const g = byStore(await svc.search('Spider-Man 2'), 'gamestheshop');
+  assert.equal(g.status, 'ok');
+  assert.deepEqual(g.listings.map((l) => [l.price, l.mrp, l.edition, l.inStock]).sort((a, b) => a[0] - b[0]),
+    [[2999, 5199, 'Standard', false], [4499, 5999, 'Deluxe', true]]);
+  assert.ok(g.listings.every((l) => /gamestheshop\.com\/product\/.+\?variant=/.test(l.url)));
+});

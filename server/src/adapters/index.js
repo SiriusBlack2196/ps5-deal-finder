@@ -11,6 +11,7 @@ import { createWooAdapter } from './woocommerce.js';
 import { createShopifyAdapter } from './shopify.js';
 import { gameNationAdapter } from './gamenation.js';
 import { cexAdapter } from './cex.js';
+import { gamesTheShopAdapter } from './gamestheshop.js';
 
 export const adapters = [
   { ...createWooAdapter({ id: 'gameloot', name: 'Gameloot', baseUrl: 'https://gameloot.in' }), phase: 1 },
@@ -18,6 +19,7 @@ export const adapters = [
   { ...gameNationAdapter, phase: 1 },
   { ...createWooAdapter({ id: 'e2z', name: 'E2Z', baseUrl: 'https://e2zstore.com' }), phase: 1 },
   { ...cexAdapter, phase: 1 },
+  { ...gamesTheShopAdapter, phase: 1 },
 
   // PHASE 2 — Amazon.in and Flipkart plug in here behind the same interface.
   // Keys are read from AMAZON_PAAPI_* and FLIPKART_AFFILIATE_* (see config.js).

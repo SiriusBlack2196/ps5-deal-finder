@@ -13,6 +13,7 @@ import path from 'node:path';
 import { wooPrice } from '../src/adapters/woocommerce.js';
 import { mapGameNationProduct } from '../src/adapters/gamenation.js';
 import { mapCexHit, CEX_PS5_CATEGORY } from '../src/adapters/cex.js';
+import { mapGtsProduct } from '../src/adapters/gamestheshop.js';
 import { detectKind, detectPlatform, isBuyback } from '../src/matching/classify.js';
 import { displayTitle } from '../src/matching/normalize.js';
 
@@ -86,6 +87,14 @@ for (const page of read('cex')) {
   }
 }
 
+// Games The Shop (storefront API: new copies; regular_price is the MRP)
+for (const page of read('gts')) {
+  if (!Array.isArray(page)) continue;   // skip sample/debug files
+  for (const p of page) {
+    if (!p.is_digital && p.platform?.name === 'PS5' && (p.sale_price ?? p.regular_price) > 0) listings.push(mapGtsProduct(p, process.env.GTS_AT || fetchedAt));
+  }
+}
+
 // Query-independent pre-filter to keep the page small; matching happens in the browser.
 const kept = listings.filter((l) => {
   const hint = (l.hints || []).join(' | ');
@@ -104,6 +113,7 @@ const snapshot = {
     { id: 'gamenation', name: 'Game Nation', status: 'ok', count: kept.filter((l) => l.store === 'gamenation').length },
     { id: 'e2z', name: 'E2Z', status: 'ok', count: kept.filter((l) => l.store === 'e2z').length },
     { id: 'cex', name: 'CeX', status: 'ok', count: kept.filter((l) => l.store === 'cex').length },
+    { id: 'gamestheshop', name: 'Games The Shop', status: 'ok', count: kept.filter((l) => l.store === 'gamestheshop').length },
   ],
   titles,
   listings: kept,

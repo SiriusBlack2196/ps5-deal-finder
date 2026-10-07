@@ -49,6 +49,7 @@ never confused. It deliberately uses no Sony logos or PlayStation symbols. Token
 | E2Z | WooCommerce | same | Prices in **paise** (`currency_minor_unit: 2`). robots.txt blocks `/search/`, not the Store API. |
 | Console Garage | Shopify | `/search/suggest.json` then `/products/<handle>.js` | One product per game with variants **Pre-Owned / NEW / BUYBACK (SELL)**. The suggest price is the *buyback* price (what they pay you), so the adapter always expands variants and drops buyback ones. |
 | Game Nation | Custom Next.js + JSON API | **working** | The site renders client-side from a public JSON API at `gamenation.in/Api` (found in its JS bundle). The adapter calls `/Products/Games/Index?term=…&PS5=1&TypeGames=1`, which returns name, price, MRP, new/used and availability; trade-in (buyback) values in the same response are ignored. Product links follow the site's own `<slug>-<ProductId>` rule. |
+| Games The Shop | Custom Next.js + JSON API | **working** | Search runs in the browser against `green-api.gamestheshop.com`; the adapter POSTs to `/storefront/products/filter` with `{ searchQuery, platforms: ['PS5'], categories: ['Game Software'], is_digital: false }`. Returns sale price, regular price (MRP), edition and stock. New copies only; a zero-result search comes back as HTTP 404. |
 
 No adapter needed HTML scraping.
 
