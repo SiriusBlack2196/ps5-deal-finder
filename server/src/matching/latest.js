@@ -19,9 +19,11 @@ function baseKey(tokens) {
 }
 
 // Prefer the store's most "proper" spelling ("Marvel's Spider-Man 2" over "Spiderman 2"),
-// then the shortest (plain name over "... Complete Edition").
+// then the shortest (plain name over "... Complete Edition"). A name with no edition words
+// always wins, so "Collector's Edition" can't win on its apostrophe.
 function pickName(titles) {
-  const score = (t) => (/[’']/.test(t) ? 2 : 0) + (/\w-\w/.test(t) ? 1 : 0) + (/[a-z]/.test(t) && /[A-Z]/.test(t) ? 1 : 0) - t.length / 100;
+  const plain = (t) => !/\b(edition|steelbook|bundle|collector[’']?s?|deluxe|ultimate|premium|limited)\b/i.test(t);
+  const score = (t) => (plain(t) ? 4 : 0) + (/[’']/.test(t) ? 2 : 0) + (/\w-\w/.test(t) ? 1 : 0) + (/[a-z]/.test(t) && /[A-Z]/.test(t) ? 1 : 0) - t.length / 100;
   return [...new Set(titles)].sort((a, b) => score(b) - score(a))[0];
 }
 

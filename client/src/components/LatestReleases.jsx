@@ -9,7 +9,12 @@ const TABS = [
   { id: 'upcoming', label: 'Coming soon' },
 ];
 
-const fmtDay = (iso) => new Date(`${iso}T00:00:00`).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+// "8 Oct" this year, "15 Jan 2027" beyond it.
+const fmtDay = (iso) => {
+  const d = new Date(`${iso}T00:00:00`);
+  const year = d.getFullYear() !== new Date().getFullYear() ? { year: 'numeric' } : {};
+  return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', ...year });
+};
 
 // Dark full-bleed band in the style of PlayStation.com's "out now or coming soon" grid:
 // centred heading, a two-way pill toggle, then square store-art tiles (cover crop as fallback).
@@ -81,9 +86,8 @@ function Tile({ g, art, upcoming, onSearch }) {
           <span className="absolute bottom-2 left-2 rounded-md bg-black/75 px-1.5 py-0.5 text-[0.68rem] font-bold leading-none tracking-wide text-white">PS5</span>
         </span>
         <span className="mt-3 line-clamp-2 text-[0.95rem] font-semibold leading-snug text-white/90 group-hover:text-white">{g.title}</span>
-        <span className="mt-1 block text-sm text-white/55">
-          {when && <>{when} · </>}from {inr(g.price)}
-        </span>
+        <span className="mt-1 block text-sm text-white/55">from {inr(g.price)}</span>
+        {when && <span className="block text-sm text-white/55">{when}</span>}
       </button>
     </li>
   );
