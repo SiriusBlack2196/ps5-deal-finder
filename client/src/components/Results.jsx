@@ -165,7 +165,7 @@ function DealCard({ kind, l, storeName }) {
       className="lift group flex flex-col rounded-card bg-white p-4 text-ink sm:p-6"
     >
       <span className="flex flex-wrap items-center gap-1.5">
-        <span className="inline-flex h-6 w-fit items-center rounded-full bg-green px-2.5 text-xs font-bold text-white">
+        <span className={`inline-flex h-6 w-fit items-center rounded-full px-2.5 text-xs font-bold ${isNew ? 'bg-green text-white' : 'bg-yellow text-ink'}`}>
           {isNew ? 'Best deal (new)' : 'Best pre-owned'}
         </span>
       </span>

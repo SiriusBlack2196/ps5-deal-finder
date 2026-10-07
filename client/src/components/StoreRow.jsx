@@ -25,7 +25,7 @@ export function ListingRow({ l, storeName, highlight }) {
     <li className={`rounded-card bg-white p-4 sm:p-5 ${ring} ${l.inStock ? '' : 'opacity-75'}`}>
       {highlight && (
         <p className="mb-3">
-          <span className="inline-flex h-6 items-center rounded-full bg-green px-2.5 text-xs font-bold text-white">
+          <span className={`inline-flex h-6 items-center rounded-full px-2.5 text-xs font-bold ${highlight === 'new' ? 'bg-green text-white' : 'bg-yellow text-ink'}`}>
             {highlight === 'new' ? 'Best deal (new)' : 'Best pre-owned'}
           </span>
         </p>
