@@ -95,6 +95,11 @@ for (const page of read('gts')) {
   }
 }
 
+// DACBY (crawled catalogue index: { at, listings: RawListing[] }, see adapters/dacby.js)
+for (const idx of read('dacby')) {
+  for (const l of idx.listings || []) listings.push({ ...l, fetchedAt: l.fetchedAt || idx.at || fetchedAt });
+}
+
 // Query-independent pre-filter to keep the page small; matching happens in the browser.
 const kept = listings.filter((l) => {
   const hint = (l.hints || []).join(' | ');
@@ -114,6 +119,7 @@ const snapshot = {
     { id: 'e2z', name: 'E2Z', status: 'ok', count: kept.filter((l) => l.store === 'e2z').length },
     { id: 'cex', name: 'CeX', status: 'ok', count: kept.filter((l) => l.store === 'cex').length },
     { id: 'gamestheshop', name: 'Games The Shop', status: 'ok', count: kept.filter((l) => l.store === 'gamestheshop').length },
+    { id: 'dacby', name: 'DACBY', status: 'ok', count: kept.filter((l) => l.store === 'dacby').length },
   ],
   titles,
   listings: kept,

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { parseDacbySitemap, parseDacbyProduct, createDacbyAdapter } from '../src/adapters/dacby.js';
+import { parseDacbySitemap, parseDacbyProduct, createDacbyAdapter, cleanDacbyTitle } from '../src/adapters/dacby.js';
 import { classifyListing } from '../src/matching/pipeline.js';
 import { prepareQuery } from '../src/matching/match.js';
 
@@ -53,4 +53,10 @@ test('dacby adapter: answers from the index, no network; empty index -> loading 
     const empty = createDacbyAdapter({ autoRefresh: false });
     await assert.rejects(empty.search('x', { http, preparedQuery: prepareQuery('x') }), /catalogue still loading/);
   } finally { fs.rmSync(seed, { force: true }); }
+});
+
+test('dacby titles: condition notes dropped, edition/format notes kept', () => {
+  assert.equal(cleanDacbyTitle('FC25 (Minor Scratches, Tested &amp; Working)'), 'FC25');
+  assert.equal(cleanDacbyTitle('Mortal Kombat 11 Ultimate Edition (Includes only the base game, without DLC)'), 'Mortal Kombat 11 Ultimate Edition');
+  assert.equal(cleanDacbyTitle('GTA 6 Standard Edition | PS5  (Code in Box)'), 'GTA 6 Standard Edition | PS5 (Code in Box)');
 });

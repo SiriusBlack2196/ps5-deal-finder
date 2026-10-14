@@ -40,6 +40,13 @@ export function parseDacbySitemap(xml) {
   return [...new Set(out)];
 }
 
+/** Drops condition notes stores put in the name: "FC25 (Minor Scratches, Tested & Working)" -> "FC25". */
+export function cleanDacbyTitle(t) {
+  return decode(String(t))
+    .replace(/\s*[([][^)\]]*\b(scratch|tested|working|includes|without|dlc|base game)\b[^)\]]*[)\]]/gi, '')
+    .replace(/\s+/g, ' ').trim();
+}
+
 const num = (v) => {
   const n = Number(String(v ?? '').replace(/[^\d.]/g, ''));
   return Number.isFinite(n) && n > 0 ? n : null;
@@ -67,7 +74,7 @@ export function parseDacbyProduct(html, pageUrl, fetchedAt) {
   const imageUrl = [].concat(product.image || [])[0] || null;
   const base = {
     store: 'dacby',
-    title: decode(product.name).replace(/\s+/g, ' ').trim(),
+    title: cleanDacbyTitle(product.name),
     mrp: mrp && mrp > price ? mrp : null,
     shipping: Number(offer.shippingDetails?.shippingRate?.value) === 0 ? 0 : null,
     inStock: /InStock|PreOrder|LimitedAvailability/i.test(availability),
@@ -142,7 +149,9 @@ export function createDacbyAdapter({ indexFile, seedFile, autoRefresh = true } =
   const load = (f) => {
     try {
       const j = JSON.parse(fs.readFileSync(f, 'utf8'));
-      return Array.isArray(j.listings) ? j : null;
+      if (!Array.isArray(j.listings)) return null;
+      for (const l of j.listings) l.title = cleanDacbyTitle(l.title); // indexes saved before a title fix
+      return j;
     } catch { return null; }
   };
   const newest = [indexFile, seedFile].filter(Boolean).map(load).filter(Boolean).sort((a, b) => (a.at < b.at ? 1 : -1))[0];

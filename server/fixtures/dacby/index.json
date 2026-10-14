@@ -1,0 +1,96 @@
+{
+ "at": "2026-10-14T18:02:18.565Z",
+ "note": "Subset of catalog/dacby/dacby.json (real crawl) for fixture mode",
+ "listings": [
+  {
+   "store": "dacby",
+   "title": "EA Sports FC 26",
+   "mrp": 4999,
+   "shipping": 0,
+   "inStock": true,
+   "preorder": false,
+   "url": "https://dacby.com/buy/ps5-cds/ea-sports-fc-26-aOqq6rLZW8nSpoRfBOqv",
+   "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dacby-database.appspot.com/o/1%20NEW%20WEBSITE%20LISTING%2FPS4%20CD%2FEA%20Sports%20FC%2026%2FFC26x_2040x2040.jpg?alt=media&token=fd308b49-82e5-453b-8c4d-8424c405fe55",
+   "fetchedAt": "2026-10-14T17:56:40.361Z",
+   "hints": [
+    "PS5",
+    "Games",
+    "PS5 Games - Playstation Discs & More"
+   ],
+   "conditionHint": "preowned",
+   "price": 2449
+  },
+  {
+   "store": "dacby",
+   "title": "God Of War Ragnarok",
+   "mrp": 4999,
+   "shipping": 0,
+   "inStock": true,
+   "preorder": false,
+   "url": "https://dacby.com/buy/ps5-cds/god-of-war-ragnarok-jMx8wDqLi29fvcQUh0r9",
+   "imageUrl": "https://dacby-database.web.app/cdn/11%2Fps4%20cd%2FPS5%2FPS5%2FGOD%20OF%20WAR%2F7f1f0a23-0c88-4209-b498-6ef45f8b3e5c_2040x2040.jpg?alt=media&token=45516e3a-91a8-42dc-956f-5e269fbb80d5",
+   "fetchedAt": "2026-10-14T17:56:47.788Z",
+   "hints": [
+    "PS5",
+    "Games",
+    "PS5 Games - Playstation Discs & More"
+   ],
+   "conditionHint": "preowned",
+   "price": 2249
+  },
+  {
+   "store": "dacby",
+   "title": "Marvel Spider-Man 2",
+   "mrp": 4999,
+   "shipping": 0,
+   "inStock": true,
+   "preorder": false,
+   "url": "https://dacby.com/buy/ps5-cds/marvel-spider-man-2-qfYkGzqtgNj8ITRxUFcc",
+   "imageUrl": "https://dacby-database.web.app/cdn/ps5%20new%20listing%2FMarvel%20Spider-Man%202-1_2040x2040.JPG?alt=media&token=07c6ad20-089b-4161-9c5a-dbedd6859256",
+   "fetchedAt": "2026-10-14T17:56:56.462Z",
+   "hints": [
+    "PS5",
+    "Games",
+    "PS5 Games - Playstation Discs & More"
+   ],
+   "conditionHint": "preowned",
+   "price": 2949
+  },
+  {
+   "store": "dacby",
+   "title": "EA Sports FC 26",
+   "mrp": 4998,
+   "shipping": 0,
+   "inStock": false,
+   "preorder": false,
+   "url": "https://dacby.com/buy/ps5-cds/ea-sports-fc-26-xHF0qxtYZe0AOLKE6hlU",
+   "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dacby-database.appspot.com/o/1%20NEW%20WEBSITE%20LISTING%2FPS4%20CD%2FEA%20Sports%20FC%2026%2FFC26x_2040x2040.jpg?alt=media&token=fd308b49-82e5-453b-8c4d-8424c405fe55",
+   "fetchedAt": "2026-10-14T17:58:28.057Z",
+   "hints": [
+    "PS5",
+    "Games",
+    "PS5 Games - Playstation Discs & More"
+   ],
+   "conditionHint": "new",
+   "price": 2999
+  },
+  {
+   "store": "dacby",
+   "title": "God of War Laufey PS5",
+   "mrp": null,
+   "shipping": 0,
+   "inStock": true,
+   "preorder": true,
+   "url": "https://dacby.com/buy/pre-orders/god-of-war-laufey-ps5-fPuHENLxWT3cDSgdVpPh",
+   "imageUrl": "https://dacby-database.web.app/cdn/1%20NEW%20WEBSITE%20LISTING%2FPS5%20CDS%2FGod%20of%20War%20Laufey%2Flaufey-edit.png?alt=media&token=a434e725-aadb-48ce-8d26-8fe80aac1d0f",
+   "fetchedAt": "2026-10-14T18:02:16.096Z",
+   "hints": [
+    "PS5",
+    "Games",
+    "Pre Orders"
+   ],
+   "conditionHint": "new",
+   "price": 5499
+  }
+ ]
+}

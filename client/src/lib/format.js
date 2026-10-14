@@ -4,6 +4,7 @@ import e2zLogo from '../assets/logos/e2z.png';
 import cexLogo from '../assets/logos/cex.png';
 import gtsLogo from '../assets/logos/gamestheshop.png';
 import glLogo from '../assets/logos/gameloot.png';
+import dacbyLogo from '../assets/logos/dacby.png';
 
 const inrFmt = new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 });
 
@@ -30,6 +31,7 @@ export const STORE_STYLE = {
   e2z: { logo: e2zLogo, tile: '#000', mono: 'E2Z', bg: '#000', fg: '#FFC800', domain: 'e2zstore.com' },
   cex: { logo: cexLogo, tile: '#E20A03', mono: 'CeX', bg: '#E20A03', fg: '#fff', domain: 'in.webuy.com' },
   gamestheshop: { logo: gtsLogo, tile: '#000', mono: 'GTS', bg: '#000', fg: '#BFD730', domain: 'gamestheshop.com' },
+  dacby: { logo: dacbyLogo, tile: '#fff', mono: 'D', bg: '#023791', fg: '#fff', domain: 'dacby.com' },
   amazon: { mono: 'a', bg: '#232F3E', fg: '#FF9900', domain: 'amazon.in' },
   flipkart: { mono: 'F', bg: '#2874F0', fg: '#FFE11B', domain: 'flipkart.com' },
 };
