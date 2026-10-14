@@ -1,0 +1,41 @@
+# Crawls DACBY's PS5 catalogue into catalog/dacby/dacby.json with the same code the
+# server uses (server/src/adapters/dacby.js): product sitemaps + one /buy/ page per second,
+# robots.txt respected (it disallows /api/ and /buy/search?, so no search endpoint is used).
+# Also grabs the DACBY logo into logos/raw/ for the store badge.
+name: DACBY catalogue
+on:
+  push:
+    paths: ['.github/workflows/dacby-catalog.yml', 'server/src/adapters/dacby.js']
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */12 * * *'
+permissions:
+  contents: write
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - name: Crawl
+        env:
+          BOT_CONTACT: https://github.com/SiriusBlack2196/ps5-deal-finder
+        run: cd server && node --no-warnings scripts/crawl-dacby.js ../catalog/dacby/dacby.json 2>../catalog/dacby-crawl.log || (cat ../catalog/dacby-crawl.log; exit 1)
+      - name: Logo
+        run: |
+          mkdir -p logos/raw
+          UA='Lowscore/0.1 (store logo; https://github.com/SiriusBlack2196/ps5-deal-finder)'
+          curl -sSfL -A "$UA" -o logos/raw/dacby.svg https://dacby.com/dacby_logo.svg || true
+          curl -sSfL -A "$UA" -o logos/raw/dacby-main.png https://dacby.com/logo_main.png || true
+          curl -sSfL -A "$UA" -o logos/raw/dacby-touch.png https://dacby.com/apple-touch-icon.png || true
+          ls -la logos/raw | grep dacby || true
+      - name: Commit
+        run: |
+          tail -20 catalog/dacby-crawl.log || true; rm -f catalog/dacby-crawl.log
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add catalog/dacby logos/raw
+          git diff --cached --quiet || git commit -m "DACBY catalogue: $(node -e "const j=require('./catalog/dacby/dacby.json');console.log(j.listings.length+' listings from '+j.pages+' pages')")"
+          git pull --rebase -q && git push

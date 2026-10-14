@@ -71,6 +71,7 @@ function friendlyError(err) {
   const msg = String(err?.message || err);
   if (err?.name === 'TimeoutError') return 'Store took too long to respond';
   if (/robots\.txt/.test(msg)) return 'Store does not allow automated search';
+  if (/catalogue still loading/.test(msg)) return 'Store catalogue is still loading';
   if (/not configured/.test(msg)) return 'Store integration not set up yet';
   if (/HTTP 403|HTTP 429|blocked|Expected JSON/.test(msg)) return 'Store blocked the request';
   if (/HTTP 5\d\d/.test(msg)) return 'Store is having problems';

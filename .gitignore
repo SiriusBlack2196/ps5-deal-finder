@@ -3,3 +3,4 @@ client/dist/
 server/data/*.db*
 server/.env
 client/dist-artifact/
+server/data/*.json
