@@ -29,8 +29,11 @@ export function applyFilters(listings, { condition, inStockOnly, edition }) {
     .filter((l) => condition === 'all' || l.condition === condition)
     .filter((l) => !inStockOnly || l.inStock)
     .filter((l) => edition === 'all' || l.edition === edition)
-    .sort((a, b) => a.effectivePrice - b.effectivePrice || a.store.localeCompare(b.store));
+    .sort((a, b) => a.effectivePrice - b.effectivePrice || freeFirst(a, b) || a.store.localeCompare(b.store));
 }
+
+// Known free delivery (shipping 0) sorts ahead of "shipping not listed" (null) at the same price.
+const freeFirst = (a, b) => (a.shipping === 0 ? 0 : 1) - (b.shipping === 0 ? 0 : 1);
 
 /**
  * Best deal = cheapest in-stock NEW PS5 copy.
@@ -41,7 +44,8 @@ export function applyFilters(listings, { condition, inStockOnly, edition }) {
  */
 export function bestDeals(listings, { edition }) {
   const eligible = listings.filter((l) => l.inStock && l.platform === 'ps5' && (edition === 'all' || l.edition === edition));
-  const cheapest = (arr) => arr.reduce((min, l) => (!min || l.effectivePrice < min.effectivePrice ? l : min), null);
+  // On a price tie, a copy with known free delivery beats one whose shipping isn't listed.
+  const cheapest = (arr) => arr.reduce((min, l) => (!min || l.effectivePrice < min.effectivePrice || (l.effectivePrice === min.effectivePrice && freeFirst(l, min) < 0) ? l : min), null);
   const bestNew = cheapest(eligible.filter((l) => l.condition === 'new'));
   const bestUsed = cheapest(eligible.filter((l) => l.condition === 'preowned'));
   const showUsed = bestUsed && (!bestNew || bestUsed.effectivePrice < bestNew.effectivePrice);
