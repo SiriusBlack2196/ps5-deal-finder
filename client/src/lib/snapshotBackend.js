@@ -6,6 +6,7 @@ import { prepareQuery } from '@matching/match.js';
 import { processListings, classifyListing } from '@matching/pipeline.js';
 import { topDeals } from '@matching/deals.js';
 import { latestReleases } from '@matching/latest.js';
+import { shelfPrices } from '@matching/shelf.js';
 import releaseDates from '../../../ratings/dates.json';
 import { tokenize } from '@matching/normalize.js';
 import { POPULAR } from '../../../server/src/catalog.js';
@@ -63,14 +64,23 @@ export function suggest(q) {
   return scored.sort((a, b) => b.score - a.score).slice(0, 8).map((s) => s.display);
 }
 
+let classifiedCache = null;
+const classified = () => (classifiedCache ??= snapshot.listings.map(classifyListing).filter((c) => c.listing).map((c) => c.listing));
+
+let shelf = null;
+export function getShelf() {
+  shelf ??= shelfPrices(POPULAR, classified()).filter((g) => g.storeCount > 0);
+  return shelf;
+}
+
 let deals = null;
 export function getDeals() {
-  deals ??= topDeals(snapshot.listings.map(classifyListing).filter((c) => c.listing).map((c) => c.listing));
+  deals ??= topDeals(classified(), { dates: releaseDates });
   return deals;
 }
 
 const latest = {};
 export function getLatest(mode = 'released') {
-  latest[mode] ??= latestReleases(snapshot.listings.map(classifyListing).filter((c) => c.listing).map((c) => c.listing), releaseDates, { mode });
+  latest[mode] ??= latestReleases(classified(), releaseDates, { mode });
   return latest[mode];
 }

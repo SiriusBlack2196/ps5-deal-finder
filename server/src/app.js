@@ -6,6 +6,7 @@ import { POPULAR, SEED_TITLES } from './catalog.js';
 import { tokenize } from './matching/normalize.js';
 import { topDeals } from './matching/deals.js';
 import { latestReleases } from './matching/latest.js';
+import { shelfPrices } from './matching/shelf.js';
 
 export function createApp({ adapters, searchService, db }) {
   const app = express();
@@ -41,10 +42,16 @@ export function createApp({ adapters, searchService, db }) {
     res.json(db ? latestReleases(db.latestObservations(since), releaseDates, { mode }) : []);
   });
 
+  // Popular titles with their lowest in-stock price (home "Popular right now" shelf).
+  app.get('/api/shelf', (_req, res) => {
+    const since = new Date(Date.now() - 7 * 24 * 3600_000).toISOString();
+    res.json(db ? shelfPrices(POPULAR, db.latestObservations(since)).filter((g) => g.storeCount > 0) : POPULAR.map((title) => ({ title })));
+  });
+
   // Biggest discounts off store MRP among prices seen in the last 48 hours.
   app.get('/api/deals', (_req, res) => {
     const since = new Date(Date.now() - 48 * 3600_000).toISOString();
-    res.json(db ? topDeals(db.latestDiscounted(since)) : []);
+    res.json(db ? topDeals(db.latestDiscounted(since), { dates: releaseDates }) : []);
   });
 
   app.get('/api/suggest', (req, res) => {

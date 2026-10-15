@@ -9,7 +9,7 @@ const EDITION = new Set(['standard', 'deluxe', 'ultimate', 'gold', 'premium', 'l
   'steelbook', 'no', 'dlc', 'code', 'box']);
 
 // Drop edition words, including "Day 1" / "Day One".
-function baseKey(tokens) {
+export function baseKey(tokens) {
   const out = [];
   for (let i = 0; i < tokens.length; i++) {
     if (tokens[i] === 'day' && /^(1|one)$/.test(tokens[i + 1] || '')) { i++; continue; }
