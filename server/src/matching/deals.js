@@ -6,14 +6,8 @@
 // bounds drop placeholder MRPs.
 
 import { tokenize, displayTitle } from './normalize.js';
-import { baseKey } from './latest.js';
 
-const isoYearsAgo = (y, today) => { const d = new Date(today); d.setFullYear(d.getFullYear() - y); return d.toISOString().slice(0, 10); };
-
-// With `dates` (ratings/dates.json), only games released in the last `recentYears` are kept,
-// so the shelf isn't a clearance bin of five-year-old sports titles.
-export function topDeals(listings, { limit = 12, minPct = 5, maxPct = 90, dates = null, recentYears = 2, today = new Date().toISOString().slice(0, 10) } = {}) {
-  const since = dates ? isoYearsAgo(recentYears, today) : null;
+export function topDeals(listings, { limit = 12, minPct = 5, maxPct = 90 } = {}) {
   const best = new Map();
   for (const l of listings) {
     if (l.condition !== 'new' || !l.inStock || !l.mrp) continue;
@@ -21,10 +15,6 @@ export function topDeals(listings, { limit = 12, minPct = 5, maxPct = 90, dates 
     const title = l.displayTitle || displayTitle(l.title);
     const key = l.gameKey || tokenize(title).join(' ');
     if (!key) continue;
-    if (since) {
-      const d = dates[key] || dates[baseKey(key.split(' '))];
-      if (!d || d < since || d > today) continue;
-    }
     const cur = best.get(key);
     if (!cur || l.discountPct > cur.discountPct || (l.discountPct === cur.discountPct && l.price < cur.price)) {
       best.set(key, {

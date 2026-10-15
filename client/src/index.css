@@ -1,116 +1,94 @@
-@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource-variable/source-sans-3";
 @import "tailwindcss";
 
-/* Collector's shelf.
-   A dim cool wall so cover art carries the colour; cases stand on a lit shelf edge and
-   paper price tags hang under them. One family (Archivo): its condensed width for titles,
-   like a case spine or a billing block; normal width for reading; tabular figures for
-   prices. Small 3px corners (Blu-ray cases), rectangles for controls, no pills. */
+/* Visual language after playstation.com: white pages on a cool light-grey ground,
+   deep navy hero bands, one PlayStation-style blue for actions, pill buttons and
+   inputs, 8–12px cards, a 2px blue ring for hover/focus instead of shadows,
+   light-weight display type and bold buttons. */
 @theme {
-  --color-wall: #16191E;         /* page */
-  --color-wall-2: #1C2027;       /* raised panels (listing table, dropdown) */
-  --color-wall-3: #232832;       /* hover on panels */
-  --color-edge: #2B313A;         /* shelf edge, rules */
-  --color-edge-hi: #3A414C;
-  --color-paper: #EEEAE3;        /* primary text on the wall; price tags */
-  --color-paper-2: #CFCAC1;
-  --color-dim: #9198A3;          /* secondary text on the wall */
-  --color-ink: #15181D;          /* text on paper */
-  --color-ink-2: #4A4F57;        /* secondary text on paper */
-  --color-save: #5CC593;         /* savings on the wall */
-  --color-save-ink: #0B7149;     /* savings on paper */
-  --color-yellow: #FFC800;       /* Best pre-owned */
-  --color-alert: #F08A8A;
+  --color-ink: #1F1F1F;          /* text */
+  --color-ink-2: #363636;
+  --color-muted: #6B6B6B;        /* secondary text */
+  --color-line: #D2D4D9;         /* borders */
+  --color-ground: #F5F7FA;       /* page background */
+  --color-chip: #F0F1F4;
+  --color-blue: #0072CE;         /* primary action */
+  --color-blue-hover: #0062B3;
+  --color-blue-press: #004C8A;
+  --color-blue-light: #66C7FF;
+  --color-navy: #003866;
+  --color-navy-deep: #00172E;
+  --color-yellow: #FFC800;       /* pre-owned (PS Plus yellow) */
+  --color-green: #008066;        /* deals, savings, discounts */
+  --color-green-tint: #E3F5EF;
+  --color-red: #C81B3A;
 
-  /* Kept so older class names resolve to the new palette. */
-  --color-green: #5CC593;
-  --color-muted: #9198A3;
-  --color-line: #2B313A;
-  --color-blue: #EEEAE3;
+  --font-sans: "Source Sans 3 Variable", "Source Sans 3", Arial, sans-serif;
 
-  --font-sans: "Archivo Variable", "Archivo", "Helvetica Neue", Arial, sans-serif;
-
-  --radius-case: 3px;
-  --radius-box: 6px;
-  --radius-card: 8px;
+  --radius-card: 12px;
+  --radius-box: 8px;
 }
 
-html { -webkit-text-size-adjust: 100%; background: var(--color-wall); color-scheme: dark; }
+html { -webkit-text-size-adjust: 100%; }
 body {
-  background: var(--color-wall);
-  color: var(--color-paper);
+  background: var(--color-ground);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.5;
-  font-stretch: 100%;
   -webkit-font-smoothing: antialiased;
-  overflow-x: clip;
 }
 
-/* Condensed display: game titles and shelf names. */
-.spine { font-stretch: 72%; font-weight: 640; letter-spacing: -0.005em; line-height: 1.02; text-wrap: balance; }
-.price { font-stretch: 92%; font-weight: 650; font-variant-numeric: tabular-nums lining-nums; letter-spacing: -0.01em; }
-.btn-label { font-weight: 600; letter-spacing: 0.005em; }
+/* Display type: large and light, like PlayStation's headlines. */
+.display { font-weight: 300; letter-spacing: -0.01em; line-height: 1.12; text-wrap: balance; }
+.price { font-weight: 700; font-variant-numeric: tabular-nums lining-nums; letter-spacing: -0.01em; }
+.btn-label { font-weight: 700; letter-spacing: 0.4px; }
 
-/* ---------- the shelf ---------- */
-/* Covers stand on the edge; the edge is a lit board with a top highlight. */
-.shelf-edge {
-  height: 12px;
-  background: linear-gradient(to bottom, #3B424D 0, #2B313A 2px, #232830 100%);
-  box-shadow: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 14px 22px -14px rgb(0 0 0 / 0.9);
-  border-radius: 1px;
+/* Deep navy band used behind heroes. */
+.ps-band {
+  background:
+    radial-gradient(90% 70% at 85% 0%, rgba(0, 114, 206, 0.55) 0%, transparent 60%),
+    linear-gradient(165deg, #00439C 0%, #003866 40%, #00172E 100%);
+  color: #fff;
 }
-/* A soft light from above on each shelf, so the wall isn't flat. */
-.shelf-light { background: radial-gradient(70% 90% at 50% 100%, rgb(255 255 255 / 0.045), transparent 70%); }
-
-.case {
-  border-radius: var(--radius-case);
-  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.06) inset, 0 12px 16px -12px rgb(0 0 0 / 0.95);
-  transition: transform 220ms cubic-bezier(.2,.7,.3,1), box-shadow 220ms ease;
-}
-.pull:hover .case, .pull:focus-visible .case {
-  transform: translateY(-6px);
-  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08) inset, 0 22px 24px -14px rgb(0 0 0 / 0.95);
-}
-
-/* Paper price tag hanging from the shelf edge. */
-.tag {
-  background: var(--color-paper);
-  color: var(--color-ink);
-  border-radius: 0 0 2px 2px;
-  box-shadow: 0 6px 12px -8px rgb(0 0 0 / 0.7);
-}
-
-/* In-game screenshot behind the game page header, dimmed and cinematic: shows through
-   at the top, fades fully into the wall before the listings start. */
-.hero-art { animation: hero-in 0.7s ease-out both; }
+/* In-game screenshot behind the whole results band, under the same light-to-dark
+   PlayStation gradient: translucent at the top-left so the scene shows through,
+   near-solid navy at the bottom so the deal cards and white text stay readable. */
+.hero-art { animation: hero-in 0.6s ease-out both; }
 .hero-art::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right, rgb(22 25 30 / 0.92) 0%, rgb(22 25 30 / 0.55) 55%, rgb(22 25 30 / 0.35) 100%),
-    linear-gradient(to bottom, rgb(22 25 30 / 0.15) 0%, rgb(22 25 30 / 0.55) 60%, var(--color-wall) 100%);
+    linear-gradient(165deg, rgba(0, 67, 156, 0.38) 0%, rgba(0, 56, 102, 0.52) 40%, rgba(0, 23, 46, 0.88) 100%),
+    linear-gradient(to bottom, rgba(0, 23, 46, 0.1) 0%, rgba(0, 23, 46, 0.35) 55%, #00172E 100%);
 }
 @keyframes hero-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .hero-art { animation: none; } }
 
-.progress-track { height: 2px; background: var(--color-edge); overflow: hidden; }
-.progress-fill { height: 100%; background: var(--color-paper); transition: width 400ms ease; }
+/* Hover/focus ring, the PlayStation way (no drop shadows). */
+.ring-hover { transition: box-shadow 250ms ease, transform 250ms ease; }
+.ring-hover:hover { box-shadow: 0 0 0 2px var(--color-blue); }
+.lift { transition: transform 250ms ease, box-shadow 250ms ease; }
+.lift:hover { transform: scale(1.03); box-shadow: 0 0 0 2px var(--color-blue); }
 
-.skeleton { background: linear-gradient(90deg, #1F242C 25%, #262C35 50%, #1F242C 75%); background-size: 200% 100%; }
+.progress-track { height: 4px; border-radius: 999px; background: rgba(255,255,255,0.18); overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 999px; background: var(--color-blue-light); transition: width 400ms ease; }
+
+.skeleton { background: linear-gradient(90deg, #ECEEF2 25%, #F5F7FA 50%, #ECEEF2 75%); background-size: 200% 100%; }
 @media (prefers-reduced-motion: no-preference) {
   .skeleton { animation: shimmer 1.3s linear infinite; }
   @keyframes shimmer { to { background-position: -200% 0; } }
 }
 @media (prefers-reduced-motion: reduce) {
-  .case, .hero-art { transition: none; animation: none; }
-  .pull:hover .case, .pull:focus-visible .case { transform: none; }
+  .lift, .ring-hover { transition: none; }
+  .lift:hover { transform: none; }
 }
 
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
 @layer base {
-  :focus-visible { outline: 2px solid var(--color-paper); outline-offset: 3px; border-radius: 2px; }
-  ::selection { background: var(--color-paper); color: var(--color-ink); }
+  /* In the base layer so components (like the search pill) can override it. */
+  :focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-blue); }
 }
